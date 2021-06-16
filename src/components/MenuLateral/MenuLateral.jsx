@@ -55,9 +55,12 @@ const Menulateral = (props) => {
 
             break;
 
-            case 'joinuser':
+            
 
-            // caso de que un user se quiera unir
+            case 'joinuser':
+                    let res = await axios.get('http://localhost:3005/room/active');
+                    props.dispatch({type:GETROOMUSER,payload: res.data});
+                    props.dispatch({type:CLASES,payload: info});
 
             break;
         }
@@ -75,7 +78,7 @@ const Menulateral = (props) => {
                     <div className="botomMenuLateral" onClick={()=>cambiaDatos('useroom')}>Mis clases</div>
                     {/* <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/useroom">Clases</NavLink> */}
                     {/* className="misclases" */}
-                    {/* <div className="botomMenuLateral" onClick={()=>cambiaDatos("joinuser")}>Reservar</div> */}
+                    <div className="botomMenuLateral" onClick={()=>cambiaDatos("joinuser")}>Reservar</div>
                     {/* className="reserva" */}
                     <div className="botomMenuLateral">Taquilla</div>
                     {/* className="pertaquillafil" */}

@@ -61,9 +61,6 @@ const Navbar = (props) => {
             <div className="NavLink" activeClassName="selected">
               <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/profile">Profile</NavLink>
             </div>
-            <div className="NavLink" activeClassName="selected">
-              <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/Useroom">Clases</NavLink>
-            </div>
           </div>
         </div>
       </div>

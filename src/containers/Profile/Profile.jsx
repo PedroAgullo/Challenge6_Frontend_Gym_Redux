@@ -8,6 +8,8 @@ import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import {connect} from 'react-redux';
 import DataProfile from '../../components/DataProfile/DataProfile';
 import DataRoom from '../../components/DataRoom/DataRoom';
+import DataJoin from '../../components/DataJoin/DataJoin';
+
 
 
 /* import Menuuser from '../Menuuser/Menuuser';
@@ -63,8 +65,29 @@ const Profile = (props) => {
     
                 break;
 
+                case 'joinuser':
+                    console.log("Estoy en el switch case en DEFAULT");
+                    return (
+                        <div>
+                
+                            <div className="boxPerfilUsuario">
+                                <MenuLateral/>
+    
+                            <div className="datos">
+                                <DataJoin/>
+                            </div>
+                            </div>
+    
+                      
+                
+                        </div>
+                    );      
+        
+        
+                    break;
+    
+
             default:
-                console.log("Estoy en el switch case en DEFAULT");
             return (
                 <div>
         

@@ -1,0 +1,50 @@
+.cardJoinUser {
+    height: 30vh;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    box-shadow:  5px 5px 5px 2px grey;
+    margin-right: 1em;
+    background-color: #F0EC57;
+    margin-bottom: 1em;
+}
+
+.cardJoinUser:hover{
+    background-color: #ededf4;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 5px 5px 5px 2px grey, 8px 8px 8px 5px grey;
+}
+
+.nombreJoinUser{
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.boxCardJoinUser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;    
+    height: auto;
+    width: auto;
+}
+
+.datosCardJoinUser {
+    font-size: 20px;
+}
+
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 1920px) {
+    .datosCardJoinUser {
+      font-size: 15px;
+    }
+  }

@@ -13,21 +13,16 @@ import { GETROOMUSER } from '../../redux/types';
 const DataRoom = (props) => {
 
     //hooks
-    const [useroom, setUseroom] = useState([]);
-  
+    const [useroom, setUseroom] = useState([]);  
   
     //Equivalente a componentDidMount en componentes de clase (este se ejecuta solo una vez)
     useEffect(() => {
       findAllRoomsActive();
-      
-  
     }, []);
   
     //Equivalente a componentDidUpdate en componentes de clase
     useEffect(() => {
-
       //setUseroom(props.getroomusers);
-
     });
   
     //CANCELA LA CLASE
@@ -50,12 +45,7 @@ const DataRoom = (props) => {
 
       console.log(res.data, "Datos devueltos de axios");
 
-      
-      setTimeout(()=> {
-        setUseroom(res.data);
-        console.log(res.data, "<<<====Res.data");
-        }, 750);
-
+      findAllRoomsActive();
      }catch (err){
          console.log(err);      
          }      
@@ -67,15 +57,9 @@ const DataRoom = (props) => {
   
     try{
 
-      // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYzYyZTM1MGU2NWQ0MjUxOGY5YWY2YyIsImNyZWF0ZWRBdCI6IjIwMjEtMDYtMTZUMTY6Mzg6NTcuNTMyWiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MjM4NjE1Mzd9.8PlZ2yOf0kzoP75l8vrmmH-3OpqOru-kXDoh_sKNsGg";
-      // let idUser = "60c62e350e65d42518f9af6c";
       let idUser = props.credentials.idUser;
       let token = props.credentials.token;
     
-
-      console.log(idUser);
-      console.log(token);
-
       let body = {
         id : idUser
       }
@@ -85,27 +69,22 @@ const DataRoom = (props) => {
       console.log(res.data, "Datos devueltos de axios");
 
       props.dispatch({type:GETROOMUSER,payload: res.data});
-      console.log(props.getroomusers, "Guardado de ");
 
-      setUseroom(props.getroomusers);
-
-
-let esperame=     await setTimeout(()=> {
-
-    }, 1000);
-    
+      setUseroom(res.data);
  
-  }catch (err){
-      
+  }catch (err){      
   }
   
 }
   
-    if (props.getroomusers[0]?._id) {
+
+  // if (props.getroomusers[0]?._id) {
+    if (useroom[0]?._id) {
+
       return (
         <div> <h1>TUS PRÓXIMAS CLASES</h1>
             <div className="boxCard">
-              {props.getroomusers.map((act, index) => (
+              {useroom.map((act, index) => (
                 <div className="card" key={index}>
                   <p className="nombre">{act.name}</p>
                   <p className="datosCard">Comienzo: {moment(act.dateStart).format('LLL')}</p>
@@ -135,8 +114,6 @@ let esperame=     await setTimeout(()=> {
       return <div>CARGANDO DATOS</div>;
     }
 };
-
-
 
 export default connect((state) => ({
   credentials:state.credentials, 
