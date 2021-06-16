@@ -3,9 +3,11 @@ import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import "./Login.css";
 import {Input, notification} from 'antd';
+import {connect} from 'react-redux';
+import {LOGIN} from '../../redux/types'
 
 
-const Login = () => {
+const Login = (props) => {
 
     let history = useHistory();
 
@@ -32,16 +34,23 @@ const Login = () => {
             email : credentials.email,
             password : credentials.password
         }
-
+        
         //Axios      
         if (document.getElementById("opciones").value === "user") {
 
             try {var res = await axios.post('http://localhost:3005/login', body);
 
                 // res viene de vuelta con el token y los datos
-                localStorage.setItem('token', res.data.token)
-                localStorage.setItem('dataUser', JSON.stringify(res.data.user))
-                localStorage.setItem('idUser', res.data.user._id)
+                // localStorage.setItem('token', res.data.token)
+                // localStorage.setItem('dataUser', JSON.stringify(res.data.user))
+                // localStorage.setItem('idUser', res.data.user._id)
+                let data = {
+                    token : res.data.token,
+                    user : (res.data.user),
+                    idUser: res.data.user._id
+                }
+                //Guardo en RDX
+                props.dispatch({type:LOGIN,payload:data});
                 
                 //Mensaje de bienvenida
                 let description = ("Bienvenido " + res.data.user.name + " " + res.data.user.lastName1 + ".");
@@ -64,12 +73,22 @@ const Login = () => {
         }else{
 
             try {var res = await axios.post('http://localhost:3005/login/monitor', body);
-
+                console.log(res.data);
+                console.log(body);
                 // res viene de vuelta con el token y los datos
-                localStorage.setItem('token', res.data.token);
-                localStorage.setItem('dataUser', JSON.stringify(res.data.monitor));
-                localStorage.setItem('idUser', res.data.monitor._id);
+                // localStorage.setItem('token', res.data.token);
+                // localStorage.setItem('dataUser', JSON.stringify(res.data.monitor));
+                // localStorage.setItem('idUser', res.data.monitor._id);
+                // localStorage.setItem('nameCoach', res.data.monitor.name);
 
+                let data = {
+                    token : res.data.token,
+                    user : JSON.stringify(res.data.user),
+                    idUser: res.data.user._id
+                }
+                //Guardo en RDX
+                props.dispatch({type:LOGIN,payload:data});
+                
                 //Redireccion
                 setTimeout(()=> {
                 
@@ -82,10 +101,11 @@ const Login = () => {
                 }, 750);
                 
             } catch (err) {
-                if (err.response.data.message === "Cannot read property 'password' of null"){
+                console.log(err)
+                if (err.response?.data?.message == "Cannot read property 'password' of null"){
                     setMensajeError(JSON.stringify("El password o el email son incorrectos."));
                 }else {
-                    setMensajeError(JSON.stringify(err.response.data.message));
+                    setMensajeError(JSON.stringify(err.response?.data?.message));
                 }
 
             }
@@ -120,9 +140,9 @@ const Login = () => {
 
         </div>
 
-      
+        
         </div>
     )
 }
 
-export default Login;
+export default connect()(Login);

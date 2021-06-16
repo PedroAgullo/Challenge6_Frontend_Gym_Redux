@@ -1,0 +1,78 @@
+.boxDataUser{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    box-shadow:  5px 5px 5px 2px grey;
+
+}
+
+.infoUser1{
+    height: 50vh;
+    width: 17vw;  
+    display: flex;
+    align-items:center;
+    justify-content:space-evenly;
+    flex-direction: column;  
+    border-right: 0.2em solid grey;   
+    background-color: #b0b0b6; 
+    border-radius: 1em 0 0 1em;
+
+}
+
+.fotoUser{
+    height: 20vh;
+    width: 10vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.empty{
+    height: 7vh;
+    width: 7vw;
+}
+
+#foto{
+    height: 20vh;
+    width: 10vw;
+    border: 0.2em solid grey;   
+    border-radius: 1.5em; 
+
+}
+
+.infoUser2{
+    height: 50vh;
+    width: 25vw;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;  
+    background-color: #b0b0b6; 
+  
+}
+.infoUser3{
+    height: 50vh;
+    width: 25vw;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;  
+    background-color: #b0b0b6; 
+    border-radius: 0 1em 1em 0;
+}
+
+.inputBaseUser{
+    border-radius: 1em;
+    width: 23vw;
+    height: 5vh;
+    margin-bottom: 0.4em;
+
+}
+
+h1 {
+    text-align: center;
+}
