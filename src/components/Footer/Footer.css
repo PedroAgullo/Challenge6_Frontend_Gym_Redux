@@ -1,0 +1,90 @@
+.footer {
+    background: #303036;
+    color: 050401;
+    height: 10vh;
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+  }
+  
+  /* LEFT */
+  
+  .NavLinkFooterLeft {
+    color: #ededf4;
+    display: flex;
+    align-items: center;
+    height: auto;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    margin-left: 1em;
+  }
+  
+  .NavLinkFooterLeft:hover {
+    background-color: #e15554;
+    border-radius: 2%;
+    transition: 1s;
+  }
+  
+  .NavMenuFooterLeft {
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content:left;
+  }
+  
+  /* CENTER */
+  
+  .NavLinkFooterCenter {
+    color: #ededf4;
+    display: flex;
+    align-items: center;
+    height: auto;
+    position: relative;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    justify-content: center;
+  }
+  
+  .NavMenuFooterCenter {
+    width: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* RIGHT */
+  
+  .NavLinkFooter {
+    color: #ededf4;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    font-size: 18px;
+    justify-content: right;
+    display: flex;
+    align-items: center;
+  }
+  
+  .NavMenuFooter {
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+  
+  .LogoFooter {
+    margin: 1em;
+    width: fit-content;
+    height: fit-content;
+    width: 20%;
+  }
+  
+  .blanco{
+    width: 30vw;
+  }
