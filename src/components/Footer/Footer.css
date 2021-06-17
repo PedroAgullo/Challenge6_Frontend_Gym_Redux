@@ -1,12 +1,21 @@
 .footer {
   background: #4D4D56;
   color: 050401;
-  height: 6vh;
-  width: -webkit-fill-available;
+  height: 8vh;
+  /*width: -webkit-fill-available;*/
   display: flex;
   justify-content: center;
   z-index: 0;
+  margin-top: 1rem;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
+
+
+
 
 /* LEFT */
 
