@@ -30,8 +30,8 @@ const DataRoom = (props) => {
       try{
         message.info('Clase reservada.');
 
-      let token = localStorage.getItem('token');
-      let idUser = localStorage.getItem('idUser');
+      let token = props.credentials.token;
+      let idUser = props.credentials.idUser;
         console.log(token, "<<<<==== token");
         console.log(idUser, "<<<====ID user");
         console.log(roomId, "<<<<==== ROOM id");
@@ -78,8 +78,8 @@ const DataRoom = (props) => {
 }
   
 
-  // if (props.getroomusers[0]?._id) {
-    if (useroom[0]?._id) {
+  if (props.getroomusers[0]?._id) {
+    // if (useroom[0]?._id) {
 
       return (
         <div> <h1>TUS PRÓXIMAS CLASES</h1>

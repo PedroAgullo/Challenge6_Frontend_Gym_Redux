@@ -10,18 +10,14 @@ import { connect } from 'react-redux';
 
 
 
-
-
 const DataJoin = (props) => {
 
     //hooks
     const [useroom, setUseroom] = useState([]);
   
-  
     //Equivalente a componentDidMount en componentes de clase (este se ejecuta solo una vez)
     useEffect(() => {
-      findAllRoomsAllActive();
-  
+      findAllRoomsAllActive();  
     }, []);
   
     //Equivalente a componentDidUpdate en componentes de clase
@@ -34,8 +30,8 @@ const DataJoin = (props) => {
       try{
         message.info('Clase reservada.');
 
-      let token = localStorage.getItem('token');
-      let idUser = localStorage.getItem('idUser');
+      let token = props.credentials.token;
+      let idUser = props.credentials.idUser;
         console.log(token, "<<<<==== token");
         console.log(idUser, "<<<====ID user");
         console.log(roomId, "<<<<==== ROOM id");
@@ -48,11 +44,11 @@ const DataJoin = (props) => {
       let res = await axios.post('http://localhost:3005/room/join',body,{headers:{'authorization':'Bearer ' + token}});
 
       console.log(res.data, "Datos devueltos de axios");
-      
-      setTimeout(()=> {
-        setUseroom(res.data);
-        console.log(res.data, "<<<====Res.data");
-        }, 750);
+      findAllRoomsAllActive();
+      // setTimeout(()=> {
+      //   setUseroom(res.data);
+      //   console.log(res.data, "<<<====Res.data");
+      //   }, 750);
 
      }catch (err){
          console.log(err.message);      
