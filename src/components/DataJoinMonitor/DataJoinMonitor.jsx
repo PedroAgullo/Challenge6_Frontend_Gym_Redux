@@ -1,7 +1,7 @@
 //Nos muestra las clases activas a las que está apuntado el usuario.
 
 import React, { useEffect, useState } from "react";
-import './DataJoin.css';
+import './DataJoinMonitor.css';
 import axios from "axios";
 import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
@@ -10,14 +10,14 @@ import { connect } from 'react-redux';
 
 
 
-const DataJoin = (props) => {
+const DataJoinMonitor = (props) => {
 
     //hooks
     const [useroom, setUseroom] = useState([]);
   
     //Equivalente a componentDidMount en componentes de clase (este se ejecuta solo una vez)
     useEffect(() => {
-      findAllRoomsAllActive();  
+        findAllRoomsAllActiveMonitor();  
     }, []);
   
     //Equivalente a componentDidUpdate en componentes de clase
@@ -26,27 +26,37 @@ const DataJoin = (props) => {
   
     //  
 
-    const joinClass = async (roomId) => {
+    const joinClassMonitor = async (roomId) => {
       try{
+
         message.info('Clase reservada.');
-
+        
       let token = props.credentials.token;
-      let idUser = props.credentials.idUser;
-
+      let idCoach = props.credentials.user._id;
+      let name = props.credentials.user.name
+      
+      console.log(token, "<<<<==== token");
+        console.log(idCoach, "<<<====ID user");
+        console.log(roomId, "<<<<==== ROOM id");
+        console.log(props.credentials.user.name, "Nombre del coach");
+            
 
       let body = {
         id : roomId,
-        member : idUser
+        coach : idCoach,
+        nameCoach : name         
       }
+      
 
-      let res = await axios.post('http://localhost:3005/room/join',body,{headers:{'authorization':'Bearer ' + token}});
+
+  
+
+
+      let res = await axios.post('http://localhost:3005/room/join/coach',body,{headers:{'authorization':'Bearer ' + token}});
 
       console.log(res.data, "Datos devueltos de axios");
-      findAllRoomsAllActive();
-      // setTimeout(()=> {
-      //   setUseroom(res.data);
-      //   console.log(res.data, "<<<====Res.data");
-      //   }, 750);
+      findAllRoomsAllActiveMonitor();
+ 
 
      }catch (err){
          console.log(err.message);      
@@ -55,14 +65,30 @@ const DataJoin = (props) => {
     }
 
     //Encuentra todas las clases activas que puede reserver un user.
-    const findAllRoomsAllActive = async () => {  
+    const findAllRoomsAllActiveMonitor = async () => {  
     try{
       //GET ALL USER ADMIN
       let res = await axios.get('http://localhost:3005/room/active');
       console.log(res.data, "Datos devueltos de axios");
+        let prueba = [];
+        prueba = res.data;
 
- 
- 
+
+        let num = prueba.lenght;
+        console.log(num);
+
+        let noCoach = [];
+
+        console.log(res.data[7].nameCoach[0], "<<<=== res.data[0]");
+        for(let x=0; x < num; x++){
+
+            if (res.data[x].nameCoach[0] === ''){
+
+                noCoach.push(res.data[x]);
+            }
+
+        }
+        console.log(noCoach);
         setUseroom(res.data);
  
 
@@ -88,7 +114,7 @@ if (useroom[0]?._id) {
 
                             <div style={{ marginLeft: 0, clear: 'both', whiteSpace: 'nowrap' }}>
                                     
-                              <Popconfirm placement="bottom" title="¿Quieres reservar esta clase?" onConfirm={()=>joinClass(act._id)} okText="Yes" cancelText="No">
+                              <Popconfirm placement="bottom" title="¿Quieres reservar esta clase?" onConfirm={()=>joinClassMonitor(act._id)} okText="Yes" cancelText="No">
                                 <Button>Reservar</Button>
                               </Popconfirm>
 
@@ -108,7 +134,7 @@ if (useroom[0]?._id) {
 
 export default connect((state) => ({
   credentials:state.credentials, 
-  getroomusers:state.getroomusers
-  }))(DataJoin);
+  getroommonitor:state.getroommonitor
+  }))(DataJoinMonitor);
 
 

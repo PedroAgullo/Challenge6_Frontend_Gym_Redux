@@ -36,14 +36,10 @@ const Login = (props) => {
         }
         
         //Axios      
+        console.log(document.getElementById("opciones").value);
         if (document.getElementById("opciones").value === "user") {
-
             try {var res = await axios.post('http://localhost:3005/login', body);
 
-                // res viene de vuelta con el token y los datos
-                // localStorage.setItem('token', res.data.token)
-                // localStorage.setItem('dataUser', JSON.stringify(res.data.user))
-                // localStorage.setItem('idUser', res.data.user._id)
                 let perfil = document.getElementById("opciones").value;
                 let data = {
                     token : res.data.token,
@@ -60,36 +56,22 @@ const Login = (props) => {
                 //Mensaje de bienvenida
                 let description = ("Bienvenido " + res.data.user.name + " " + res.data.user.lastName1 + ".");
                 notification.success({message:'Login correcto.',description: description});
-
-                //Redireccion
-                setTimeout(()=> {
-                    if (res.data.user.isAdmin === false){
-                       history.push("/profile");
-                    }else {
-                        history.push("/profileadmin");
-                    }
-            
-                }, 750);
-                
+           
             } catch (err) {
                 setMensajeError(JSON.stringify(err.response.data.message));
             }
+        }else if (document.getElementById("opciones").value === "monitor") {
 
-        }else{
-
-            try {var res = await axios.post('http://localhost:3005/login/monitor', body);
-                console.log(res.data);
+            try {var resMonitor = await axios.post('http://localhost:3005/login/monitor', body);
+                console.log(resMonitor.data);
                 console.log(body);
-                // res viene de vuelta con el token y los datos
-                // localStorage.setItem('token', res.data.token);
-                // localStorage.setItem('dataUser', JSON.stringify(res.data.monitor));
-                // localStorage.setItem('idUser', res.data.monitor._id);
-                // localStorage.setItem('nameCoach', res.data.monitor.name);
 
+                let perfil = document.getElementById("opciones").value;
                 let data = {
-                    token : res.data.token,
-                    user : JSON.stringify(res.data.user),
-                    idUser: res.data.user._id
+                    token : resMonitor.data.token,
+                    user : resMonitor.data.monitor,
+                    idUser: resMonitor.data.monitor._id,
+                    perfil: perfil
                 }
                 //Guardo en RDX
                 props.dispatch({type:LOGIN,payload:data});
@@ -97,7 +79,7 @@ const Login = (props) => {
                 //Redireccion
                 setTimeout(()=> {
                 
-                if (res.data.monitor.isAdmin === false){
+                if (resMonitor.data.monitor.isAdmin === false){
                         history.push("/profilemonitor");
                     }else {
                         history.push("/profileadmin");
@@ -116,8 +98,12 @@ const Login = (props) => {
             }
         }
 
- 
+        setTimeout(()=> {     
+                    history.push("/profile");         
+            }, 750);
+
     }
+
     return (
 
         <div>

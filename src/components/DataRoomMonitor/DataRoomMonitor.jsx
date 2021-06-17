@@ -1,16 +1,15 @@
-
 //Nos muestra las clases activas a las que está apuntado el usuario.
 import React, { useEffect, useState } from "react";
-import './DataRoom.css';
+import './DataRoomMonitor.css';
 import axios from "axios";
 import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
-import { GETROOMUSER } from '../../redux/types';
+import { GETROOMMONITOR } from '../../redux/types';
 
 
 
-const DataRoom = (props) => {
+const DataRoomMonitor = (props) => {
 
     //hooks
     const [useroom, setUseroom] = useState([]);  
@@ -41,7 +40,7 @@ const DataRoom = (props) => {
         member : idUser
       }
 
-      let res = await axios.post('http://localhost:3005/room/leave',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('http://localhost:3005/room/leave/coach',body,{headers:{'authorization':'Bearer ' + token}});
 
       console.log(res.data, "Datos devueltos de axios");
 
@@ -64,10 +63,12 @@ const DataRoom = (props) => {
         id : idUser
       }
 
-      let res = await axios.post('http://localhost:3005/room/userid',body,{headers:{'authorization':'Bearer ' + token}});
+      //GET ALL USER ADMIN
+      let res = await axios.post('http://localhost:3005/room/monitorid',body,{headers:{'authorization':'Bearer ' + token}});
+
       console.log(res.data, "Datos devueltos de axios");
 
-      props.dispatch({type:GETROOMUSER,payload: res.data});
+      props.dispatch({type:GETROOMMONITOR,payload: res.data});
 
       setUseroom(res.data);
  
@@ -77,7 +78,7 @@ const DataRoom = (props) => {
 }
   
 
-  if (props.getroomusers[0]?._id) {
+  if (props.getroommonitor[0]?._id) {
     // if (useroom[0]?._id) {
 
       return (
@@ -116,5 +117,5 @@ const DataRoom = (props) => {
 
 export default connect((state) => ({
   credentials:state.credentials, 
-  getroomusers:state.getroomusers
-  }))(DataRoom);
+  getroommonitor:state.getroommonitor
+  }))(DataRoomMonitor);
