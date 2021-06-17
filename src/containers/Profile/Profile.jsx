@@ -54,7 +54,6 @@ const Profile = (props) => {
 
                         <div className="datos">
                             <DataRoom/>
-                            <DataJoin/>
 
                         </div>
                         </div>
