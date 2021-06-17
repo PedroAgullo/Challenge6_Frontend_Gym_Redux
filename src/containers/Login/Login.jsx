@@ -44,13 +44,18 @@ const Login = (props) => {
                 // localStorage.setItem('token', res.data.token)
                 // localStorage.setItem('dataUser', JSON.stringify(res.data.user))
                 // localStorage.setItem('idUser', res.data.user._id)
+                let perfil = document.getElementById("opciones").value;
                 let data = {
                     token : res.data.token,
                     user : (res.data.user),
-                    idUser: res.data.user._id
+                    idUser: res.data.user._id,
+                    perfil: perfil
                 }
+
+
                 //Guardo en RDX
                 props.dispatch({type:LOGIN,payload:data});
+               
                 
                 //Mensaje de bienvenida
                 let description = ("Bienvenido " + res.data.user.name + " " + res.data.user.lastName1 + ".");

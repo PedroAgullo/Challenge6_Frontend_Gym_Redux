@@ -43,7 +43,7 @@ const Menulateral = (props) => {
                     // let res = await axios.post('http://localhost:3005/room/userid',body,{headers:{'authorization':'Bearer ' + token}});
                     // console.log("Datos devueltos de axios",res.data);
               
-                    props.dispatch({type:GETROOMUSER,payload: "CAMBIA"});
+                    // props.dispatch({type:GETROOMUSER,payload: "CAMBIA"});
                     props.dispatch({type:CLASES,payload: info});
 
       
@@ -66,7 +66,8 @@ const Menulateral = (props) => {
             
           
     } 
-
+    //IFS PARA MOSTRAR UN MENU SEGUN EL TIPO DE USUARIO QUE ACCEDE A LA APLICACIÓN
+    if (props.credentials.user.isAdmin === false && props.credentials.perfil === 'user'){
     return (
         <div className="boxLateral">
                 
@@ -88,6 +89,7 @@ const Menulateral = (props) => {
 
             </div>
     )
+    }
 }
 
 export default connect((state) => ({
