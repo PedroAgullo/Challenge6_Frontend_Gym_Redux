@@ -13,7 +13,7 @@ const DataProfile = (props) => {
 
     return (
         <div>
-            <h1>DATOS DEL USUARIO</h1>
+            <div className="tituloPerfilUsuario"><h1>Perifl del usuario</h1></div>
             <div className="boxDataUser">
                 
                 <div className="infoUser1">

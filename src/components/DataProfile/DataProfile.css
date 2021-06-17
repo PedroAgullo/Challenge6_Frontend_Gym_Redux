@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+
 .boxDataUser{
     display: flex;
     align-items: center;
@@ -73,6 +78,8 @@
 
 }
 
-h1 {
+.tituloPerfilUsuario{
+    font-family: 'Antonio', sans-serif;
+    font-size: 25px;
     text-align: center;
 }

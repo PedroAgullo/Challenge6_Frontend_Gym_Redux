@@ -74,7 +74,7 @@ const DataJoin = (props) => {
   
 if (useroom[0]?._id) {
   return (
-        <div> <h1>Reserva una clase</h1>
+        <div className="titleDataJoinUser"> <h1>Reserva una clase</h1>
             <div className="boxCardJoinUser">
               {useroom.map((act, index) => (
                 <div className="cardJoinUser" key={index} >

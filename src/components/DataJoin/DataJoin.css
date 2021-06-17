@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+
 .cardJoinUser {
-    height: 30vh;
-    width: 15vw;
+    height: auto;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,6 +18,8 @@
     margin-right: 1em;
     background-color: #F0EC57;
     margin-bottom: 1em;
+    padding: 1em;
+    
 }
 
 .cardJoinUser:hover{
@@ -24,7 +31,8 @@
 
 .nombreJoinUser{
     font-weight: bold;
-    font-size: 25px;
+    font-size: 30px;
+    font-family: 'Antonio', sans-serif;
 }
 
 .boxCardJoinUser {
@@ -35,12 +43,22 @@
     flex-wrap: wrap;    
     height: auto;
     width: auto;
+    
 }
 
 .datosCardJoinUser {
     font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    /* max-width: fit-content; */
+    width: fit-content;
+   
 }
 
+.titleDataJoinUser {
+    font-family: 'Antonio', sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 @media screen and (max-width: 1920px) {
