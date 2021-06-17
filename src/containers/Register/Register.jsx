@@ -239,9 +239,14 @@ const Register = () => {
         }).catch(err => {
             console.log(err);
             var errorText = err.response.data.message;
-            if (errorText.includes("duplicate")){
-                setNewMessage(JSON.stringify("El campo email, DNI o teléfono ya existen."));
+            if (errorText.includes("email")){
+                setNewMessage(JSON.stringify("El email ya existe en la base de datos."));
 
+            }else if (errorText.includes("dni")){
+                setNewMessage(JSON.stringify("El dni ya existe en la base de datos."));
+
+            }else if (errorText.includes("telephone")){
+                setNewMessage(JSON.stringify("El teléfono ya existe en la base de datos."));
             }else{
                 setNewMessage(JSON.stringify(err.response.data.message));            
             }

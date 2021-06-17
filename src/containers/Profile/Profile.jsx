@@ -54,6 +54,8 @@ const Profile = (props) => {
 
                         <div className="datos">
                             <DataRoom/>
+                            <DataJoin/>
+
                         </div>
                         </div>
 
@@ -90,15 +92,15 @@ const Profile = (props) => {
             default:
             return (
                 <div>
-        
-                    <div className="boxPerfilUsuario">
+                    CASE  DEFAULT
+                    {/* <div className="boxPerfilUsuario">
                         <MenuLateral/>    
 
 
                     <div className="datos">
                         <DataProfile/>
                     </div>       
-                    </div>
+                    </div> */}
 
         
                 </div>

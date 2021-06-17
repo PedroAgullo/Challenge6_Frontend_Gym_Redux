@@ -5,3 +5,4 @@ export const PROFILE = "profile";
 export const CLASES = "clases";
 export const JOIN = "join";
 export const LOGOUTROOM = "logoutroom";
+export const LOGOUTTIPODATOS = "logouttipodatos"

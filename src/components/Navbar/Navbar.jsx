@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { NavLink } from 'react-router-dom';
 import Logo from '../../images/logofinalnuevogrisSmall.png';
 import { connect } from 'react-redux';
-import { LOGOUT, LOGOUTROOM } from '../../redux/types';
+import { LOGOUT, LOGOUTROOM, LOGOUTTIPODATOS} from '../../redux/types';
 import { useHistory } from 'react-router-dom';
 
 const Navbar = (props) => {
@@ -19,6 +19,8 @@ const Navbar = (props) => {
   const logOut = () => {
     props.dispatch({ type: LOGOUT });
     props.dispatch({ type: LOGOUTROOM });
+    props.dispatch({ type: LOGOUTTIPODATOS });
+    
 
     setTimeout(() => {
       history.push('/');

@@ -55,7 +55,7 @@ const DataJoin = (props) => {
         }, 750);
 
      }catch (err){
-         console.log(err);      
+         console.log(err.message);      
          }      
 
     }
@@ -68,9 +68,9 @@ const DataJoin = (props) => {
       console.log(res.data, "Datos devueltos de axios");
 
  
-      setTimeout(()=> {
+ 
         setUseroom(res.data);
-    }, 750);  
+ 
 
   }catch (err){
       
@@ -78,11 +78,11 @@ const DataJoin = (props) => {
   
 }
   
-    if (props.getroomusers[0]?._id) {
-      return (
+if (useroom[0]?._id) {
+  return (
         <div> <h1>Reserva una clase</h1>
             <div className="boxCardJoinUser">
-              {props.getroomusers.map((act, index) => (
+              {useroom.map((act, index) => (
                 <div className="cardJoinUser" key={index} >
                     <p className="nombreJoinUser">{act.name}</p>
                     <p className="datosCardJoinUser">Comienzo: {moment(act.dateStart).format('LLL')}</p>

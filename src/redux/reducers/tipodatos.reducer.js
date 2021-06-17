@@ -1,7 +1,7 @@
-import {CLASES, PROFILE, JOIN} from '../types';
-const initialState = {
-
-};
+import {CLASES, PROFILE, JOIN, LOGOUTTIPODATOS} from '../types';
+const initialState = 
+    'profile'
+;
 const tipodatosReducer = (state = initialState, action) => {
     switch(action.type){
         case CLASES :
@@ -10,6 +10,8 @@ const tipodatosReducer = (state = initialState, action) => {
             return action.payload;
         case JOIN:
             return action.payload;
+        case LOGOUTTIPODATOS:
+            return initialState;
         default : 
             return state
     }
