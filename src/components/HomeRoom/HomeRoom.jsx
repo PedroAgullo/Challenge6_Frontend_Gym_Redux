@@ -19,27 +19,27 @@ const HomeRoom = (props) => {
             </div>
             <div className="RoomHome">
                 <div className="cardHome">
-                    <div className="titleRoomClassCard"><h5>ZUMBA</h5></div>
+                    <div className="titleRoomClassCard"></div>
                     <img className="PhotoRoom"  src={PhotoRoom1}/>
                 </div>
                 <div className="cardHome">
-                    <div className="titleRoomClassCard"><h5>CROSSFIT</h5></div>
+                    <div className="titleRoomClassCard"></div>
                     <img className="PhotoRoom"  src={PhotoRoom2}/>
                 </div>
                 <div className="cardHome">
-                    <div className="titleRoomClassCard"><h5>SALSA</h5></div>
+                    <div className="titleRoomClassCard"></div>
                     <img className="PhotoRoom"  src={PhotoRoom3}/>
                 </div>
                 <div className="cardHome">
-                    <div className="titleRoomClassCard"><h5>SPINNING</h5></div>
+                    <div className="titleRoomClassCard"></div>
                     <img className="PhotoRoom"  src={PhotoRoom4}/>
                 </div>
                 <div className="cardHome">
-                    <div className="titleRoomClassCard"><h5>PILATES</h5></div>
+                    <div className="titleRoomClassCard"></div>
                     <img className="PhotoRoom"  src={PhotoRoom5}/>
                 </div>
                 <div className="cardHome">
-                    <div className="titleRoomClassCard"><h5>BOXEO</h5></div>
+                    <div className="titleRoomClassCard"></div>
                     <img className="PhotoRoom"  src={PhotoRoom6}/>
                 </div>
             </div>
