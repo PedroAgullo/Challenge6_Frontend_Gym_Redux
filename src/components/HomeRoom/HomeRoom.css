@@ -1,5 +1,5 @@
 .cardHome {
-    height: 50vh;
+    height: 35vh;
     width: 15vw;
     display: unset;
     flex-direction: column;
@@ -12,15 +12,15 @@
     box-shadow:  5px 5px 5px 2px grey;
     margin-right: 1em;
     background-color: #F0EC57 ;
-    font-size: 2em;
+   
 }
 
-.cardHome:hover{
+/* .cardHome:hover{
     background-color: #E15554;
     cursor: pointer;
     transition: 0.3s;
     box-shadow: 5px 5px 5px 2px grey, 8px 8px 8px 5px grey;
-}
+} */
 
 
 
