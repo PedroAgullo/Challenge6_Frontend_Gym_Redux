@@ -95,17 +95,34 @@ const DataProfile = (props) => {
 
                     </div>
 
+                    <div className= "infoUser2Titulos">
+                        <div className="titulosInfoUser">Nombre:</div>
+                        <div className="titulosInfoUser">Primer apellido:</div>
+                        <div className="titulosInfoUser">Segundo apellido:</div>
+                        <div className="titulosInfoUser">Email:</div>
+                        <div className="titulosInfoUser">Password:</div>
+                     
+                    </div>
+
                     <div className="infoUser2">
                         {/* <input className="inputBaseUser" type="text" name="name"  placeholder={user.name} size="34" lenght='30'></input> */}
-                        <div>Nombre</div>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="name" value={user.name} size="34" lenght='30'></input>
-                        <div>Primer apellido</div>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName1"  value={user.lastName1} size="34" lenght='30' ></input>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName2"  value={user.lastName2} size="34" lenght='30'></input>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="email"  value={user.email} size="34" lenght='30'></input>
                         <input className="inputBaseUser"  readonly="readonly" type="password" name="password"  value="************" size="34" lenght='8'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="password" name="password"  value="************" size="34" lenght='8'></input>
+                        
 
+                    </div>
+
+                    <div className= "infoUser2Titulos">
+                        <div className="titulosInfoUser">Dirección:</div>
+                        <div className="titulosInfoUser">Ciudad:</div>
+                        <div className="titulosInfoUser">País:</div>
+                        <div className="titulosInfoUser">DNI/NIE:</div>
+                        <div className="titulosInfoUser">Telefono:</div>
+                        <div className="titulosInfoUser">Fecha de nacimiento:</div>
+                     
                     </div>
 
                     <div className="infoUser3">

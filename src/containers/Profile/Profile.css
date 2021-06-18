@@ -1,10 +1,10 @@
 .boxPerfilUsuario{
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: unset;
     flex-direction: row;
     background-color: #EDEDF4;
-    height: auto;
+    height: max-content;
     max-height: fit-content;
     margin-bottom: 0;
 

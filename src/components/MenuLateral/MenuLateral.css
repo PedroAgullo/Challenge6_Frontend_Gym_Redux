@@ -11,16 +11,18 @@
 }
 
 .lateralMenu{
-    height: 60vh;
-    width: 20vw;
-    margin: 1em;
+    height: inherit;
+    width: max-content;
+    margin: 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    border-radius: 1em;
+  /*   border-radius: 1em; */
     border: 0.1em solid #303036;
-    background-color: #E15554;
+    background-color: #4D4D56;
+    padding: 2em;
+    margin-right: 7em;
 
 }
 
@@ -63,7 +65,7 @@
 
 .botomMenuLateral{
     height: 6.5vh;
-    width: 17vw;
+    width: 12vw;
     border: 0.1em solid #303036;
     margin: 0.2em;
     display: flex;
