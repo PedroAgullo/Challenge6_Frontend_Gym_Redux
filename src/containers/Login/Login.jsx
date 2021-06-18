@@ -39,7 +39,7 @@ const Login = (props) => {
         console.log(document.getElementById("opciones").value);
         if (document.getElementById("opciones").value === "user") {
             try {var res = await axios.post('http://localhost:3005/login', body);
-
+                console.log(res.data);
                 let perfil = document.getElementById("opciones").value;
                 let data = {
                     token : res.data.token,

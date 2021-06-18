@@ -8,4 +8,5 @@ export const LOGOUTROOM = "logoutroom";
 export const LOGOUTTIPODATOS = "logouttipodatos";
 export const GETROOMMONITOR = "getRoomMonitor";
 export const JOINMONITOR = "joinmonitor";
-export const LOGOUTROOMMONITOR = "LogOutRoomMonitor"
+export const LOGOUTROOMMONITOR = "LogOutRoomMonitor";
+export const UPDATE = "update";

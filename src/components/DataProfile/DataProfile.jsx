@@ -6,7 +6,7 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import {LOGIN} from '../../redux/types'
+import {LOGIN, UPDATE} from '../../redux/types'
 
 
 
@@ -14,8 +14,21 @@ const DataProfile = (props) => {
 
 
         
-    const [profile, setProfile] = useState([]); 
-    
+        //Hooks
+        const [profile, setProfile] = useState([]); 
+        const [datosUser, setDatosUser] = useState(
+            {
+
+                address: props.credentials.user.address,
+                country: props.credentials.user.country,
+                city: props.credentials.user.city,
+                telephone: props.credentials.user.telephone
+        });        
+
+
+
+
+
     useEffect(() => {
         setProfile(1);
       }, []);
@@ -26,39 +39,45 @@ const DataProfile = (props) => {
         setProfile(info);
     }
 
+
+
+    const updateFormulario = (e) => {
+        setDatosUser({...datosUser, [e.target.name]: e.target.value});
+    }
+
+
     const saveData = async (info) => {
         
         let token = props.credentials.token;
         let idUser = props.credentials.idUser;
-        // let address = document.getElementById("address").value;
-        // let country = document.getElementById("country").value;
-        // let city = document.getElementById("city").value;
-        console.log(idUser);
-        console.log(token);
-        // console.log (address);
-        // console.log(country);
-        // console.log(city);
+        let address = datosUser.address;
+        let country = datosUser.country;
+        let city = datosUser.city;
+        let telephone = datosUser.telephone;
+
 
         let body = {
             member : idUser,
-            address : "Gran via",
-            country : "Spain",
-            city : "Valencia"
+            address : address,
+            country : country,
+            city : city,
+            telephone : telephone
         }
-
-        console.log (body);
 
         let res = await axios.put('http://localhost:3005/user',body,{headers:{'authorization':'Bearer ' + token}});
         let data = {
-            token : props.credentials.token,
-            user : (res.data.user),
-            idUser: props.credentials.idUser,
+            token: props.credentials.token,
+            user : res.data,
+            idUser: props.credentials.userId,
             perfil: props.credentials.perfil
         }
 
 
+        console.log ("RESULTADO DE AXIOS PARA DAVID", res.data);
+
+
         //Guardo en RDX
-        props.dispatch({type:LOGIN,payload:data});
+        props.dispatch({type:UPDATE,payload:data});
         setProfile(info);
 
     }
@@ -78,22 +97,24 @@ const DataProfile = (props) => {
 
                     <div className="infoUser2">
                         {/* <input className="inputBaseUser" type="text" name="name"  placeholder={user.name} size="34" lenght='30'></input> */}
-                        <input className="inputBaseUser"  readonly type="text" name="name" value={user.name} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly type="text" name="lastName1"  value={user.lastName1} size="34" lenght='30' ></input>
-                        <input className="inputBaseUser"  readonly type="text" name="lastName2"  value={user.lastName2} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly type="text" name="email"  value={user.email} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly type="password" name="password"  value="************" size="34" lenght='8'></input>
-                        <input className="inputBaseUser"  readonly type="password" name="password"  value="************" size="34" lenght='8'></input>
+                        <div>Nombre</div>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="name" value={user.name} size="34" lenght='30'></input>
+                        <div>Primer apellido</div>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName1"  value={user.lastName1} size="34" lenght='30' ></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName2"  value={user.lastName2} size="34" lenght='30'></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="email"  value={user.email} size="34" lenght='30'></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="password" name="password"  value="************" size="34" lenght='8'></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="password" name="password"  value="************" size="34" lenght='8'></input>
 
                     </div>
 
                     <div className="infoUser3">
-                        <input className="inputBaseUser"  readonly type="text" name="address"  value={user.address} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly type="text" name="city"  value={user.city} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly type="text" name="country"  value={user.country} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly type="text" name="dni"  value={user.dni} size="34" maxlenght='9' ></input>
-                        <input className="inputBaseUser"  readonly type="text" name="telephone"  value={user.telephone} size="34" lenght='9'></input>
-                        <input className="inputBaseUser"  readonly type="text" name="birthday" value={moment(user.birthday).format('L')} ></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="address"  value={user.address} size="34" lenght='30'></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="city"  value={user.city} size="34" lenght='30'></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="country"  value={user.country} size="34" lenght='30'></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="dni"  value={user.dni} size="34" maxlenght='9' ></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="telephone"  value={user.telephone} size="34" lenght='9'></input>
+                        <input className="inputBaseUser"  readonly="readonly" type="text" name="birthday" value={moment(user.birthday).format('L')} ></input>
                     </div>
                     <div>
                     </div>
@@ -115,22 +136,22 @@ const DataProfile = (props) => {
                     </div>
 
                     <div className="infoUser2">
-                        <input className="inputBaseUser" id="name"      type="text" name="name"  placeholder={user.name} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" id="lastName1" type="text" name="lastName1"  placeholder={user.lastName1} size="34" lenght='30' ></input>
-                        <input className="inputBaseUser" id="lastName2" type="text" name="lastName2"  placeholder={user.lastName2} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" id="email"     type="text" name="email"  placeholder={user.email} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" id="password"  type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
-                        <input className="inputBaseUser" id="password"  type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
+                        <input className="inputBaseUser" readonly="readonly" type="text" name="name"  placeholder={user.name} size="34" lenght='30'></input>
+                        <input className="inputBaseUser" readonly="readonly" type="text" name="lastName1"  placeholder={user.lastName1} size="34" lenght='30' ></input>
+                        <input className="inputBaseUser" readonly="readonly" type="text" name="lastName2"  placeholder={user.lastName2} size="34" lenght='30'></input>
+                        <input className="inputBaseUser" readonly="readonly" type="text" name="email"  placeholder={user.email} size="34" lenght='30'></input>
+                        <input className="inputBaseUser" readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
+                        <input className="inputBaseUser" readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
 
                     </div>
 
                     <div className="infoUser3">
-                        <input className="inputBaseUser" id="addres"    type="text" name="address"  placeholder={user.address} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" id="city"      type="text" name="city"  placeholder={user.city} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" id="country"   type="text" name="country"  placeholder={user.country} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" id="dni"       type="text" name="dni"  placeholder={user.dni} size="34" maxlenght='9' ></input>
-                        <input className="inputBaseUser" id="telephone" type="text" name="telephone"  placeholder={user.telephone} size="34" lenght='9'></input>
-                        <input className="inputBaseUser" id="birtday"   type="text" name="birthday" placeholder={moment(user.birthday).format('L')} ></input>
+                        <input className="inputBaseUser"  type="text" name="address" onChange={updateFormulario} placeholder={user.address} size="34" lenght='30'></input>
+                        <input className="inputBaseUser"  type="text" name="city" onChange={updateFormulario} placeholder={user.city} size="34" lenght='30'></input>
+                        <input className="inputBaseUser"  type="text" name="country" onChange={updateFormulario}  placeholder={user.country} size="34" lenght='30'></input>
+                        <input className="inputBaseUser" readonly type="text" name="dni"  placeholder={user.dni} size="34" maxlenght='9' ></input>
+                        <input className="inputBaseUser"  type="text" name="telephone" onChange={updateFormulario}  placeholder={user.telephone} size="34" lenght='9'></input>
+                        <input className="inputBaseUser" readonly type="text" name="birthday" placeholder={moment(user.birthday).format('L')} ></input>
                     </div>
 
 

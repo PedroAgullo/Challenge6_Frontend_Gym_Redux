@@ -61,7 +61,7 @@ const DataRoom = (props) => {
       let token = props.credentials.token;
     
       let body = {
-        id : idUser
+        member : idUser
       }
 
       let res = await axios.post('http://localhost:3005/room/userid',body,{headers:{'authorization':'Bearer ' + token}});
