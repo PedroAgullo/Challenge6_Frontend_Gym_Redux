@@ -11,7 +11,7 @@ function Code() {
     <div className="App">
           
       <header className="App-header">
-        <QRCode value={user.name, user.email, user.token} size={256} bgColor="#282c34" fgColor="#fff" level="H" />
+        <QRCode value={user.name, user.email, user.token} size={256} bgColor="#b0b0b6;" fgColor="#fff" level="H" />
       </header>
     </div>
   );
