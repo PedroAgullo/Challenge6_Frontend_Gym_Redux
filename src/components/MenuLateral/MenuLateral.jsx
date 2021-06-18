@@ -98,7 +98,7 @@ const Menulateral = (props) => {
                     <div className="botomMenuLateral" onClick={()=>cambiaDatos('monitoroom')}>Mis clases</div>
                     <div className="botomMenuLateral" onClick={()=>cambiaDatos("joinmonitor")}>Reservar</div>
                     <div className="botomMenuLateral">Taquilla</div>
-                    <div className="botomMenuLateral" onClick={()=>cambiaDatos("newroom")}>Nueva sala</div>
+                    <div className="botomMenuLateral" onClick={()=>cambiaDatos("newroom")}>Crear sala</div>
                     <div className="botomMenuLateral" onClick={()=>cambiaDatos("codeqr")}>Acceso GYM</div>                
                 </div>
             </div>
@@ -108,11 +108,13 @@ const Menulateral = (props) => {
             <div className="boxLateral">
                     
                     <div className="lateralMenu">
-                        <div className="botomMenuLateral" onClick={()=>cambiaDatos('profile')}>ADMIN</div>
-                        <div className="botomMenuLateral" onClick={()=>cambiaDatos('useroom')}>Mis clases</div>
+                        <div className="tituloVistaAdmin">Vista Administrador</div>
+                        <div className="botomMenuLateral" onClick={()=>cambiaDatos('profile')}>Profile</div>
+                        <div className="botomMenuLateral" onClick={()=>cambiaDatos('useroom')}>Clases</div>
                         <div className="botomMenuLateral" onClick={()=>cambiaDatos("joinuser")}>Reservar</div>
-                        <div className="botomMenuLateral" onClick={()=>cambiaDatos("newroom")}>Nueva sala</div>
-                        <div className="botomMenuLateral" onClick={()=>cambiaDatos("payment")}>Suscripción</div>
+                        <div className="botomMenuLateral" onClick={()=>cambiaDatos("newroom")}>Crear Sala</div>
+                        <div className="botomMenuLateral" onClick={()=>cambiaDatos("newcoach")}>Alta Coach</div>
+                        <div className="botomMenuLateral" onClick={()=>cambiaDatos("newuser")}>Update Cliente</div>
                         <div className="botomMenuLateral" onClick={()=>cambiaDatos("codeqr")}>Acceso GYM</div>                    
                     </div>    
             </div>
