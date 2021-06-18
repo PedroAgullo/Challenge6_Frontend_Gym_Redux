@@ -1,4 +1,4 @@
-import {CLASES, PROFILE, JOIN, LOGOUTTIPODATOS, JOINMONITOR, NEWROOM, PAYMENT, CODEQR} from '../types';
+import {CLASES, PROFILE, JOIN, LOGOUTTIPODATOS, JOINMONITOR, NEWROOM, PAYMENT, CODEQR, ACTIVEROOM} from '../types';
 const initialState = 
     'profile'
 ;
@@ -19,6 +19,8 @@ const tipodatosReducer = (state = initialState, action) => {
         case CODEQR:
             return action.payload;            
         case LOGOUTTIPODATOS:
+            return initialState;
+        case ACTIVEROOM:
             return initialState;
         default : 
             return state
