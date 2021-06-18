@@ -3,7 +3,7 @@
 
 
 
-.boxDataSala{
+.boxDataUser{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,9 +32,9 @@
 
 }
 
-.infoSala1{
+.InfoNewRoom1{
     height: 50vh;
-    width: 25vw;  
+    width: 50vw;  
     display: flex;
     align-items:center;
     justify-content:space-evenly;
@@ -45,9 +45,9 @@
 
 }
 
-.fotoUser{
-    height: 20vh;
-    width: 10vw;
+.fotoRoom1{
+    height: 30vh;
+    width: 20vw;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -60,9 +60,9 @@
     
 }
 
-#foto{
-    height: 20vh;
-    width: 20vw;
+#fotoRoom1{
+    height: 100%;
+    width: 100%;
     border: 0.2em solid grey;   
     border-radius: 1.5em; 
 
@@ -80,7 +80,7 @@
   
 }
 
-.infoSala2{
+.infoUser2{
     height: 50vh;
     width: -webkit-fill-available;    
     display: flex;
@@ -90,7 +90,7 @@
     background-color: #b0b0b6; 
   
 }
-.infoSala3{
+.infoUser3{
     height: 50vh;
     width: -webkit-fill-available;    
     display: flex;
@@ -147,6 +147,7 @@
 }
 
 .tituloPerfilUsuario{
+    margin-bottom: 5em;
     font-family: 'Antonio', sans-serif;
     font-size: 20px;
     text-align: center;
