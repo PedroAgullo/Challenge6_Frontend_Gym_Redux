@@ -111,7 +111,7 @@ const NewRoom = (props) => {
     if (profile === 1) {
         return (
             <div>
-                <div className="tituloPerfilUsuario"><h1>Nueva sala</h1></div>
+                <div className="tituloNewRoom"><h1>Nueva sala</h1></div>
                 <div className="boxDataUser">
 
                     <div className="InfoNewRoom1">

@@ -3,7 +3,7 @@
 
 
 
-.boxDataUser{
+.boxDataProfileUser{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,8 +26,9 @@
   /*   box-shadow:  5px 5px 5px 2px grey; */
     
     background-color: #F0EC57;
-    margin-bottom: 1em;
+    margin-bottom: 8em;
     padding: 1em;
+
     /* margin-left: 15em; */
 
 }
@@ -146,8 +147,8 @@
 
 }
 
-.tituloPerfilUsuario{
-    margin-bottom: 5em;
+.tituloDataProfile{
+    margin-bottom: 0;
     font-family: 'Antonio', sans-serif;
     font-size: 20px;
     text-align: center;

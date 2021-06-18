@@ -46,7 +46,7 @@
     font-family: 'Antonio', sans-serif;
 }
 
-.boxCard {
+.boxCardDataRoom {
     display: flex;
     flex-direction: row;
     align-items: center;

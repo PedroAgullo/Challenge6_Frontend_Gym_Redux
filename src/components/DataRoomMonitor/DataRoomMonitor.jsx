@@ -82,15 +82,15 @@ const DataRoomMonitor = (props) => {
     // if (useroom[0]?._id) {
 
       return (
-        <div> <h1>TUS PRÓXIMAS CLASES</h1>
-            <div className="boxCard">
+        <div> <h1>Tus próximas clases</h1>
+            <div className="boxCardDataRoomMonitor">
               {useroom.map((act, index) => (
-                <div className="card" key={index}>
+                <div className="cardDataRoomMonitor" key={index}>
                   <p className="nombre">{act.name}</p>
-                  <p className="datosCard">Comienzo: {moment(act.dateStart).format('LLL')}</p>
-                  <p className="datosCard">Fin: {moment(act.dateEnd).format('LLL')}</p>
-                  <p className="datosCard">Entrenador: {act.nameCoach}</p>
-                  <p className="datosCard">Capacidad: {act.members.length}/{act.maxMember}</p>
+                  <p className="datosCardRoomMonitor">Comienzo: {moment(act.dateStart).format('LLL')}</p>
+                  <p className="datosCardRoomMonitor">Fin: {moment(act.dateEnd).format('LLL')}</p>
+                  <p className="datosCardRoomMonitor">Entrenador: {act.nameCoach}</p>
+                  <p className="datosCardRoomMonitor">Capacidad: {act.members.length}/{act.maxMember}</p>
                   <div clasName="botonCardJoinUser">
                         <div className="demo">
 

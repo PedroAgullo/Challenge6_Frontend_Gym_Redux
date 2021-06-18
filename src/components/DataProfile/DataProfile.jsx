@@ -86,8 +86,8 @@ const DataProfile = (props) => {
     if (profile === 1) {
         return (
             <div>
-                <div className="tituloPerfilUsuario"><h1>Perfil del usuario</h1></div>
-                <div className="boxDataUser">
+                <div className="tituloDataProfile"><h1>Perfil del usuario</h1></div>
+                <div className="boxDataProfileUser">
 
                     <div className="infoUser1">
                         <div className="fotoUser"><img id="foto" src={PhotoProfile} alt="Profile photo" /></div>

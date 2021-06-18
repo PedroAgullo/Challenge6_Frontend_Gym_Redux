@@ -1,4 +1,4 @@
-.card {
+.cardDataRoomMonitor {
 /*     height: 30vh;
     width: 15vw;
     display: flex;
@@ -41,7 +41,7 @@
     font-size: 25px;
 }
 
-.boxCard {
+.boxCardDataRoomMonitor {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -52,8 +52,13 @@
 
 }
 
-.datosCard {
+.datosCardRoomMonitor {
     font-size: 15px;
+}
+
+
+.botonCardJoinMonitor {
+
 }
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */

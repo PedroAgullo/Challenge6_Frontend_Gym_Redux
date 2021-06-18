@@ -140,11 +140,9 @@
 }
 
 .datos{
-    height: 80vh;
+    height: fit-content;
     width: 70vw;
-    margin: 1em;
     border-radius: 1em;
-    margin: 0.2em;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -152,6 +150,7 @@
     max-height: fit-content;
     position: relative;
     margin-left: 24em;
+
 
 
 

@@ -13,7 +13,7 @@
 }
 
 .lateralMenu{
-    height: inherit;
+    height: 200vh;
     width: max-content;
     margin: 0;
     display: flex;

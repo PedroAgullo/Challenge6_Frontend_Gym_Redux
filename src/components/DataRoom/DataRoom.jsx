@@ -82,7 +82,7 @@ const DataRoom = (props) => {
 
       return (
         <div className="nombreDataRoom"> <h1>Tus próximas clases</h1>
-            <div className="boxCard">
+            <div className="boxCardDataRoom">
               {useroom.map((act, index) => (
                 <div className="card" key={index}>
                   <p className="nombre">{act.name}</p>
