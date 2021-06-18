@@ -86,7 +86,8 @@ const NewRoom = (props) => {
 
 
         
-        let body = {            
+        let body = {    
+            id : props.credentials.user._id,        
             name: datosRoom.name,
             dateStart : dateStart,
             dateEnd : dateEnd,

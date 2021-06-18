@@ -11,6 +11,7 @@ import DataRoomMonitor from '../../components/DataRoomMonitor/DataRoomMonitor';
 import DataJoinMonitor from '../../components/DataJoinMonitor/DataJoinMonitor';
 import NewRoom from '../../components/NewRoom/NewRoom';
 import Payment from '../../components/Payment/Payment';
+import Code from '../../components/QrCode/QrCode';
 
 
 const Profile = (props) => {
@@ -41,6 +42,8 @@ const Profile = (props) => {
 
             case 'payment':
                     return <Payment/>
+            case 'codeqr':
+                return <Code/>
             default:
 
                 return <DataProfile />

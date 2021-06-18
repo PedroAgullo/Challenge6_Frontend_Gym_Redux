@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 import './MenuLateral.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import {GETROOMUSER, CLASES, PROFILE, JOIN, JOINMONITOR, GETROOMMONITOR, NEWROOM, PAYMENT} from '../../redux/types';
+import {CLASES, PROFILE, JOIN, JOINMONITOR, GETROOMMONITOR, NEWROOM, PAYMENT, CODEQR} from '../../redux/types';
 import { NavLink } from 'react-router-dom';
 
 const Menulateral = (props) => {
@@ -32,8 +32,7 @@ const Menulateral = (props) => {
             break;          
 
             case 'joinuser':
-                    // let res = await axios.get('http://localhost:3005/room/active');
-                    // props.dispatch({type:GETROOMUSER,payload: res.data});
+
                     props.dispatch({type:JOIN,payload: info});
 
             break;
@@ -45,8 +44,7 @@ const Menulateral = (props) => {
             break;
 
             case 'joinmonitor':
-                // let resul = await axios.get('http://localhost:3005/room/active');
-                // props.dispatch({type:GETROOMMONITOR,payload: resul.data});
+
                 props.dispatch({type:JOINMONITOR,payload: info});
 
              break;
@@ -61,6 +59,10 @@ const Menulateral = (props) => {
             case 'payment':
 
                 props.dispatch({type:PAYMENT,payload: info});
+
+            break;
+            case 'codeqr':
+                props.dispatch({type:CODEQR,payload: info});
 
             break;
             default:
@@ -82,7 +84,7 @@ const Menulateral = (props) => {
                     <div className="botomMenuLateral" onClick={()=>cambiaDatos("joinuser")}>Reservar</div>
                     <div className="botomMenuLateral">Taquilla</div>
                     <div className="botomMenuLateral" onClick={()=>cambiaDatos("payment")}>Suscripción</div>
-                    <div className="botomMenuLateral" onClick={()=>history.push('/codeqr')}>Acceso GYM</div>
+                    <div className="botomMenuLateral" onClick={()=>cambiaDatos("codeqr")}>Acceso GYM</div>
                 </div>
             </div>
         )
@@ -97,7 +99,7 @@ const Menulateral = (props) => {
                     <div className="botomMenuLateral" onClick={()=>cambiaDatos("joinmonitor")}>Reservar</div>
                     <div className="botomMenuLateral">Taquilla</div>
                     <div className="botomMenuLateral" onClick={()=>cambiaDatos("newroom")}>Nueva sala</div>
-                    <div className="botomMenuLateral" onClick={()=>history.push('/codeqr')}>Acceso GYM</div>
+                    <div className="botomMenuLateral" onClick={()=>cambiaDatos("codeqr")}>Acceso GYM</div>                
                 </div>
             </div>
         )
@@ -111,9 +113,9 @@ const Menulateral = (props) => {
                         <div className="botomMenuLateral" onClick={()=>cambiaDatos("joinuser")}>Reservar</div>
                         <div className="botomMenuLateral" onClick={()=>cambiaDatos("newroom")}>Nueva sala</div>
                         <div className="botomMenuLateral" onClick={()=>cambiaDatos("payment")}>Suscripción</div>
-                        <div className="botomMenuLateral" onClick={()=>history.push('/codeqr')}>Acceso GYM</div>
+                        <div className="botomMenuLateral" onClick={()=>cambiaDatos("codeqr")}>Acceso GYM</div>                    
                     </div>    
-                </div>
+            </div>
             )
 
     }
