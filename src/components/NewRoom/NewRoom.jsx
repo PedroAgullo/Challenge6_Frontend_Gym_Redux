@@ -26,6 +26,10 @@ const NewRoom = (props) => {
 
         });        
 
+        const [photoRoom, setPhotoRoom] = useState(            
+                PhotoRoom1
+            
+        ); 
 
 
 
@@ -43,7 +47,32 @@ const NewRoom = (props) => {
 
     const updateFormulario = (e) => {
         setDatosRoom({...datosRoom, [e.target.name]: e.target.value});
-        
+        if (e.target.name === "name"){
+
+            switch(e.target.value){
+                case "Zumba":
+                    setPhotoRoom(PhotoRoom1);
+                    return
+                case "Crossfit":
+                    setPhotoRoom(PhotoRoom2);
+                    return
+                case "Salsa":
+                    setPhotoRoom(PhotoRoom3);
+                    return
+                case "Spinning":
+                    setPhotoRoom(PhotoRoom4);
+                    return
+                case "Pilates":
+                    setPhotoRoom(PhotoRoom5);
+                    return
+                case "Boxeo":
+                    setPhotoRoom(PhotoRoom6);
+                    return
+                default:
+                    return
+            }
+        }
+
     }
 
 
@@ -85,7 +114,7 @@ const NewRoom = (props) => {
                 <div className="boxDataUser">
 
                     <div className="InfoNewRoom1">
-                        <div className="fotoRoom1"><img id="fotoRoom1" src={PhotoRoom1} alt="Profile photo" /></div>
+                        <div className="fotoRoom1"><img id="fotoRoom1" src={photoRoom} alt="Profile photo" /></div>
                         <div className="empty"><button onClick={(()=>saveData(2))}>Guardar</button></div>
 
                     </div>
