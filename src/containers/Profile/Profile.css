@@ -150,6 +150,8 @@
     flex-direction: column;
     align-items: center;
     max-height: fit-content;
+    position: relative;
+    margin-left: 24em;
 
 
 

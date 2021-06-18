@@ -90,7 +90,7 @@ const DataProfile = (props) => {
                 <div className="boxDataUser">
 
                     <div className="infoUser1">
-                        <div className="fotoUser"><img id="foto" src={PhotoProfile} alt="Profile photo" height= "100" width="100" /></div>
+                        <div className="fotoUser"><img id="foto" src={PhotoProfile} alt="Profile photo" /></div>
                         <div className="empty"><button onClick={(()=>changeState(2))}>Editar</button></div>
 
                     </div>

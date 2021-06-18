@@ -5,6 +5,8 @@
     flex-direction: row;
     background-color: #EDEDF4;
     height: 80vh;
+    position: fixed;
+    
 
 
 
@@ -23,6 +25,7 @@
     background-color: #4D4D56;
     padding: 2em;
     margin-right: 7em;
+  
 
 }
 
