@@ -116,13 +116,14 @@ const NewRoom = (props) => {
 
                     <div className="InfoNewRoom1">
                         <div className="fotoRoom1"><img id="fotoRoom1" src={photoRoom} alt="Profile photo" /></div>
-                        <div className="empty"><button onClick={(()=>saveData(2))}>Guardar</button></div>
+                        
 
                     </div>
 
                     <div className= "infoUser2Titulos">
-                        <div className="titulosInfoUser">Nombre:</div>
-                        <div className="titulosInfoUser">Fecha y hora de inicio: </div>
+                        <div className="titulosInfoRoom">Nombre:</div>
+                        <div className="titulosInfoRoom">Fecha y hora de inicio: </div>
+                        <div className="empty"></div>
 
                         
                      
@@ -143,6 +144,8 @@ const NewRoom = (props) => {
                         
      
                             <input className="inputBaseUser" type="datetime-local" name="dateStart" size="34" lenght='30' onChange={updateFormulario}></input>
+
+                            <div className="empty"><button onClick={(()=>saveData(2))}>Guardar</button></div>
                     </div>
                 </div>
             </div>

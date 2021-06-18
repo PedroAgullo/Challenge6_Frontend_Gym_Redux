@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
 .cardDataRoomMonitor {
 /*     height: 30vh;
     width: 15vw;
@@ -39,6 +42,7 @@
 .nombre{
     font-weight: bold;
     font-size: 25px;
+    font-family: 'Antonio', sans-serif;
 }
 
 .boxCardDataRoomMonitor {
@@ -47,17 +51,25 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;  
-    height: auto;
+    height: 80vh;
     width: auto;
 
 }
 
 .datosCardRoomMonitor {
-    font-size: 15px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    /* max-width: fit-content; */
+    width: fit-content;
 }
 
 
-.botonCardJoinMonitor {
+
+
+.nombreDataRoomMonitor {
+    font-family: 'Antonio', sans-serif;
+    font-size: 20px;
+    text-align: center;
 
 }
 

@@ -58,11 +58,12 @@
     width: 7vw;
     text-align: center;
     
+    
 }
 
 #fotoRoom1{
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: inherit;
     border: 0.2em solid grey;   
     border-radius: 1.5em; 
 
@@ -134,7 +135,7 @@
     margin-bottom: 0.4em;
 }
 
-.titulosInfoUser {
+.titulosInfoRoom {
     border-radius: 1em;
     width: max-content;
     height: 36px;
@@ -143,6 +144,7 @@
     font-weight: bold;
     padding-top: 0.2em;
     font-size: 15px;
+    
 
 }
 

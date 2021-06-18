@@ -100,15 +100,15 @@ const DataJoinMonitor = (props) => {
   
 if (useroom[0]?._id) {
   return (
-        <div> <h1>Reserva una clase</h1>
-            <div className="boxCardJoinUser">
+        <div className="titleDataJoinMonitor"> <h1>Reserva una clase</h1>
+            <div className="boxCardJoinMonitor">
               {useroom.map((act, index) => (
-                <div className="cardJoinUser" key={index} >
+                <div className="cardJoinMonitor" key={index} >
                     <p className="nombreJoinUser">{act.name}</p>
-                    <p className="datosCardJoinUser">Comienzo: {moment(act.dateStart).format('LLL')}</p>
-                    <p className="datosCardJoinUser">Fin: {moment(act.dateEnd).format('LLL')}</p>
-                    <p className="datosCardJoinUser">Entrenador: {act.nameCoach}</p>
-                    <p className="datosCardJoinUser">Capacidad: {act.members.length}/{act.maxMember}</p>
+                    <p className="datosCardJoinMonitor">Comienzo: {moment(act.dateStart).format('LLL')}</p>
+                    <p className="datosCardJoinMonitor">Fin: {moment(act.dateEnd).format('LLL')}</p>
+                    <p className="datosCardJoinMonitor">Entrenador: {act.nameCoach}</p>
+                    <p className="datosCardJoinMonitor">Capacidad: {act.members.length}/{act.maxMember}</p>
                     <div clasName="botonCardJoinUser">
                         <div className="demo">
 

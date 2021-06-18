@@ -82,7 +82,7 @@ const DataRoomMonitor = (props) => {
     // if (useroom[0]?._id) {
 
       return (
-        <div> <h1>Tus próximas clases</h1>
+        <div className="nombreDataRoomMonitor"> <h1>Tus próximas clases</h1>
             <div className="boxCardDataRoomMonitor">
               {useroom.map((act, index) => (
                 <div className="cardDataRoomMonitor" key={index}>
