@@ -1,4 +1,4 @@
-import {CLASES, PROFILE, JOIN, LOGOUTTIPODATOS, JOINMONITOR} from '../types';
+import {CLASES, PROFILE, JOIN, LOGOUTTIPODATOS, JOINMONITOR, NEWROOM, PAYMENT} from '../types';
 const initialState = 
     'profile'
 ;
@@ -11,6 +11,10 @@ const tipodatosReducer = (state = initialState, action) => {
         case JOIN:
             return action.payload;
         case JOINMONITOR:
+            return action.payload;
+        case NEWROOM:
+            return action.payload;
+        case PAYMENT:
             return action.payload;
         case LOGOUTTIPODATOS:
             return initialState;

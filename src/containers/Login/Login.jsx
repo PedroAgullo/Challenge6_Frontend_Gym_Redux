@@ -36,7 +36,6 @@ const Login = (props) => {
         }
         
         //Axios      
-        console.log(document.getElementById("opciones").value);
         if (document.getElementById("opciones").value === "user") {
             try {var res = await axios.post('http://localhost:3005/login', body);
                 console.log(res.data);
@@ -48,15 +47,16 @@ const Login = (props) => {
                     perfil: perfil
                 }
 
-
                 //Guardo en RDX
                 props.dispatch({type:LOGIN,payload:data});
-               
-                
+                               
                 //Mensaje de bienvenida
                 let description = ("Bienvenido " + res.data.user.name + " " + res.data.user.lastName1 + ".");
                 notification.success({message:'Login correcto.',description: description});
-           
+                
+                //Redireccion           
+                history.push("/profile");
+
             } catch (err) {
                 setMensajeError(JSON.stringify(err.response.data.message));
             }
@@ -76,16 +76,8 @@ const Login = (props) => {
                 //Guardo en RDX
                 props.dispatch({type:LOGIN,payload:data});
                 
-                //Redireccion
-                setTimeout(()=> {
-                
-                if (resMonitor.data.monitor.isAdmin === false){
-                        history.push("/profilemonitor");
-                    }else {
-                        history.push("/profileadmin");
-                    }
-            
-                }, 750);
+                //Redireccion           
+                history.push("/profile");
                 
             } catch (err) {
                 console.log(err)
@@ -98,40 +90,34 @@ const Login = (props) => {
             }
         }
 
-        setTimeout(()=> {     
-                    history.push("/profile");         
-            }, 750);
 
     }
 
     return (
 
-        <div>
-           
+        <div>          
 
-        <div className = "vistaLogin">
-
-            <div className = "loginCard"> 
-                <div className = "cardLogin">
-                    <input className="input" type="email" name="email" placeholder="email" onChange={updateCredentials} size="40" lenght='30'></input>
-                </div>
-                <div className = "cardLogin">
-                    <input className="input" type="password" name="password" placeholder="password" onChange={updateCredentials} size="40" lenght='30'></input>
-                    
-                </div>
-                <div className = "cardLogin">
-                    <select id = "opciones" className="input">
-                        <option value="user">Cliente</option>
-                        <option value="monitor">Entrenador</option>
-                    </select>
-                </div>
-                <div className = "sendButton" onClick={()=>logeame()}>Login</div>
-                <div>{msgError}</div>
-            </div>
-
-        </div>
-
+            <div className = "vistaLogin">
         
+                <div className = "loginCard"> 
+                    <div className = "cardLogin">
+                        <input className="input" type="email" name="email" placeholder="email" onChange={updateCredentials} size="40" lenght='30'></input>
+                    </div>
+                    <div className = "cardLogin">
+                        <input className="input" type="password" name="password" placeholder="password" onChange={updateCredentials} size="40" lenght='30'></input>
+                        
+                    </div>
+                    <div className = "cardLogin">
+                        <select id = "opciones" className="input">
+                            <option value="user">Cliente</option>
+                            <option value="monitor">Entrenador</option>
+                        </select>
+                    </div>
+                    <div className = "sendButton" onClick={()=>logeame()}>Login</div>
+                    <div>{msgError}</div>
+                </div>
+        
+            </div>        
         </div>
     )
 }

@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 import './MenuLateral.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import {GETROOMUSER, CLASES, PROFILE, JOIN, JOINMONITOR, GETROOMMONITOR} from '../../redux/types';
+import {GETROOMUSER, CLASES, PROFILE, JOIN, JOINMONITOR, GETROOMMONITOR, NEWROOM, PAYMENT} from '../../redux/types';
 import { NavLink } from 'react-router-dom';
 
 const Menulateral = (props) => {
@@ -21,7 +21,6 @@ const Menulateral = (props) => {
         switch(info) {
 
             case 'profile':
-                console.log("Hemos entrado en el case de perfil en lateralmenu");
                 props.dispatch({type:PROFILE,payload: info});
 
             break;
@@ -33,38 +32,45 @@ const Menulateral = (props) => {
             break;          
 
             case 'joinuser':
-                    let res = await axios.get('http://localhost:3005/room/active');
-                    props.dispatch({type:GETROOMUSER,payload: res.data});
-                    props.dispatch({type:JOIN,payload: info});
-
-            break;
-
-            case 'monitoroom':
-                    // let res = await axios.post('http://localhost:3005/room/join/coach');
+                    // let res = await axios.get('http://localhost:3005/room/active');
                     // props.dispatch({type:GETROOMUSER,payload: res.data});
                     props.dispatch({type:JOIN,payload: info});
 
             break;
 
+            case 'monitoroom':
+
+                    props.dispatch({type:JOIN,payload: info});
+
+            break;
+
             case 'joinmonitor':
-                let resul = await axios.get('http://localhost:3005/room/active');
-                props.dispatch({type:GETROOMMONITOR,payload: resul.data});
+                // let resul = await axios.get('http://localhost:3005/room/active');
+                // props.dispatch({type:GETROOMMONITOR,payload: resul.data});
                 props.dispatch({type:JOINMONITOR,payload: info});
 
              break;
 
+             case 'newroom':
+
+                props.dispatch({type:NEWROOM,payload: info});
+
+             break;
+
+
+            case 'payment':
+
+                props.dispatch({type:PAYMENT,payload: info});
+
+            break;
             default:
 
             break;
-
-
-
             
         }
-
-            
           
     } 
+
     //IFS PARA MOSTRAR UN MENU SEGUN EL TIPO DE USUARIO QUE ACCEDE A LA APLICACIÓN
     if (props.credentials.user.isAdmin === false && props.credentials.perfil === 'user'){
         return (
@@ -101,9 +107,9 @@ const Menulateral = (props) => {
                     
                     <div className="lateralMenu">
                         <div className="botomMenuLateral" onClick={()=>cambiaDatos('profile')}>ADMIN</div>
-                        <div className="botomMenuLateral" onClick={()=>cambiaDatos('useroom')}>TODAS LAS CLASES</div>
+                        <div className="botomMenuLateral" onClick={()=>cambiaDatos('useroom')}>Mis clases</div>
                         <div className="botomMenuLateral" onClick={()=>cambiaDatos("joinuser")}>Reservar</div>
-                        <div className="botomMenuLateral">Taquilla</div>
+                        <div className="botomMenuLateral" onClick={()=>cambiaDatos("newroom")}>Nueva sala</div>
                         <div className="botomMenuLateral" onClick={()=>cambiaDatos("payment")}>Suscripción</div>
                         <div className="botomMenuLateral" onClick={()=>history.push('/codeqr')}>Acceso GYM</div>
                     </div>    

@@ -10,3 +10,5 @@ export const GETROOMMONITOR = "getRoomMonitor";
 export const JOINMONITOR = "joinmonitor";
 export const LOGOUTROOMMONITOR = "LogOutRoomMonitor";
 export const UPDATE = "update";
+export const NEWROOM = "newroom";
+export const PAYMENT = "payment";
