@@ -112,7 +112,10 @@ const DataRoom = (props) => {
       );
     } else {
       return <div>
+        <div className="spinner">
         <CustomSpinner/>
+        </div>
+        
       </div>;
     }
 };
