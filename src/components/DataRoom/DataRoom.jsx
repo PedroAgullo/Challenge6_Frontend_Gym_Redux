@@ -75,7 +75,7 @@ const DataRoom = (props) => {
 
       setTimeout(() => {
         setUseroom(res.data);;
-      }, 2500)
+      }, 0)
   
      
  
@@ -121,7 +121,8 @@ const DataRoom = (props) => {
 
       
       <CustomSpinner/>
-  
+      </div>
+
       <div className="nombreDataRoom">No tienes ninguna clase registrada.</div>
 
           
@@ -129,7 +130,6 @@ const DataRoom = (props) => {
           
         </div>        
 
-      </div>;
     }
 };
 

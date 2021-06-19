@@ -38,8 +38,11 @@ const DataJoin = (props) => {
 
       let body = {
         id : roomId,
-        member : idUser
+        member : idUser,
+        email : props.credentials.email,
+        name : props.credentials.name
       }
+      
       let res = await axios.post('http://localhost:3005/room/join',body,{headers:{'authorization':'Bearer ' + token}});
       message.info('Clase reservada.');
       findAllRoomsAllActive();
