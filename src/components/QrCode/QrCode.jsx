@@ -1,5 +1,6 @@
 import React from 'react';
 import QRCode from "react-qr-code";
+import { connect } from 'react-redux';
 
 
 function Code() {
@@ -11,10 +12,12 @@ function Code() {
     <div className="App">
           
       <header className="App-header">
-        <QRCode value={user.name, user.email, user.token} size={256} bgColor="#ededf4;" fgColor="#fff" level="H" />
+        <QRCode value={user.token} size={256} bgColor="#ededf4;" fgColor="#fff"  level="H"/>
       </header>
     </div>
   );
 }
 
-export default Code;
+export default connect((state)=>({
+  credentials:state.credentials,
+}))(Code);

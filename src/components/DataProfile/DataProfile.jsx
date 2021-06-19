@@ -125,7 +125,7 @@ const DataProfile = (props) => {
                      
                     </div>
 
-                    <div className="infoUser3">
+                    <div className="infoUser2">
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="address"  value={user.address} size="34" lenght='30'></input>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="city"  value={user.city} size="34" lenght='30'></input>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="country"  value={user.country} size="34" lenght='30'></input>
@@ -143,8 +143,8 @@ const DataProfile = (props) => {
     }else {
         return (
             <div>
-                <div className="tituloPerfilUsuario"><h1>Perfil del usuario</h1></div>
-                <div className="boxDataUser">
+                <div className="tituloDataProfile"><h1>Perfil del usuario</h1></div>
+                <div className="boxDataProfileUser">
 
                     <div className="infoUser1">
                         <div className="fotoUser"><img id="foto" src={PhotoProfile} alt="Profile photo" height= "100" width="100" /></div>

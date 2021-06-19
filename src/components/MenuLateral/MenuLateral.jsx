@@ -3,17 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./MenuLateral.css";
 import { connect } from "react-redux";
 import axios from "axios";
-import {
-  CLASES,
-  PROFILE,
-  JOIN,
-  JOINMONITOR,
-  GETROOMMONITOR,
-  NEWROOM,
-  PAYMENT,
-  CODEQR,
-  ACTIVEROOM
-} from "../../redux/types";
+import { CLASES, PROFILE, JOIN, JOINMONITOR, GETROOMMONITOR, NEWROOM, PAYMENT, CODEQR} from "../../redux/types";
 import { NavLink } from "react-router-dom";
 
 const Menulateral = (props) => {
@@ -65,11 +55,6 @@ const Menulateral = (props) => {
 
         break;
 
-      case "activeroom":
-        props.dispatch({ type: ACTIVEROOM, payload: info });
-
-        break;
-
       default:
 
         break;
@@ -77,10 +62,8 @@ const Menulateral = (props) => {
   };
 
   //IFS PARA MOSTRAR UN MENU SEGUN EL TIPO DE USUARIO QUE ACCEDE A LA APLICACIÓN
-  if (
-    props.credentials.user.isAdmin === false &&
-    props.credentials.perfil === "user"
-  ) {
+  if (props.credentials.user.isAdmin === false && props.credentials.perfil === "user") 
+  {
     return (
       <div className="boxLateral">
         <div className="lateralMenu">
@@ -118,10 +101,8 @@ const Menulateral = (props) => {
         </div>
       </div>
     );
-  } else if (
-    props.credentials.user.isAdmin === false &&
-    props.credentials.perfil === "monitor"
-  ) {
+  } else if (props.credentials.user.isAdmin === false && props.credentials.perfil === "monitor"  ) 
+    {
     return (
       <div className="boxLateral">
         <div className="lateralMenu">
@@ -164,7 +145,7 @@ const Menulateral = (props) => {
       <div className="boxLateral">
         <div className="lateralMenu">
           <div className="tituloVistaAdmin">Vista Administrador</div>
-          <div
+          <div 
             className="botomMenuLateral"
             onClick={() => cambiaDatos("profile")}
           >
@@ -172,33 +153,33 @@ const Menulateral = (props) => {
           </div>
           <div
             className="botomMenuLateral"
-            onClick={() => cambiaDatos("activeroom")}
+            onClick={() => cambiaDatos("useroom")}
           >
-            Clases
+            Mis Clases
           </div>
           <div
             className="botomMenuLateral"
             onClick={() => cambiaDatos("joinuser")}
           >
-            Reservar
+            Ver/editar clases activas
           </div>
           <div
             className="botomMenuLateral"
             onClick={() => cambiaDatos("newroom")}
           >
-            Crear Sala
+            Crear/editar Sala
           </div>
           <div
             className="botomMenuLateral"
             onClick={() => cambiaDatos("newcoach")}
           >
-            Alta Coach
+            Alta/editar Coach
           </div>
           <div
             className="botomMenuLateral"
             onClick={() => cambiaDatos("newuser")}
           >
-            Update Cliente
+            Buscar/Editar Cliente
           </div>
           <div
             className="botomMenuLateral"

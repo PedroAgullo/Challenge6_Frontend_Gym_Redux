@@ -14,8 +14,6 @@ import PhotoRoom6 from '../../images/boxeo.png';
 
 
 const NewRoom = (props) => {
-
-
         
         //Hooks
         const [profile, setProfile] = useState([]); 
@@ -23,12 +21,10 @@ const NewRoom = (props) => {
             {
                 name : 'Zumba',
                 dateStart : Date.now(),
-
         });        
 
-        const [photoRoom, setPhotoRoom] = useState(            
+        const [photoRoom, setPhotoRoom] = useState(           
                 PhotoRoom1
-            
         ); 
 
 
@@ -108,7 +104,7 @@ const NewRoom = (props) => {
     }
 
 
-    if (profile === 1) {
+    if (props.editroom._id === "") {
         return (
             <div>
                 <div className="tituloNewRoom"><h1>Nueva sala</h1></div>
@@ -153,37 +149,55 @@ const NewRoom = (props) => {
     }else {
         return (
             <div>
-                <div className="tituloPerfilUsuario"><h1>Perfil del usuario</h1></div>
+                <div className="tituloNewRoom"><h1>EDITAR DATOS SALA</h1></div>
                 <div className="boxDataUser">
 
-                    <div className="infoUser1">
-                        <div className="fotoUser"><img id="foto" src={PhotoRoom1} alt="Profile photo" height= "100" width="100" /></div>
-                        <div className="empty"><button onClick={(()=>saveData(1))}>Editar</button></div>
+                    <div className="InfoNewRoom1">
+                        <div className="fotoRoom1"><img id="fotoRoom1" src={photoRoom} alt="Profile photo" /></div>
+                        
 
+                    </div>
+
+                    <div className= "infoUser2Titulos">
+                        <div className="titulosInfoRoom">Nombre:</div>
+                        <div className="titulosInfoRoom">Fecha y hora de inicio: </div>
+                        <div className="titulosInfoRoom">Entrenador: </div>
+                        <div className="titulosInfoRoom">Usuarios:  </div>
+                        <div className="titulosInfoRoom">Clase activa</div>
+                        <div className="empty"></div>                     
                     </div>
 
                     <div className="infoUser2">
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="name"  placeholder={user.name} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="lastName1"  placeholder={user.lastName1} size="34" lenght='30' ></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="lastName2"  placeholder={user.lastName2} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="email"  placeholder={user.email} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
+                        <div className = "inputBaseuser">
+                            <select id = "opciones" name="name" className="inputBaseUser" onChange={updateFormulario}>
+                                <option value="Zumba">Zumba</option>
+                                <option value="Salsa">Salsa</option>
+                                <option value="Crossfit">Crossfit</option>
+                                <option value="Pilates">Pilates</option>
+                                <option value="Spinning">Spinning</option>
+                                <option value="Boxeo">Boxeo</option>                                
+                            </select>
+                        </div>
+                        
+                            <input className="inputBaseUser" type="datetime-local" name="dateStart" size="34" lenght='30' onChange={updateFormulario}></input>
 
+                            <select id = "opciones" name="name" className="inputBaseUser" onChange={updateFormulario}>
+                                {props.editroom.monitors.map((act, index) => (
+                                    <option>{act.name}</option>                                
+                                ))}
+                            </select>   
+
+                                <select id = "opciones" name="name" className="inputBaseUser" onChange={updateFormulario}> 
+                                {props.editroom.room.members.map((act, index) => (
+                                    <option value={act}>{act}</option>                                
+                                ))}
+                                </select>    
+                            <input className="inputBaseUser" type="checkbox" name="Activa" size="34" lenght='30' onChange={updateFormulario}></input>
+                    
+
+                            <div className="empty"><button onClick={(()=>saveData(2))}>Guardar</button></div>
                     </div>
-
-                    <div className="infoUser3">
-                        <input className="inputBaseUser"  type="text" name="address" onChange={updateFormulario} placeholder={user.address} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  type="text" name="city" onChange={updateFormulario} placeholder={user.city} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  type="text" name="country" onChange={updateFormulario}  placeholder={user.country} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly type="text" name="dni"  placeholder={user.dni} size="34" maxlenght='9' ></input>
-                        <input className="inputBaseUser"  type="text" name="telephone" onChange={updateFormulario}  placeholder={user.telephone} size="34" lenght='9'></input>
-                        <input className="inputBaseUser" readonly type="text" name="birthday" placeholder={moment(user.birthday).format('L')} ></input>
-                    </div>
-
-
                 </div>
-
             </div>
         )
     }
@@ -191,4 +205,5 @@ const NewRoom = (props) => {
 
 export default connect((state)=>({
     credentials:state.credentials,
+    editroom : state.editroom
 }))(NewRoom);

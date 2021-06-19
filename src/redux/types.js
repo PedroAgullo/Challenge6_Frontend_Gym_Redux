@@ -13,7 +13,7 @@ export const UPDATE = "update";
 export const NEWROOM = "newroom";
 export const PAYMENT = "payment";
 export const CODEQR = 'codeqr';
-export const ACTIVEROOM = 'activeroom';
+export const EDITROOM = 'editroom';
 
 
 
