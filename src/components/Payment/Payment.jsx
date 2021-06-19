@@ -11,7 +11,7 @@ const Payment = (props) => {
       <div className="titlePaymentText">
         <h1>Elige tu plan</h1>
       </div>
-      <div className="RoomHomeTarifa">
+      <div className="RoomHomePayment">
         <div className="cardHomeTarifa">
           <img
             className="tarifaPayment"

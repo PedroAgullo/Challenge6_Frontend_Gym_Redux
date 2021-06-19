@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
 
-.RoomHomeTarifa {
+.RoomHomePayment {
   display: flex;
   flex-direction: row;
   align-items: center;
