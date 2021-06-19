@@ -6,6 +6,7 @@ import axios from "axios";
 import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
+import CustomSpinner from '../../components/Spin/Spin'
 
 
 
@@ -46,10 +47,6 @@ const DataJoinMonitor = (props) => {
         coach : idCoach,
         nameCoach : name         
       }
-      
-
-
-  
 
 
       let res = await axios.post('http://localhost:3005/room/join/coach',body,{headers:{'authorization':'Bearer ' + token}});
@@ -64,32 +61,33 @@ const DataJoinMonitor = (props) => {
 
     }
 
-    //Encuentra todas las clases activas que puede reserver un user.
+    //Encuentra todas las clases activas que puede reservar un monitor.
     const findAllRoomsAllActiveMonitor = async () => {  
     try{
       //GET ALL USER ADMIN
       let res = await axios.get('http://localhost:3005/room/active');
       console.log(res.data, "Datos devueltos de axios");
         let prueba = [];
+        
         prueba = res.data;
+        console.log(prueba)
 
-
-        let num = prueba.lenght;
+        let num = res.data.length;
         console.log(num);
 
         let noCoach = [];
 
-        console.log(res.data[7].nameCoach[0], "<<<=== res.data[0]");
+        console.log(res.data[0].coaches[0], "<<<=== res.data[0]");
         for(let x=0; x < num; x++){
 
-            if (res.data[x].nameCoach[0] === ''){
-
+            if (res?.data[x]?.coaches[0] === undefined){
+                console.log("entra en el bucle");
                 noCoach.push(res.data[x]);
             }
 
         }
         console.log(noCoach);
-        setUseroom(res.data);
+        setUseroom(noCoach);
  
 
   }catch (err){
@@ -127,7 +125,19 @@ if (useroom[0]?._id) {
         </div>  
       );
     } else {
-      return <div>CARGANDO DATOS</div>;
+      return <div>
+      <div className="spinner">
+
+    
+    <CustomSpinner/>
+    </div>
+
+    <div className="nombreDataRoom">No tienes ninguna clase registrada.</div>
+
+        
+
+        
+      </div>   
     }
 };
 

@@ -6,6 +6,7 @@ import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
 import { GETROOMMONITOR } from '../../redux/types';
+import CustomSpinner from '../../components/Spin/Spin'
 
 
 
@@ -24,6 +25,34 @@ const DataRoomMonitor = (props) => {
       //setUseroom(props.getroomusers);
     });
   
+
+    //DESACTIVA LA CLASE
+    
+    const updatRoomStatus = async (roomId) => {
+      try{
+        message.info('Clase terminada.');
+
+      let token = props.credentials.token;
+      let idUser = props.credentials.idUser;
+
+
+      let body = {
+        id : roomId,
+        isActive : false
+      }
+
+      let res = await axios.put('http://localhost:3005/room/',body,{headers:{'authorization':'Bearer ' + token}});
+
+      console.log(res.data, "Datos devueltos de axios");
+
+      findAllRoomsActive();
+     }catch (err){
+         console.log(err);      
+         }      
+
+    }
+
+
     //CANCELA LA CLASE
     const cancelClass = async (roomId) => {
       try{
@@ -31,13 +60,12 @@ const DataRoomMonitor = (props) => {
 
       let token = props.credentials.token;
       let idUser = props.credentials.idUser;
-        console.log(token, "<<<<==== token");
-        console.log(idUser, "<<<====ID user");
-        console.log(roomId, "<<<<==== ROOM id");
+
 
       let body = {
         id : roomId,
-        member : idUser
+        coach : idUser,
+        coachName : roomId.nameCoach
       }
 
       let res = await axios.post('http://localhost:3005/room/leave/coach',body,{headers:{'authorization':'Bearer ' + token}});
@@ -96,9 +124,12 @@ const DataRoomMonitor = (props) => {
 
 
                             <div style={{ marginLeft: 0, clear: 'both', whiteSpace: 'nowrap' }}>
-                                    
-                              <Popconfirm placement="bottom" title="¿Quieres cancelar esta clase?" onConfirm={()=>cancelClass(act._id)} okText="Yes" cancelText="No">
-                                <Button>Cancelar</Button>
+                            <Popconfirm placement="bottomRight" title="¿Ya has impartido la clase?" onConfirm={()=>updatRoomStatus(act._id)} okText="Yes" cancelText="No">
+                                <Button>Terminada</Button>
+                              </Popconfirm>
+
+                              <Popconfirm placement="bottomLeft" title="¿Quieres salirte de la clase?" onConfirm={()=>cancelClass(act._id)} okText="Yes" cancelText="No">
+                                <Button>Salirse</Button>
                               </Popconfirm>
 
                             </div>
@@ -111,8 +142,21 @@ const DataRoomMonitor = (props) => {
         </div>  
       );
     } else {
-      return <div>CARGANDO DATOS</div>;
-    }
+      return <div>
+      <div className="spinner">
+
+    
+    <CustomSpinner/>
+    </div>
+
+    <div className="nombreDataRoom">No tienes ninguna clase registrada.</div>
+
+        
+
+        
+      </div>        
+
+  }
 };
 
 export default connect((state) => ({
