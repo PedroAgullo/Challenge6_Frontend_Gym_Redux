@@ -50,10 +50,23 @@ const Menulateral = (props) => {
 
         break;
 
+      case "newcoach":
+        props.dispatch({ type: CODEQR, payload: info });
+  
+        break;
+
+      case "newuser":
+          props.dispatch({ type: CODEQR, payload: info });
+    
+          break;
+    
+
       case "codeqr":
         props.dispatch({ type: CODEQR, payload: info });
 
         break;
+
+
 
       default:
 
@@ -67,37 +80,12 @@ const Menulateral = (props) => {
     return (
       <div className="boxLateral">
         <div className="lateralMenu">
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("profile")}
-          >
-            Perfil
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("useroom")}
-          >
-            Mis clases
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("joinuser")}
-          >
-            Reservar
-          </div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("profile")}>Perfil</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("useroom")}>Mis clases</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("joinuser")}>Reservar</div>
           <div className="botomMenuLateral">Taquilla</div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("payment")}
-          >
-            Suscripción
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("codeqr")}
-          >
-            Acceso GYM
-          </div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("payment")}>Suscripción</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("codeqr")}>Acceso GYM</div>
         </div>
       </div>
     );
@@ -106,37 +94,12 @@ const Menulateral = (props) => {
     return (
       <div className="boxLateral">
         <div className="lateralMenu">
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("profile")}
-          >
-            Perfil
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("monitoroom")}
-          >
-            Mis clases
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("joinmonitor")}
-          >
-            Reservar
-          </div>
+          <div className="botomMenuLateral" onClick={() => cambiaDatos("profile")}>Perfil</div>
+          <div className="botomMenuLateral" onClick={() => cambiaDatos("monitoroom")}>Mis clases</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("joinmonitor")}>Reservar</div>
           <div className="botomMenuLateral">Taquilla</div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("newroom")}
-          >
-            Crear sala
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("codeqr")}
-          >
-            Acceso GYM
-          </div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("newroom")}>Crear sala</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("codeqr")}>Acceso GYM</div>
         </div>
       </div>
     );
@@ -145,48 +108,13 @@ const Menulateral = (props) => {
       <div className="boxLateral">
         <div className="lateralMenu">
           <div className="tituloVistaAdmin">Vista Administrador</div>
-          <div 
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("profile")}
-          >
-            Profile
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("useroom")}
-          >
-            Mis Clases
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("joinuser")}
-          >
-            Ver/editar clases activas
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("newroom")}
-          >
-            Crear/editar Sala
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("newcoach")}
-          >
-            Alta/editar Coach
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("newuser")}
-          >
-            Buscar/Editar Cliente
-          </div>
-          <div
-            className="botomMenuLateral"
-            onClick={() => cambiaDatos("codeqr")}
-          >
-            Acceso GYM
-          </div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("profile")}>Profile</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("useroom")}>Mis Clases</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("joinuser")}>Ver/editar clases activas</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("newroom")}>Crear/editar Sala</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("newcoach")}>Alta/editar Coach</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("newuser")}>Buscar/Editar Cliente</div>
+          <div className="botomMenuLateral"onClick={() => cambiaDatos("codeqr")}>Acceso GYM</div>
         </div>
       </div>
     );

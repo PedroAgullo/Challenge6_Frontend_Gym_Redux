@@ -7,6 +7,7 @@ import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
 import { GETROOMUSER } from '../../redux/types';
+import CustomSpinner from '../../components/Spin/Spin'
 
 
 
@@ -110,7 +111,9 @@ const DataRoom = (props) => {
         </div>  
       );
     } else {
-      return <div>CARGANDO DATOS</div>;
+      return <div>
+        <CustomSpinner/>
+      </div>;
     }
 };
 
