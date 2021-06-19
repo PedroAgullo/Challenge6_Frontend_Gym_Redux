@@ -70,17 +70,21 @@ const DataRoom = (props) => {
 
       props.dispatch({type:GETROOMUSER,payload: res.data});
 
-      setUseroom(res.data);
+      setTimeout(() => {
+        setUseroom(res.data);;
+      }, 2500)
+  
+     
  
   }catch (err){      
   }
   
 }
-  
-
-  if (props.getroomusers[0]?._id) {
-    // if (useroom[0]?._id) {
-
+  // if (useroom.length === 0){
+  //   return(
+  //       <div>NO TIENES CLASES</div>
+  //   )
+   if (props.getroomusers[0]?._id) {
       return (
         <div className="nombreDataRoom"> <h1>Tus próximas clases</h1>
             <div className="boxCardDataRoom">
@@ -93,14 +97,10 @@ const DataRoom = (props) => {
                   <p className="datosCard">Capacidad: {act.members.length}/{act.maxMember}</p>
                   <div clasName="botonCardJoinUser">
                         <div className="demo">
-
-
                             <div style={{ marginLeft: 0, clear: 'both', whiteSpace: 'nowrap' }}>
-                                    
                               <Popconfirm placement="bottom" title="¿Quieres cancelar esta clase?" onConfirm={()=>cancelClass(act._id)} okText="Yes" cancelText="No">
                                 <Button>Cancelar</Button>
                               </Popconfirm>
-
                             </div>
                         </div>
                     </div>
@@ -113,9 +113,14 @@ const DataRoom = (props) => {
     } else {
       return <div>
         <div className="spinner">
-        <CustomSpinner/>
-        </div>
-        
+
+     
+      <CustomSpinner/>
+  
+
+          
+        </div>        
+
       </div>;
     }
 };

@@ -34,7 +34,7 @@
 }
 
 .card:hover{
-    background-color: #ededf4;
+    background-color: white;
     cursor: pointer;
     transition: 0.3s;
     box-shadow: 5px 5px 5px 2px grey, 8px 8px 8px 5px grey;
@@ -74,6 +74,10 @@
 .spinner {
     height: 80vh;
     width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 

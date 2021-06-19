@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { NavLink } from 'react-router-dom';
 import Logo from '../../images/logofinalnuevogrisSmall.png';
 import { connect } from 'react-redux';
-import { LOGOUT, LOGOUTROOM, LOGOUTTIPODATOS} from '../../redux/types';
+import { LOGOUT, LOGOUTROOM, LOGOUTTIPODATOS, PROFILE} from '../../redux/types';
 import { useHistory } from 'react-router-dom';
 
 const Navbar = (props) => {
@@ -27,6 +27,22 @@ const Navbar = (props) => {
     }, 500)
 
   }
+
+
+  const cambiaDatos = async (info) => {
+    switch (info) {
+      case "profile":
+        props.dispatch({ type: PROFILE, payload: info });
+
+        break;
+
+      default:
+
+        break;
+    }
+  };
+
+
 
   if (props.credentials?.token == '') {
     return (
@@ -61,7 +77,11 @@ const Navbar = (props) => {
               <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} onClick={()=>logOut()} to="/">Logout</NavLink>
             </div>
             <div className="NavLink" activeClassName="selected">
-              <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/profile">Profile</NavLink>
+
+            {/* to="/profile" */}
+
+              <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/profile" ><div className="fotoUser"><img id="fotoNavBar" src={props.credentials.user.photo} onClick={() => cambiaDatos("profile")} alt="Profile photo" /></div>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -74,5 +94,4 @@ const Navbar = (props) => {
 
 
 export default connect((state)=>({credentials:state.credentials}))(Navbar);
-
 

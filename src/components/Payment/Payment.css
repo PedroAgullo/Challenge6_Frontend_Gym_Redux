@@ -6,7 +6,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: #ededf4;
+  background-color: white;
   margin-left: 5em;
 }
 
@@ -15,7 +15,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #ededf4;
+  background-color: white;
   margin-top: 2em;
   
   
@@ -40,7 +40,7 @@
 }
 
 .titlePaymentText {
-  background-color: #ededf4;
+  background-color: white;
   font-family: "Antonio", sans-serif;
   font-size: 20px;
   text-align: center;

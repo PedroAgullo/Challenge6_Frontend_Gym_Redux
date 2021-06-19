@@ -81,11 +81,11 @@ const DataJoin = (props) => {
       let token = props.credentials?.token;
       let monitors = await axios.get('http://localhost:3005/monitor', {headers:{'authorization':'Bearer ' + token}});
 
-      //Traemos los usuarios de la clase
-      // let arrayUser = room.members;
-      // console.log("Array de usuarios que mandamos a axios: ",arrayUser)
+      // Traemos los usuarios de la clase
+      let arrayUser = room.members;
+      console.log("Array de usuarios que mandamos a axios: ",arrayUser)
 
-      // let users = await axios.post('http://localhost:3005/user/group',arrayUser, {headers:{'authorization':'Bearer ' + token}});
+      let users = await axios.post('http://localhost:3005/user/group',arrayUser, {headers:{'authorization':'Bearer ' + token}});
 
 
 
@@ -94,7 +94,7 @@ const DataJoin = (props) => {
       //Guardamos en Redux
       let datos = {
         room : room,
-        // users : users,
+        users : users.data,
         monitors : monitors.data
       }
 

@@ -29,7 +29,7 @@
   background: #4D4D56;
   display: flex;
   align-items: center;
-  height: 100%;
+  height: 13vh;
   cursor: pointer;
   position: relative;
   border-radius: 5px;
@@ -63,8 +63,15 @@
   color: #E15554;
   border-radius: 2%;
   transition: 0.5s;
+}
 
-
+.fotoUser{
+  height: 13vh;
 
 }
 
+#fotoNavBar{
+  height: fit-content;
+  width: 30%;
+  border-radius: 50%;
+}

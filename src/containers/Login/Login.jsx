@@ -5,6 +5,7 @@ import "./Login.css";
 import {Input, notification} from 'antd';
 import {connect} from 'react-redux';
 import {LOGIN} from '../../redux/types'
+import  Footer  from '../../components/Footer/Footer';
 
 
 const Login = (props) => {
@@ -117,7 +118,8 @@ const Login = (props) => {
                     <div>{msgError}</div>
                 </div>
         
-            </div>        
+            </div>   
+            <Footer/>     
         </div>
     )
 }
