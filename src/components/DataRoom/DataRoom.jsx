@@ -11,7 +11,10 @@ import CustomSpinner from '../../components/Spin/Spin'
 
 
 
+
 const DataRoom = (props) => {
+
+
 
     //hooks
     const [useroom, setUseroom] = useState([]);  
@@ -87,6 +90,8 @@ const DataRoom = (props) => {
    if (props.getroomusers[0]?._id) {
       return (
         <div className="nombreDataRoom"> <h1>Tus próximas clases</h1>
+
+
             <div className="boxCardDataRoom">
               {useroom.map((act, index) => (
                 <div className="card" key={index}>
@@ -114,9 +119,12 @@ const DataRoom = (props) => {
       return <div>
         <div className="spinner">
 
-     
+      
       <CustomSpinner/>
   
+      <div className="nombreDataRoom">No tienes ninguna clase registrada.</div>
+
+          
 
           
         </div>        

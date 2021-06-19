@@ -7,7 +7,7 @@ import { CLASES, PROFILE, JOIN, JOINMONITOR, GETROOMMONITOR, NEWROOM, PAYMENT, C
 import { NavLink } from "react-router-dom";
 
 const Menulateral = (props) => {
-  console.log("PROBANDO EL MENU LATERAL");
+
 
   let history = useHistory();
   let credentials = props.credentials;
