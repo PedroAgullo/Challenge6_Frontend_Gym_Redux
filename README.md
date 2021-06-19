@@ -1,70 +1,182 @@
-# Getting Started with Create React App
+<a name="top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  <br>Frontend Gym Appoinment
+</h1>
 
-## Available Scripts
 
-In the project directory, you can run:
+:speech_balloon: [About](#id1)   
 
-### `npm start`
+:hammer: [Tools](#id2)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+:clipboard: [Instructions](#id3)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+:eye_speech_bubble: [Phase I - Creating the Backend](#id4)
 
-### `npm test`
+:exclamation: [Required and extra endpoints](#id5)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+:mailbox: [Postman](#id6)
 
-### `npm run build`
+:smile: [Thanks](#id7)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<a name="id1"></a>
+## **About**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is the frontend for a future Gym appointment application.
 
-### `npm run eject`
+This project is part of the [GeeksHubs Academy](https://bootcamp.geekshubsacademy.com/) Full Stack Developer Bootcamp. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
+**Phase I**
+**Start date:** 07 / Jun /2021
+**Deadline:** 20 / Jun / 2021
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Contributors:**
+* [Pedro Agulló Marco](https://github.com/PedroAgullo)
+* [Mariana Fernández Sacristán](https://github.com/mlfernandez)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+<a name="id2"></a>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## **Tools**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We have used these tools to help us in the project:
 
-### Code Splitting
+**Visual Studio Share**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+With this extension we were able to work simultaneously on the code and to do it together which helped us in the learning and development of the project.
 
-### Analyzing the Bundle Size
+**Trello:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+We used Trello to organise ourselves, to draw up the list of requirements and to see in detail how we were progressing and what we were missing.
 
-### Making a Progressive Web App
+<img src="src/images/trello.JPG">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Coolors co:**
 
-### Advanced Configuration
+Coolors is the essential tool for creating and collecting color palettes. It allows you to generate perfect matching colors in seconds. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<img src="src/images/paletacolores.JPG">
 
-### Deployment
+**Wireframe cc:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Wireframe is a minimalist web app for instantly creating wireframes.This can help users to create page schematics for websites or mobile apps. This web app does not require any complex configurations and all you have to do is to sketch out your ideas on a virtual drawing board.
 
-### `npm run build` fails to minify
+<img src="src/images/wireframe.JPG">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Other tools used:
+
+| <img src="src/images/react.png" alt="React" width="30"/> | React | 
+
+|<img src="src/images/redux.jpg" alt="Redux" width="30"/>| Redux | 
+
+| <img src="src/images/logovisual.png" alt="Visual" width="30"/> | Visual Studio Code |
+
+| <img src="src/images/javascript2.png" alt="JavaScript" width="30"/> | JavaScript | 
+
+| <img src="src/images/nodejs.png" alt="HTML5" width="30"/> | Node JS & Express |
+
+| <img src="src/images/git.png" alt="Git" width="30"/> | Git |
+
+| <img src="src/images/github2.png" alt="GitHub" width="30"/> | GitHub | 
+
+
+<a name="id3"></a>
+***
+## **Instructions**
+
+<h3> Starting the project </h3>
+   
+We need to install:
+
+```javascript
+npx create-react-app "name"
+npm i react-router-dom
+npm i --save redux
+npm install --save react-redux
+npm i --save redux-localstorage-simple
+npm i axios
+```
+
+
+<a name="id4"></a>
+## Phase I Creating the Backend
+
+If you want to know about the Phase I, you can see the backend repository here.
+
+
+<a name="id5"></a>
+##Required endpoints
+
+* Vista Home / Principal.
+* Vista Login de usuarios.
+* Vista registro de usuarios.
+* Vista panel con muestreo de las clases (del usuario concreto logeado).
+* Vista administración con todas las clases.
+
+
+<a name="id6"></a>
+##Additional endpoints
+
+**Monitor**
+
+  * Monitor Register
+  * Monitor Login
+  * Find all monitors
+  * Find monitor by Id
+  * Find monitor by email
+  * Modify Monitor
+  * Review Monitor by message
+ 
+**Room**
+
+  * Join a user to the gym class:
+    - Verify if the user have a valid subscription (annual, month or pending payment).
+    - Check if the user is already registered in that class.
+    - Verify if the capacity of the class has been reached. 
+  * Join a coach to the gym class:
+    - Check if the trainer's speciality matches the gym classes to be taught.
+    - Verify if that trainer doesn't have already a class at that time and day.
+    - Check that there is no more than one trainer signed up to teach the class.
+  * All gym classes
+  * All inactive gym classes
+  * Find gym classes by date  
+  * Delete gym classes
+  * Update gym classes status (create list of assistants to send an email for monitor review)
+  * Monitor Leave the class.
+  * User Leave the class.
+
+**User**
+
+  * Find all users
+  * Find Users by email
+  * Modify User
+  * Update status member (annual, mensual or pending payment).
+
+ **Locker** 
+  * Find all locker
+  * Find all available locker
+  * Find all locker rented.
+  * Create a new locker.
+  * Rent a locker.
+  * Update status locker.
+
+
+<a name="id7"></a>
+***
+## **Heroku**
+
+<a name="id8"></a>
+***
+## **Thanks**
+
+Thanks to all our partners. Especially to our families for supporting us during the weeks we were missing.
+
+<br>
+<br>
+
+[UP](#top)
