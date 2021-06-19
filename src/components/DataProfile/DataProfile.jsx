@@ -73,7 +73,7 @@ const DataProfile = (props) => {
         }
 
 
-        console.log ("RESULTADO DE AXIOS PARA DAVID", res.data);
+        /* console.log ("RESULTADO DE AXIOS PARA DAVID", res.data); */
 
 
         //Guardo en RDX
@@ -105,7 +105,6 @@ const DataProfile = (props) => {
                     </div>
 
                     <div className="infoUser2">
-                        {/* <input className="inputBaseUser" type="text" name="name"  placeholder={user.name} size="34" lenght='30'></input> */}
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="name" value={user.name} size="34" lenght='30'></input>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName1"  value={user.lastName1} size="34" lenght='30' ></input>
                         <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName2"  value={user.lastName2} size="34" lenght='30'></input>
