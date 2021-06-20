@@ -39,7 +39,7 @@ const Login = (props) => {
         //Axios      
         if (document.getElementById("opciones").value === "user") {
             try {var res = await axios.post('http://localhost:3005/login', body);
-                console.log(res.data);
+                
                 let perfil = document.getElementById("opciones").value;
                 let data = {
                     token : res.data.token,
@@ -59,14 +59,15 @@ const Login = (props) => {
                 history.push("/profile");
 
             } catch (err) {
-                setMensajeError(JSON.stringify(err.response.data.message));
+                notification.warning({message:'Atencion.',description: "Usuario o password incorrecto. Revise el perfil de acceso."});
+
+                // setMensajeError(JSON.stringify(err.response.data.message));
+                
             }
         }else if (document.getElementById("opciones").value === "monitor") {
 
             try {var resMonitor = await axios.post('http://localhost:3005/login/monitor', body);
-                console.log(resMonitor.data);
-                console.log(body);
-
+         
                 let perfil = document.getElementById("opciones").value;
                 let data = {
                     token : resMonitor.data.token,
@@ -74,16 +75,19 @@ const Login = (props) => {
                     idUser: resMonitor.data.monitor._id,
                     perfil: perfil
                 }
+
                 //Guardo en RDX
                 props.dispatch({type:LOGIN,payload:data});
+                let description = ("Bienvenido " + resMonitor.data.monitor.name + " " + resMonitor.data.monitor.lastName1 + ".");
+                notification.success({message:'Login correcto.',description: description});
                 
                 //Redireccion           
                 history.push("/profile");
                 
             } catch (err) {
-                console.log(err)
+                
                 if (err.response?.data?.message == "Cannot read property 'password' of null"){
-                    setMensajeError(JSON.stringify("El password o el email son incorrectos."));
+                    notification.warning({message:'Atencion.',description: "Usuario o password incorrecto. Revise el perfil de acceso."});
                 }else {
                     setMensajeError(JSON.stringify(err.response?.data?.message));
                 }

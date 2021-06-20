@@ -78,7 +78,7 @@ const NewRoom = (props) => {
         let dateStart = moment(datosRoom.dateStart).format();
         let dateEnd = moment(dateStart).add(1, 'hours').format();
    
-        console.log("probando fechas", dateEnd);
+    
 
 
         
@@ -91,10 +91,6 @@ const NewRoom = (props) => {
 
         let res = await axios.post('http://localhost:3005/room',body,{headers:{'authorization':'Bearer ' + token}});
         
-
-
-
-        console.log ("RESULTADO DE AXIOS PARA DAVID", res.data);
 
 
         //Guardo en RDX

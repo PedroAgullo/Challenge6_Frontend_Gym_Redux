@@ -6,10 +6,8 @@ import axios from "axios";
 import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
-import CustomSpinner from '../../components/Spin/Spin'
-
-
-
+import CustomSpinner from '../../components/Spin/Spin';
+import {Input, notification} from 'antd';
 
 const DataJoinMonitor = (props) => {
 
@@ -30,17 +28,9 @@ const DataJoinMonitor = (props) => {
     const joinClassMonitor = async (roomId) => {
       try{
 
-        message.info('Clase reservada.');
-        
       let token = props.credentials.token;
       let idCoach = props.credentials.user._id;
       let name = props.credentials.user.name
-      
-      console.log(token, "<<<<==== token");
-        console.log(idCoach, "<<<====ID user");
-        console.log(roomId, "<<<<==== ROOM id");
-        console.log(props.credentials.user.name, "Nombre del coach");
-            
 
       let body = {
         id : roomId,
@@ -50,14 +40,14 @@ const DataJoinMonitor = (props) => {
 
 
       let res = await axios.post('http://localhost:3005/room/join/coach',body,{headers:{'authorization':'Bearer ' + token}});
+      message.info('Clase reservada.');
 
-      console.log(res.data, "Datos devueltos de axios");
       findAllRoomsAllActiveMonitor();
  
 
      }catch (err){
-         console.log(err.message);      
-         }      
+        notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});              
+         }     
 
     }
 
@@ -66,32 +56,29 @@ const DataJoinMonitor = (props) => {
     try{
       //GET ALL USER ADMIN
       let res = await axios.get('http://localhost:3005/room/active');
-      console.log(res.data, "Datos devueltos de axios");
+      
         let prueba = [];
         
         prueba = res.data;
-        console.log(prueba)
 
         let num = res.data.length;
-        console.log(num);
 
         let noCoach = [];
 
-        console.log(res.data[0].coaches[0], "<<<=== res.data[0]");
+        
         for(let x=0; x < num; x++){
 
             if (res?.data[x]?.coaches[0] === undefined){
-                console.log("entra en el bucle");
                 noCoach.push(res.data[x]);
             }
 
         }
-        console.log(noCoach);
+        
         setUseroom(noCoach);
  
 
   }catch (err){
-      
+    notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
   }
   
 }

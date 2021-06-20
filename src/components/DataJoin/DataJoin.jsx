@@ -7,6 +7,7 @@ import moment from "moment";
 import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
 import { NEWROOM, EDITROOM } from '../../redux/types';
+import {Input, notification} from 'antd';
 
 
 
@@ -48,8 +49,8 @@ const DataJoin = (props) => {
       findAllRoomsAllActive();
 
      }catch (err){
-         console.log(err.message);      
-         }      
+      notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
+      }      
     }
 
 
@@ -58,8 +59,6 @@ const DataJoin = (props) => {
 
       let token = props.credentials?.token;
       let user = props.credentials?.idUser
-        console.log("Valor que pasamos de la clase: ",roomId);
-        console.log("token : ", token);
 
       let body = {
         id : roomId     
@@ -69,12 +68,12 @@ const DataJoin = (props) => {
 
       message.info('Clase cancelada.')
       findAllRoomsAllActive();
-      console.log(findAllRoomsAllActive())
+     
    
 
      }catch (err){
-         console.log(err.message);      
-         }      
+        notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
+    }      
 
     }
 
@@ -86,13 +85,10 @@ const DataJoin = (props) => {
 
       // Traemos los usuarios de la clase
       let arrayUser = room.members;
-      console.log("Array de usuarios que mandamos a axios: ",arrayUser)
-
       let users = await axios.post('http://localhost:3005/user/group',arrayUser, {headers:{'authorization':'Bearer ' + token}});
 
 
 
-      console.log(monitors.data);
       
       //Guardamos en Redux
       let datos = {
@@ -113,12 +109,11 @@ const DataJoin = (props) => {
     try{
 
       let res = await axios.get('http://localhost:3005/room/active');
-      console.log(res.data, "Datos devueltos de axios"); 
       setUseroom(res.data);
  
 
   }catch (err){
-      
+    notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
   }
   
 }

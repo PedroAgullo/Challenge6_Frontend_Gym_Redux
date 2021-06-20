@@ -25,8 +25,7 @@ const Profile = (props) => {
             case 'useroom':
 
                 return <DataRoom />
-
-
+           
             case 'joinuser':
 
                 return <DataJoin />

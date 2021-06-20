@@ -7,6 +7,7 @@ import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
 import { GETROOMMONITOR } from '../../redux/types';
 import CustomSpinner from '../../components/Spin/Spin'
+import {Input, notification} from 'antd';
 
 
 
@@ -43,11 +44,13 @@ const DataRoomMonitor = (props) => {
 
       let res = await axios.put('http://localhost:3005/room/',body,{headers:{'authorization':'Bearer ' + token}});
 
-      console.log(res.data, "Datos devueltos de axios");
+      
 
       findAllRoomsActive();
      }catch (err){
-         console.log(err);      
+          
+         notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
+   
          }      
 
     }
@@ -70,11 +73,12 @@ const DataRoomMonitor = (props) => {
 
       let res = await axios.post('http://localhost:3005/room/leave/coach',body,{headers:{'authorization':'Bearer ' + token}});
 
-      console.log(res.data, "Datos devueltos de axios");
+     
 
       findAllRoomsActive();
      }catch (err){
-         console.log(err);      
+      notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
+             
          }      
 
     }
@@ -94,13 +98,14 @@ const DataRoomMonitor = (props) => {
       //GET ALL USER ADMIN
       let res = await axios.post('http://localhost:3005/room/monitorid',body,{headers:{'authorization':'Bearer ' + token}});
 
-      console.log(res.data, "Datos devueltos de axios");
+    
 
       props.dispatch({type:GETROOMMONITOR,payload: res.data});
 
       setUseroom(res.data);
  
   }catch (err){      
+    notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
   }
   
 }

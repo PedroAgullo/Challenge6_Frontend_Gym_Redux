@@ -17,7 +17,9 @@ const Home = () => {
             <CarouselSlider/>
             <HomeRoom/>
             <HomePrice/>
+
             <Footer/>
+
         </div>
     );
 }

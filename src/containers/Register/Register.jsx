@@ -237,7 +237,7 @@ const Register = () => {
                 history.push('/login');
             }, 5000);     
         }).catch(err => {
-            console.log(err);
+           
             var errorText = err.response.data.message;
             if (errorText.includes("email")){
                 setNewMessage(JSON.stringify("El email ya existe en la base de datos."));

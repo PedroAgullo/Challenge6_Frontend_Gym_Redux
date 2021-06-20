@@ -27,10 +27,7 @@ const DataRoomAdmin = (props) => {
 
       let token = props.credentials.token;
       let idUser = props.credentials.idUser;
-      console.log(token, "<<<<==== token");
-      console.log(idUser, "<<<====ID user");
-      console.log(roomId, "<<<<==== ROOM id");
-
+ 
       let body = {
         id: roomId,
         member: idUser,
@@ -42,11 +39,12 @@ const DataRoomAdmin = (props) => {
         { headers: { authorization: "Bearer " + token } }
       );
 
-      console.log(res.data, "Datos devueltos de axios");
+    
 
       findAllRoomsActive();
     } catch (err) {
-      console.log(err);
+      
+      notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
     }
   };
 
@@ -64,12 +62,14 @@ const DataRoomAdmin = (props) => {
         headers: { authorization: "Bearer " + token },
       });
 
-      console.log(res.data, "Datos devueltos de axios");
+    
 
       props.dispatch({ type: GETROOMMONITOR, payload: res.data });
 
       setUseroom(res.data);
-    } catch (err) {}
+    } catch (err) {
+      notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
+    }
   };
 
   if (props.getroommonitor[0]?._id) {

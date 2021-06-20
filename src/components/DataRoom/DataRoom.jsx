@@ -8,6 +8,7 @@ import { Popconfirm, message, Button } from 'antd';
 import { connect } from 'react-redux';
 import { GETROOMUSER } from '../../redux/types';
 import CustomSpinner from '../../components/Spin/Spin'
+import {Input, notification} from 'antd';
 
 
 
@@ -36,9 +37,7 @@ const DataRoom = (props) => {
 
       let token = props.credentials.token;
       let idUser = props.credentials.idUser;
-        console.log(token, "<<<<==== token");
-        console.log(idUser, "<<<====ID user");
-        console.log(roomId, "<<<<==== ROOM id");
+
 
       let body = {
         id : roomId,
@@ -47,11 +46,14 @@ const DataRoom = (props) => {
 
       let res = await axios.post('http://localhost:3005/room/leave',body,{headers:{'authorization':'Bearer ' + token}});
 
-      console.log(res.data, "Datos devueltos de axios");
+    
 
       findAllRoomsActive();
      }catch (err){
-         console.log(err);      
+        notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
+        
+
+
          }      
 
     }
@@ -69,7 +71,7 @@ const DataRoom = (props) => {
       }
 
       let res = await axios.post('http://localhost:3005/room/userid',body,{headers:{'authorization':'Bearer ' + token}});
-      console.log(res.data, "Datos devueltos de axios");
+     
 
       props.dispatch({type:GETROOMUSER,payload: res.data});
 
@@ -80,6 +82,7 @@ const DataRoom = (props) => {
      
  
   }catch (err){      
+    notification.warning({message:'Atencion.',description: JSON.stringify(err.response.data.message)});
   }
   
 }
@@ -117,7 +120,7 @@ const DataRoom = (props) => {
       );
     } else {
       return <div>
-        <div className="spinner">
+     {/*    <div className="spinner">
 
       
       <CustomSpinner/>
@@ -125,7 +128,7 @@ const DataRoom = (props) => {
 
       <div className="nombreDataRoom">No tienes ninguna clase registrada.</div>
 
-          
+           */}
 
           
         </div>        
