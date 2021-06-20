@@ -17,7 +17,9 @@
 
 :mailbox: [Postman](#id6)
 
-:smile: [Thanks](#id7)
+:collision: [Coming Soon](#id7)
+
+:smile: [Thanks](#id8)
 
 ---
 
@@ -110,7 +112,7 @@ If you want to know about the Phase I, you can see the backend repository here.
 
 
 <a name="id5"></a>
-##Required endpoints
+## Required endpoints
 
 * Vista Home / Principal.
 * Vista Login de usuarios.
@@ -120,31 +122,25 @@ If you want to know about the Phase I, you can see the backend repository here.
 
 
 <a name="id6"></a>
-##Additional endpoints
+## Additional endpoints
 
 **Monitor**
 
-  * Monitor Register
-  * Monitor Login
-  * Find all monitors
-  * Find monitor by Id
-  * Find monitor by email
-  * Modify Monitor
-  * Review Monitor by message
+  * Monitor Register / Update
+  * Monitor Create a new room
+  * Find monitors class and update
+  * Modify Monitor profile
  
 **Room**
 
   * Join a user to the gym class:
-    - Verify if the user have a valid subscription (annual, month or pending payment).
     - Check if the user is already registered in that class.
     - Verify if the capacity of the class has been reached. 
   * Join a coach to the gym class:
     - Check if the trainer's speciality matches the gym classes to be taught.
     - Verify if that trainer doesn't have already a class at that time and day.
     - Check that there is no more than one trainer signed up to teach the class.
-  * All gym classes
-  * All inactive gym classes
-  * Find gym classes by date  
+  * All active gym classes
   * Delete gym classes
   * Update gym classes status (create list of assistants to send an email for monitor review)
   * Monitor Leave the class.
@@ -155,20 +151,25 @@ If you want to know about the Phase I, you can see the backend repository here.
   * Find all users
   * Find Users by email
   * Modify User
+
+**Admin**
+
   * Update status member (annual, mensual or pending payment).
-
- **Locker** 
-  * Find all locker
-  * Find all available locker
-  * Find all locker rented.
-  * Create a new locker.
-  * Rent a locker.
-  * Update status locker.
-
+  * Create / Modify User
+  * Create / Modify Coach
+  * Create / Modify Room
 
 <a name="id7"></a>
 ***
-## **Heroku**
+## **Coming Soon**
+
+* Deploy with Heroku.
+* Review Form with export data implementation.
+* Calendar.
+* Rent locker.
+* Card payment.
+* Fixing Spinner.
+* More search filters.
 
 <a name="id8"></a>
 ***
