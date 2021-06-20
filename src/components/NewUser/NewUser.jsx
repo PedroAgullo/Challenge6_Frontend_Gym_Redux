@@ -93,7 +93,7 @@ const NewUser = (props) => {
             let body = {
                 email : datosUser.email
             }
-            let res = await axios.post('http://localhost:3005/monitor/email',body,{headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.post('http://localhost:3005/user/email',body,{headers:{'authorization':'Bearer ' + token}});
             notification.success({message:'Busqueda con éxito.',description: "Usuario encontrado" });
             setDatosMonitor(res.data);
             setProfile(info);
@@ -112,16 +112,17 @@ const NewUser = (props) => {
         let telephone = datosUser.telephone;
 
         let body = {
-            id : datosMonitor._id,
+            member : datosMonitor._id,
             address : address,
             country : country,
             city : city,
             telephone : telephone,
+            subscription : datosUser.subscription
             
         }
 
         console.log(body, "Datos de body que pasamos");
-        let res = await axios.post('http://localhost:3005/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
+        let res = await axios.post('http://localhost:3005/user/update',body,{headers:{'authorization':'Bearer ' + token}});
     
         let data = {
             token: props.credentials.token,
@@ -150,7 +151,7 @@ const NewUser = (props) => {
                     setErrors({...errors, eName: 'El campo nombre no puede estar vacío.'});
                 }else if(datosUser.name.length < 2){
                     setErrors({...errors, eName: 'El nombre debe de tener al menos 2 caracteres'});
-                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.name) ) {
+                }else if (! /^[a-zA-ZñÑ ,.'-]+$/i.test(datosUser.name) ) {
                     setErrors({...errors, eName: 'Introduce el formato de nombre valido'}); 
                 }else{
                     setErrors({...errors, eName: ''});
@@ -162,7 +163,7 @@ const NewUser = (props) => {
                     setErrors({...errors, eLastName1: 'El campo Apellido no puede estar vacío.'});
                 }else if (datosUser.lastName1.length < 2){
                     setErrors({...errors, eLastName1: 'El apellido debe de tener al menos 2 caracteres'});
-                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.lastName1) ) {
+                }else if (!/^(?=.{3,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.lastName1) ) {
                     setErrors({...errors, eLastName1: 'Introduce el formato de apellido valido'});     
                 }else{
                     setErrors({...errors, eLastName1: ''});
@@ -175,7 +176,7 @@ const NewUser = (props) => {
                     setErrors({...errors, eLastName2: 'El campo Apellido no puede estar vacío.'});
                 }else if (datosUser.lastName2.length < 4){
                     setErrors({...errors, eLastName2: 'El campo Apellido debe de tener 4 caracteres'});
-                }else if (! /^[a-z ,.'-]+$/i.test(datosUser.lastName2) ) {
+                }else if (!/^(?=.{3,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test.test(datosUser.lastName2) ) {
                     setErrors({...errors, eLastName2: 'Introduce el formato de apellido valido'}); 
                 }else{
                     setErrors({...errors, eLastName2: ''});
@@ -214,7 +215,7 @@ const NewUser = (props) => {
             case 'address':
                 if(datosUser.address.length < 1){
                     setErrors({...errors, eAddress: 'El campo direccion no puede estar vacío.'});
-                }else if  (! /^[a-z ,.'-]+$/i.test(datosUser.address)){
+                }else if  (!/^(?=.{3,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.address)){
                     setErrors({...errors, eAddress: 'La direccion debe ser alfanumerica'});
                 }else{
                     setErrors({...errors, eAddress: ''});
@@ -224,7 +225,7 @@ const NewUser = (props) => {
             case 'city':
                 if(datosUser.city.length < 1){
                     setErrors({...errors, eCity: 'El campo ciudad no puede estar vacío.'});
-                }else if  (! /^[a-z ,.'-]+$/i.test(datosUser.city) ) {
+                }else if  (!/^[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test.test(datosUser.city) ) {
                     setErrors({...errors, eCity: 'El campo ciudad solo puede contener letras'});
                 }else{
                     setErrors({...errors, eCity: ''});
@@ -235,7 +236,7 @@ const NewUser = (props) => {
             case 'country':
                 if(datosUser.country.length < 1){
                     setErrors({...errors, eCountry: 'El campo país no puede estar vacío.'});
-                }else if  (! /^[a-z ,.'-]+$/i.test(datosUser.country) ) {
+                }else if  (!/^(?=.{3,40}$)[a-zA-ZñÑ]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.country) ) {
                     setErrors({...errors, eCountry: 'El campo pais solo puede contener letras.'});
                 }else{
                     setErrors({...errors, eCountry: ''});
@@ -273,8 +274,8 @@ const NewUser = (props) => {
                 
                 let years = moment().diff(moment(datosUser.birthday).format('MM/DD/YYYY'), 'years');
                 
-                if (years < 16 || years > 100){
-                    setErrors({...errors, eBirthday: 'Debes tener al menos 16 años para poder ser coach'});
+                if (years < 12 || years > 100){
+                    setErrors({...errors, eBirthday: 'Debes tener al menos 12 años para poder acceder al gimnasio.'});
                 }else {
                     setErrors({...errors, eBirthday: ''});
                 }
@@ -300,11 +301,13 @@ const NewUser = (props) => {
             country: datosUser.country,
             city: datosUser.city,
             dni: datosUser.dni,
-            telephone: datosUser.telephone        }
+            telephone: datosUser.telephone,
+            subscription: datosUser.subscription        
+        }
 
         console.log("Body que le pasamos a axios", body);
         try {
-            let res = await axios.post('http://localhost:3005/monitor',body,{headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.post('http://localhost:3005/user',body,{headers:{'authorization':'Bearer ' + token}});
             notification.success({message:'Atencion.',description: "Nuevo coach creado correctamente."});
 
 

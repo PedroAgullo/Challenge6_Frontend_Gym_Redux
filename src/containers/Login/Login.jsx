@@ -59,9 +59,13 @@ const Login = (props) => {
                 history.push("/profile");
 
             } catch (err) {
-                notification.warning({message:'Atencion.',description: "Usuario o password incorrecto. Revise el perfil de acceso."});
+                
+                if (err.response?.data?.message == "Cannot read property 'password' of null"){
+                    notification.warning({message:'Atencion.',description: "Usuario o password incorrecto. Revise el perfil de acceso."});
+                }else {
+                    notification.warning({message:'Atencion.',description: JSON.stringify(err.response?.data?.message)});
 
-                // setMensajeError(JSON.stringify(err.response.data.message));
+                }
                 
             }
         }else if (document.getElementById("opciones").value === "monitor") {

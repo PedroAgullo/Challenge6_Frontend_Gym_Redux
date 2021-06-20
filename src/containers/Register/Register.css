@@ -4,7 +4,8 @@
     align-items: center;
     justify-content: unset;
     background: #ededf4;
-    height: 77vh;
+    height: fit-content;
+    
 }
 
 
@@ -18,7 +19,7 @@
     font-size: 14px;
     margin-bottom: 2em;
     height: 80vh;
-
+    margin-top: 5em;
 }
 
 .newUserBoton {
@@ -70,4 +71,11 @@ input[type="date"]:not(.has-value):before{
 .demo{
     font-size: 1.5em;
     color: #e15554;
+}
+
+.tituloFormRegistro {
+    margin-top: 2em;
+    font-weight: bold;
+    font-size: 2.5em;
+
 }

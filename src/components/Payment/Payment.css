@@ -22,11 +22,11 @@
   
   
 }
-
+/* 
 .botonSeleccionarTarifa {
     
 
-}
+} */
 
 .textCardTarifa {
   text-align: center;
@@ -47,9 +47,8 @@
 }
 
 .tarifaPayment {
-  height: auto%;
+  height: auto;
   width: 80%;
-
   flex-direction: column;
   align-items: center;
   display: unset;
@@ -63,4 +62,11 @@
 
 .blankTarifa {
   height: 20vh;
+  font-family: "Antonio", sans-serif;
+  font-size: 15px;
+  margin-top: 2em;
+  text-align: center;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
 }

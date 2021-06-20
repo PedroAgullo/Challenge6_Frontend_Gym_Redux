@@ -75,7 +75,7 @@ const Menulateral = (props) => {
   };
 
   //IFS PARA MOSTRAR UN MENU SEGUN EL TIPO DE USUARIO QUE ACCEDE A LA APLICACIÓN
-  if (props.credentials.user.isAdmin === false && props.credentials.perfil === "user") 
+  if (props?.credentials?.user?.isAdmin === false && props?.credentials?.perfil === "user") 
   {
     return (
       <div className="boxLateral">
@@ -89,7 +89,7 @@ const Menulateral = (props) => {
         </div>
       </div>
     );
-  } else if (props.credentials.user.isAdmin === false && props.credentials.perfil === "monitor"  ) 
+  } else if (props?.credentials?.user?.isAdmin === false && props?.credentials?.perfil === "monitor"  ) 
     {
     return (
       <div className="boxLateral">

@@ -80,7 +80,7 @@ const Navbar = (props) => {
 
             {/* to="/profile" */}
 
-              <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/profile" ><div className="fotoUser"><img id="fotoNavBar" src={props.credentials.user.photo} onClick={() => cambiaDatos("profile")} alt="Profile photo" /></div>
+              <NavLink style={{ color: 'inherit', textDecoration: 'inherit' }} to="/profile" ><div className="fotoUser"><img id="fotoNavBar" src={props?.credentials?.user?.photo} onClick={() => cambiaDatos("profile")} alt="Profile photo" /></div>
               </NavLink>
             </div>
           </div>

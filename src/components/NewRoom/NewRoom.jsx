@@ -179,13 +179,13 @@ const NewRoom = (props) => {
 
                             <select id = "opciones" name="name" className="inputBaseUser" onChange={updateFormulario}>
                                 {props.editroom.monitors.map((act, index) => (
-                                    <option>{act.name}</option>                                
+                                    <option>{act.name}{" "}{act.lastName1}</option>                                
                                 ))}
                             </select>   
 
                                 <select id = "opciones" name="name" className="inputBaseUser" onChange={updateFormulario}> 
-                                {props.editroom.room.members.map((act, index) => (
-                                    <option value={act}>{act}</option>                                
+                                {props.editroom.users.map((act, index) => (
+                                    <option value={act}>{act.name}{" "}{act.lastName1}{" "}{act.lastName2}{}</option>                                
                                 ))}
                                 </select>    
                             <input className="inputBaseUser" type="checkbox" name="Activa" size="34" lenght='30' onChange={updateFormulario}></input>

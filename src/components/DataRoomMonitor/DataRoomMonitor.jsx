@@ -88,7 +88,7 @@ const DataRoomMonitor = (props) => {
   
     try{
 
-      let idUser = props.credentials.idUser;
+      let idUser = props.credentials.user._id;
       let token = props.credentials.token;
     
       let body = {
@@ -159,7 +159,7 @@ const DataRoomMonitor = (props) => {
         
 
         
-      </div>        
+      </div>     
 
   }
 };

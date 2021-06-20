@@ -94,6 +94,11 @@ const DataProfile = (props) => {
                 }
             break;
 
+
+         
+
+
+
             case 'lastName1':
                 if(datosUser.lastName1.length < 1){
                     setErrors({...errors, eLastName1: 'El campo Apellido no puede estar vacío.'});
@@ -151,7 +156,7 @@ const DataProfile = (props) => {
             case 'address':
                 if(datosUser.address.length < 1){
                     setErrors({...errors, eAddress: 'El campo direccion no puede estar vacío.'});
-                }else if  (! /^[a-z ,.'-]+$/i.test(datosUser.address)){
+                }else if  (!/^(?=.{3,40}$)[a-zA-ZñÑ 1-9 , /]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.address)){
                     setErrors({...errors, eAddress: 'La direccion debe ser alfanumerica'});
                 }else{
                     setErrors({...errors, eAddress: ''});
@@ -172,7 +177,7 @@ const DataProfile = (props) => {
             case 'country':
                 if(datosUser.country.length < 1){
                     setErrors({...errors, eCountry: 'El campo país no puede estar vacío.'});
-                }else if  (! /^[a-z ,.'-]+$/i.test(datosUser.country) ) {
+                }else if  (!/^(?=.{3,40}$)[a-zA-ZñÑ]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.country) ) {
                     setErrors({...errors, eCountry: 'El campo pais solo puede contener letras.'});
                 }else{
                     setErrors({...errors, eCountry: ''});
@@ -205,20 +210,6 @@ const DataProfile = (props) => {
 
             break;
 
-            
-            case 'birthday':
-                
-                let years = moment().diff(moment(datosUser.birthday).format('MM/DD/YYYY'), 'years');
-                
-                if (years < 12 || years > 100){
-                    setErrors({...errors, eBirthday: 'Debes tener al menos 12 años para registrarte.'});
-                }else {
-                    setErrors({...errors, eBirthday: ''});
-                }
-         
-            break;
-
-
         }
     }
 
@@ -227,13 +218,14 @@ const DataProfile = (props) => {
         let token = props.credentials.token;
         let idUser = props.credentials.user._id;
         let address = datosUser.address;
-        let country = datosUser.country;
         let city = datosUser.city;
+        let country = datosUser.country;
         let telephone = datosUser.telephone;
-console.log(idUser)
+        console.log(idUser)
 
-        let body = {
+        var body = {
             member : idUser,
+            id : idUser,
             address : address,
             country : country,
             city : city,
@@ -241,22 +233,47 @@ console.log(idUser)
             
         }
 
-        console.log(body, "Datos de body que pasamos");
-        let res = await axios.put('http://localhost:3005/user',body,{headers:{'authorization':'Bearer ' + token}});
-    
-        let data = {
-            token: props.credentials.token,
-            user : res.data,
-            idUser: props.credentials.userId,
-            perfil: props.credentials.perfil
+        console.log(props.credentials.perfil)
+        if (props.credentials.perfil === "user"){
+            console.log(body, "Datos de body que pasamos");
+            let res = await axios.put('http://localhost:3005/user',body,{headers:{'authorization':'Bearer ' + token}});
+            
+            let data = {
+                token: props.credentials.token,
+                user : res.data,
+                idUser: props.credentials.userId,
+                perfil: props.credentials.perfil
+            }
+                console.log("Datos qeu devuelve axios : ", data);
+
+                props.dispatch({type:UPDATE,payload:data});
+                notification.success({message:'Atencion.',description: "Datos actualizados correctamente."});
+
+                setProfile(info);
+            
+        }else {
+            console.log("Estoy en monitor")
+            console.log(body)
+
+            
+            let res2 = await axios.post('http://localhost:3005/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
+            console.log (res2);
+            let data2 = {
+                token: props.credentials.token,
+                user : res2.data,
+                idUser: props.credentials.userId,
+                perfil: props.credentials.perfil
+            }        
+            console.log("Datos qeu devuelve axios : ", data2);
+
+            props.dispatch({type:UPDATE,payload:data2});
+            notification.success({message:'Atencion.',description: "Datos actualizados correctamente."});
+
+            setProfile(info);
+
+
+            
         }
-
-        //Guardo en RDX
-        console.log("Datos qeu devuelve axios : ", data);
-
-        props.dispatch({type:UPDATE,payload:data});
-        setProfile(info);
-        notification.success({message:'Atencion.',description: "Datos actualizados correctamente."});
 
 
         
@@ -320,7 +337,7 @@ console.log(idUser)
     }else {
         return (
             <div>
-                <div className="tituloDataProfile"><h1>Perfil del usuario</h1></div>
+                <div className="tituloDataProfile"><h1>Editar datos del usuario</h1></div>
                 <div className="boxDataProfileUser">
 
                     <div className="infoUser1">
@@ -344,31 +361,36 @@ console.log(idUser)
                         <input className="inputBaseUser" readonly="readonly" type="text" name="lastName2"  placeholder={user.lastName2} size="34" lenght='30'></input>
                         <input className="inputBaseUser" readonly="readonly" type="text" name="email"  placeholder={user.email} size="34" lenght='30'></input>
                         <input className="inputBaseUser" readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
 
                     </div>
 
                     <div className= "infoUser2Titulos">
+
                         <div className="titulosInfoUser">Dirección:</div>
                         <div className="titulosInfoUser">Ciudad:</div>
                         <div className="titulosInfoUser">País:</div>
                         <div className="titulosInfoUser">DNI/NIE:</div>
                         <div className="titulosInfoUser">Telefono:</div>
                         <div className="titulosInfoUser">Fecha de nacimiento:</div>
+
                      
                     </div>
 
                     <div className="infoUser3">
-                        <input className="inputBaseUser"  type="text" name="address" onChange={updateFormulario} onBlur={()=>checkError("address")} placeholder={user.address} size="34" lenght='30'></input>
+
+                        <input className="inputBaseUser"  type="text" name="address" onChange={updateFormulario} onBlur={()=>checkError("address")} placeholder={props.credentials.user.address} size="34" lenght='30'></input>
                         <div>{errors.eAddress}</div>
-                        <input className="inputBaseUser"  type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")} placeholder={user.city} size="34" lenght='30'></input>
+                        <input className="inputBaseUser"  type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")} placeholder={props.credentials.user.city} size="34" lenght='30'></input>
+                        
                         <div>{errors.eCity}</div>
-                        <input className="inputBaseUser"  type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")}  placeholder={user.country} size="34" lenght='30'></input>
+                        <input className="inputBaseUser" type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")} placeholder={props.credentials.user.country} size="34" lenght='30'></input>
+                        {/* <input className="inputBaseUser" type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")}  placeholder={user.country} size="34" lenght='30'></input> */}
                         <div>{errors.eCountry}</div>
                         <input className="inputBaseUser" readonly="readonly" type="text" name="dni"  placeholder={user.dni} size="34" maxlenght='9' ></input>
-                        <input className="inputBaseUser"  type="text" name="telephone" onChange={updateFormulario} onBlur={()=>checkError("telephone")}   placeholder={user.telephone}size="34" lenght='9'></input>
+                        <input className="inputBaseUser"  type="text" name="telephone" onChange={updateFormulario} onBlur={()=>checkError("telephone")}   placeholder={props.credentials.user.telephone}size="34" lenght='9'></input>
                         <div>{errors.eTelephone}</div>
                         <input className="inputBaseUser" readonly="readonly" type="text" name="birthday" placeholder={moment(user.birthday).format('L')} ></input>
+
                     </div>
 
 

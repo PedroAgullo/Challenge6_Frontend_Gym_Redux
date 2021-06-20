@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useHistory} from "react-router";
 import moment from 'moment';
 import {connect} from 'react-redux';
+import {Input, notification} from 'antd';
 
 const Register = () => {
     let history = useHistory();
@@ -149,7 +150,7 @@ const Register = () => {
             case 'country':
                 if(datosUser.country.length < 1){
                     setErrors({...errors, eCountry: 'El campo país no puede estar vacío.'});
-                }else if  (! /^[a-z ,.'-]+$/i.test(datosUser.country) ) {
+                }else if  (!/^(?=.{3,40}$)[a-zA-ZñÑ]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.country) ) {
                     setErrors({...errors, eCountry: 'El campo pais solo puede contener letras.'});
                 }else{
                     setErrors({...errors, eCountry: ''});
@@ -234,7 +235,7 @@ const Register = () => {
        
          axios.post(("http://localhost:3005/user"), user)        
         .then(res => {
-            setNewMessage("Te hemos enviado un email para activar la cuenta.");
+            notification.success({message:'Usuario registrado.',description: "Te hemos enviado un email para activar la cuenta." });
 
             setTimeout(()=> {
                 history.push('/login');
@@ -261,7 +262,7 @@ const Register = () => {
 
     return (
         <div className= "boxForm">
-            <h1 className= "tituloFormRegistro"> FORMULARIO DE REGISTRO </h1>
+            <div className= "tituloFormRegistro"> FORMULARIO DE REGISTRO </div>
             <div className="formulario">
                 <input className="inputBase" type="text" name="name" onChange={updateFormulario} onBlur={()=>checkError("name")} placeholder="Nombre" size="34" lenght='30'></input>
                 <div>{errors.eName}</div>
