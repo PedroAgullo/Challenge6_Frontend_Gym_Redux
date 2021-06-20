@@ -1,0 +1,77 @@
+
+.nav {
+  background: #4D4D56;
+  color: #EDEDF4;
+  height: 14vh;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  /* padding: 0.5rem calc((100vw - 1000px) / 2); */
+  z-index: 1;
+  position: sticky;
+  top:0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+
+}
+
+.blank {
+  height: 10vh;
+  width: 60vw;
+}
+
+.NavLink {
+  background: #4D4D56;
+  display: flex;
+  align-items: center;
+  height: 13vh;
+  cursor: pointer;
+  position: relative;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+  width: 10em;
+  text-align: center;
+  
+}
+
+.img {
+  height: 6vw;
+  width: auto;
+  padding-top: 0em;
+  padding-left: 2em;
+  max-height: 10em;
+  margin-top: 0em;
+
+}
+
+.NavMenu {
+  width: 17vw;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  text-align: center;
+}
+
+.NavLink:hover {
+  
+  color: #E15554;
+  border-radius: 2%;
+  transition: 0.5s;
+}
+
+.fotoUser{
+  height: 13vh;
+
+}
+
+#fotoNavBar{
+  height: fit-content;
+  width: 30%;
+  border-radius: 50%;
+}

@@ -1,0 +1,44 @@
+
+
+
+.RoomHomeTarifa {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDEDF4;
+
+}
+
+.textCardTarifa {
+    text-align: center;
+    font: 7px;
+}
+
+
+.titleRoomTarifaCard {
+    height: auto;
+    width: auto;
+    text-align: center;
+}
+
+.titleHomeText {
+    background-color: #EDEDF4;
+}
+
+.tarifa {
+
+    height: auto;
+    width: 50vh;
+    height: 70vh;
+    flex-direction: column;
+    align-items: center;
+    display: unset;
+    justify-content: center;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    box-shadow:  5px 5px 5px 2px grey;
+    margin-right: 1em;
+  
+}

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+.card {
+   /*  height: 30vh;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    box-shadow:  5px 5px 5px 2px grey;
+    margin-right: 1em;
+    background-color: #F0EC57; */
+    height: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    box-shadow:  5px 5px 5px 2px grey;
+    margin-right: 1em;
+    background-color: #F0EC57;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.card:hover{
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 5px 5px 5px 2px grey, 8px 8px 8px 5px grey;
+}
+
+.nombre{
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Antonio', sans-serif;
+}
+
+.boxCardDataRoom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;  
+    height: auto;
+    width: auto;
+
+}
+
+.datosCard {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    /* max-width: fit-content; */
+    width: fit-content;
+    
+}
+
+.nombreDataRoom {
+    font-family: 'Antonio', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.spinner {
+    height: 80vh;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 1920px) {
+    .datosCardJoinUser {
+      font-size: 15px;
+    }
+  }
+
+
+
+
+
+
+
+  /* A partir de aquí el spinner */

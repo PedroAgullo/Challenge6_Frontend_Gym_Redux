@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+
+.boxLateral{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: white;
+    height: 80vh;
+    position: fixed;
+    
+
+
+
+}
+
+.lateralMenu{
+    height: 200vh;
+    width: max-content;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  /*   border-radius: 1em; */
+    border: 0.1em solid #303036;
+    background-color: #4D4D56;
+    padding: 2em;
+    margin-right: 7em;
+  
+
+}
+
+
+
+
+.card {
+    height: 30vh;
+    width: 11vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    font-size: 0.8em;
+    box-shadow:  5px 5px 5px 2px grey;
+    margin-right: 1em;
+}
+
+.card:hover{
+    background-color: #ededf4;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 5px 5px 5px 2px grey, 8px 8px 8px 5px grey;
+}
+
+.nombre{
+    font-weight: bold;
+}
+
+.boxCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.botomMenuLateral{
+    height: 6.5vh;
+    width: 12vw;
+    border: 0.1em solid #303036;
+    margin: 0.2em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1em;
+    transition: 0.3s;
+    background-color: #EDEDF4;
+}
+.botomMenuLateral:hover{
+    background-color: #F0EC57;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tituloVistaAdmin{
+    color: #E15554;
+    font-weight: bold;
+    font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
+    margin-bottom: 2em;
+    font-size: 1.2em;
+}
