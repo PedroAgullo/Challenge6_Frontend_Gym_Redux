@@ -13,46 +13,65 @@ import {Input, notification} from 'antd';
 
 const NewUser = (props) => {
        
+
+
         //Hooks
         const [profile, setProfile] = useState([]); 
-        const [datosUser, setDatosUser] = useState(
-            {
+        // const [datosUser, setDatosUser] = useState(
+        //     {
 
-                address: props.credentials.user.address,
-                country: props.credentials.user.country,
-                city: props.credentials.user.city,
-                telephone: props.credentials.user.telephone
-        });        
+        //         address: props.credentials.user.address,
+        //         country: props.credentials.user.country,
+        //         city: props.credentials.user.city,
+        //         telephone: props.credentials.user.telephone
+        // });        
 
 
-    // const [datosUser, setDatosUser] = useState(
-    //     {
-    //         name : '',
-    //         lastName1: '',
-    //         lastName2: '',
-    //         email: '',
-    //         password: '',
-    //         birthday: '',
-    //         address: '',
-    //         country: '',
-    //         city: '',
-    //         dni: '',
-    //         telephone: '',
-    //         subscription: 'Mensual',
-    // });
+    const [datosUser, setDatosUser] = useState(
+        {
+            name : '',
+            lastName1: '',
+            lastName2: '',
+            email: '',
+            password: '',
+            birthday: '',
+            address: '',
+            country: '',
+            city: '',
+            dni: '',
+            telephone: '',
+            subscription: ''
+    });
+
+    const [datosMonitor, setDatosMonitor] = useState(
+        {
+            _id: '',
+            name : '',
+            lastName1: '',
+            lastName2: '',
+            email: '',
+            password: '',
+            birthday: '',
+            address: '',
+            country: '',
+            city: '',
+            dni: '',
+            telephone: '',
+            subscription: ''            
+    });
 
     const [errors, setErrors] = useState({
-        eName : '',
-        eLastName1: '',
-        eLastName2: '',
-        eEmail: '',
-        ePassword: '',
-        eBirthday: '',
-        eAddress: '',
-        eCountry: '',
-        eCity: '',
-        eDni: '',
-        eTelephone: '',
+        name : datosUser.name,
+        lastName1: datosUser.lastName1,
+        lastName2: datosUser.lastName2,
+        email: datosUser.email,
+        password: datosUser.password,
+        birthday: datosUser.birthday,
+        address: datosUser.address,
+        country: datosUser.country,
+        city: datosUser.city,
+        dni: datosUser.dni,
+        telephone: datosUser.telephone,        
         
     });
 
@@ -64,11 +83,54 @@ const NewUser = (props) => {
 
     let user = props.credentials.user;   
 
-    const changeState = (info) => {        
-        setProfile(info);
+
+
+    const findEmail = async (info) => {    
+        let token = props.credentials.token;
+
+        try {
+            
+            let body = {
+                email : datosUser.email
+            }
+            let res = await axios.post('http://localhost:3005/monitor/email',body,{headers:{'authorization':'Bearer ' + token}});
+            notification.success({message:'Busqueda con éxito.',description: "Usuario encontrado" });
+            setDatosMonitor(res.data);
+            setProfile(info);
+        } catch (err) {
+
+        }
     }
 
 
+    const updateMonitor = async (info) => {        
+        let token = props.credentials.token;
+        let idUser = props.credentials.user._id;
+        let address = datosUser.address;
+        let country = datosUser.country;
+        let city = datosUser.city;
+        let telephone = datosUser.telephone;
+
+        let body = {
+            id : datosMonitor._id,
+            address : address,
+            country : country,
+            city : city,
+            telephone : telephone,
+            
+        }
+
+        console.log(body, "Datos de body que pasamos");
+        let res = await axios.post('http://localhost:3005/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
+    
+        let data = {
+            token: props.credentials.token,
+            user : res.data,
+            idUser: props.credentials.userId,
+            perfil: props.credentials.perfil
+        }
+
+    }    
 
     const [newMessage, setNewMessage] = useState([]);
 
@@ -78,6 +140,7 @@ const NewUser = (props) => {
         setDatosUser({...datosUser, [e.target.name]: e.target.value});
     }
 
+ 
 
     const checkError = (arg) => {
         switch (arg){
@@ -210,8 +273,8 @@ const NewUser = (props) => {
                 
                 let years = moment().diff(moment(datosUser.birthday).format('MM/DD/YYYY'), 'years');
                 
-                if (years < 12 || years > 100){
-                    setErrors({...errors, eBirthday: 'Debes tener al menos 12 años para registrarte.'});
+                if (years < 16 || years > 100){
+                    setErrors({...errors, eBirthday: 'Debes tener al menos 16 años para poder ser coach'});
                 }else {
                     setErrors({...errors, eBirthday: ''});
                 }
@@ -225,40 +288,40 @@ const NewUser = (props) => {
 
     const saveData = async (info) => {        
         let token = props.credentials.token;
-        let idUser = props.credentials.user._id;
-        let address = datosUser.address;
-        let country = datosUser.country;
-        let city = datosUser.city;
-        let telephone = datosUser.telephone;
-console.log(idUser)
-
-        let body = {
-            member : idUser,
-            address : address,
-            country : country,
-            city : city,
-            telephone : telephone,
-            
-        }
-
-        console.log(body, "Datos de body que pasamos");
-        let res = await axios.put('http://localhost:3005/user',body,{headers:{'authorization':'Bearer ' + token}});
     
-        let data = {
-            token: props.credentials.token,
-            user : res.data,
-            idUser: props.credentials.userId,
-            perfil: props.credentials.perfil
+        let body = {
+            name : datosUser.name,
+            lastName1: datosUser.lastName1,
+            lastName2: datosUser.lastName2,
+            email: datosUser.email,
+            password: datosUser.password,
+            birthday: datosUser.birthday,
+            address: datosUser.address,
+            country: datosUser.country,
+            city: datosUser.city,
+            dni: datosUser.dni,
+            telephone: datosUser.telephone        }
+
+        console.log("Body que le pasamos a axios", body);
+        try {
+            let res = await axios.post('http://localhost:3005/monitor',body,{headers:{'authorization':'Bearer ' + token}});
+            notification.success({message:'Atencion.',description: "Nuevo coach creado correctamente."});
+
+
+        } catch (err) {
+            var errorText = err.response.data.message;
+            if (errorText.includes("email")){
+                notification.warning({message:'Atencion.',description: "El email ya existe en la base de datos."});
+
+            }else if (errorText.includes("dni")){
+                notification.warning({message:'Atencion.',description: "El dni ya existe en la base de datos"});
+
+            }else{
+                notification.error({message:'Atencion.',description: "Tenemos problemas en la base de datos. Póngase en contacto con el administrador."});
+            }
         }
 
-        //Guardo en RDX
-        console.log("Datos qeu devuelve axios : ", data);
-
-        props.dispatch({type:UPDATE,payload:data});
-        setProfile(info);
-        notification.success({message:'Atencion.',description: "Datos actualizados correctamente."});
-
-
+  
         
     }
 
@@ -269,8 +332,9 @@ console.log(idUser)
                 <div className="boxDataProfileUser">
 
                     <div className="infoUser1">
-                        <div className="fotoUser"><img id="foto" src={props.credentials.user.photo} alt="Profile photo" /></div>
-                        <div className="empty"><button onClick={(()=>changeState(2))}>Editar</button></div>
+                        <div className="fotoUser"><img id="foto" src={PhotoProfile} alt="Profile photo" /></div>
+                        <div className="empty"><button onClick={(()=>saveData())}>Guardar</button></div>
+                        <div className="empty"><button onClick={(()=>findEmail(2))}>Buscar</button></div>
                     </div>
 
                     <div className= "infoUser2Titulos">
@@ -279,18 +343,31 @@ console.log(idUser)
                         <div className="titulosInfoUser">Segundo apellido:</div>
                         <div className="titulosInfoUser">Email:</div>
                         <div className="titulosInfoUser">Password:</div>
+                        <div className="titulosInfoUser">Suscripcion:</div>
                      
                     </div>
 
                     <div className="infoUser2">
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="name" value={user.name} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName1"  value={user.lastName1} size="34" lenght='30' ></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="lastName2"  value={user.lastName2} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="email"  value={user.email} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="password" name="password"  value="************" size="34" lenght='8'></input>
-                        
+                        <input className="inputBaseUser"  type="text" name="name" onChange={updateFormulario} onBlur={()=>checkError("name")} size="34" lenght='30'></input>
+                        <div>{errors.eName}</div>
+                        <input className="inputBaseUser"  type="text" name="lastName1" onChange={updateFormulario} onBlur={()=>checkError("lastName1")} size="34" lenght='30' ></input>
+                        <div>{errors.eLastName1}</div>
+                        <input className="inputBaseUser"  type="text" name="lastName2" onChange={updateFormulario} onBlur={()=>checkError("lastName2")} size="34" lenght='30'></input>
+                        <div>{errors.eLastName2}</div>
+                        <input className="inputBaseUser"  type="text" name="email"onChange={updateFormulario} onBlur={()=>checkError("email")}  size="34" lenght='30'></input>
+                        <div>{errors.eEmail}</div>
+                        <input className="inputBaseUser"  type="password" name="password"onChange={updateFormulario} onBlur={()=>checkError("password")}   size="34" lenght='8'></input>
+                        <div>{errors.ePassword}</div>
+                        <select id="op" className="inputBase" type="select" name="subscription" onChange={updateFormulario} required="true" placeholder="Abono"  lenght='30'>
+                            <option value="Mensual">Mensual</option>
+                            <option value="Anual">Anual</option>
+                            <option value="Premium">Premium</option>
+                        </select>  
 
                     </div>
+
+                    
+
 
                     <div className= "infoUser2Titulos">
                         <div className="titulosInfoUser">Dirección:</div>
@@ -298,17 +375,23 @@ console.log(idUser)
                         <div className="titulosInfoUser">País:</div>
                         <div className="titulosInfoUser">DNI/NIE:</div>
                         <div className="titulosInfoUser">Telefono:</div>
-                        <div className="titulosInfoUser">Fecha de nacimiento:</div>
-                     
+                        <div className="titulosInfoUser">Fecha de nacimiento:</div>  
+                   
                     </div>
 
                     <div className="infoUser2">
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="address" value={user.address} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="city"  value={user.city} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="country"  value={user.country} size="34" lenght='30'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="dni"  value={user.dni} size="34" maxlenght='9' ></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="telephone"  value={user.telephone} size="34" lenght='9'></input>
-                        <input className="inputBaseUser"  readonly="readonly" type="text" name="birthday" value={moment(user.birthday).format('L')} ></input>
+                        <input className="inputBaseUser"   type="text" name="address" onChange={updateFormulario} onBlur={()=>checkError("address")} size="34" lenght='30'></input>
+                        <div>{errors.eAddress}</div>
+                        <input className="inputBaseUser"   type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")}  size="34" lenght='30'></input>
+                        <div>{errors.eCity}</div>
+                        <input className="inputBaseUser"   type="text" name="country"onChange={updateFormulario} onBlur={()=>checkError("country")}  size="34" lenght='30'></input>
+                        <div>{errors.eCountry}</div>
+                        <input className="inputBaseUser"   type="text" name="dni" onChange={updateFormulario} onBlur={()=>checkError("dni")}  size="34" maxlenght='9' ></input>
+                        <div>{errors.eDni}</div>
+                        <input className="inputBaseUser"  type="text" name="telephone"  onChange={updateFormulario} onBlur={()=>checkError("telephone")} size="34" lenght='9'></input>
+                        <div>{errors.eTelephone}</div>
+                        <input className="inputBaseUser"   type="date" name="birthday" onChange={updateFormulario} onBlur={()=>checkError("birthday")} ></input>
+                        <div>{errors.eBirthday}</div>
                     </div>
                     <div>
                     </div>
@@ -320,12 +403,12 @@ console.log(idUser)
     }else {
         return (
             <div>
-                <div className="tituloDataProfile"><h1>Nuevo usuario</h1></div>
+                <div className="tituloDataProfile"><h1>Editar usuario</h1></div>
                 <div className="boxDataProfileUser">
 
                     <div className="infoUser1">
-                    <div className="fotoUser"><img id="foto" src={props.credentials.user.photo} alt="Profile photo" /></div>
-                        <div className="empty"><button onClick={(()=>saveData(1))}>Guardar</button></div>
+                    <div className="fotoUser"><img id="foto" src={PhotoProfile} alt="Profile photo" /></div>
+                        <div className="empty"><button onClick={(()=>updateMonitor(1))}>Guardar</button></div>
 
                     </div>
 
@@ -335,17 +418,21 @@ console.log(idUser)
                         <div className="titulosInfoUser">Segundo apellido:</div>
                         <div className="titulosInfoUser">Email:</div>
                         <div className="titulosInfoUser">Password:</div>
+                        <div className="titulosInfoUser">Suscripcion:</div>
                      
                     </div>
 
                     <div className="infoUser2">
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="name"  placeholder={user.name} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="lastName1"  placeholder={user.lastName1} size="34" lenght='30' ></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="lastName2"  placeholder={user.lastName2} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="email"  placeholder={user.email} size="34" lenght='30'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
-                        <input className="inputBaseUser" readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
-
+                        <input className="inputBaseUser" value={datosMonitor.name} readonly="readonly" type="text" name="name"  size="34" lenght='30'></input>
+                        <input className="inputBaseUser" value={datosMonitor.lastName1} readonly="readonly" type="text" name="lastName1"   size="34" lenght='30' ></input>
+                        <input className="inputBaseUser" value={datosMonitor.lastName2} readonly="readonly" type="text" name="lastName2"   size="34" lenght='30'></input>
+                        <input className="inputBaseUser" value={datosMonitor.email} readonly="readonly" type="text" name="email"   size="34" lenght='30'></input>
+                        <input className="inputBaseUser" value={datosMonitor.password} readonly="readonly" type="password" name="password"  placeholder="************" size="34" lenght='8'></input>
+                        <select id="op" className="inputBase" type="select" name="subscription" onChange={updateFormulario} required="true" placeholder="Abono"  lenght='30'>
+                            <option value="Mensual">Mensual</option>
+                            <option value="Anual">Anual</option>
+                            <option value="Premium">Premium</option>
+                        </select>  
                     </div>
 
                     <div className= "infoUser2Titulos">
@@ -359,16 +446,16 @@ console.log(idUser)
                     </div>
 
                     <div className="infoUser3">
-                        <input className="inputBaseUser"  type="text" name="address" onChange={updateFormulario} onBlur={()=>checkError("address")} placeholder={user.address} size="34" lenght='30'></input>
+                        <input className="inputBaseUser" placeholder={datosMonitor.address} type="text" name="address" onChange={updateFormulario} onBlur={()=>checkError("address")}  size="34" lenght='30'></input>                        
                         <div>{errors.eAddress}</div>
-                        <input className="inputBaseUser"  type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")} placeholder={user.city} size="34" lenght='30'></input>
+                        <input className="inputBaseUser" placeholder={datosMonitor.city} type="text" name="city" onChange={updateFormulario} onBlur={()=>checkError("city")}  size="34" lenght='30'></input>
                         <div>{errors.eCity}</div>
-                        <input className="inputBaseUser"  type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")}  placeholder={user.country} size="34" lenght='30'></input>
+                        <input className="inputBaseUser" placeholder={datosMonitor.country} type="text" name="country" onChange={updateFormulario} onBlur={()=>checkError("country")}  size="34" lenght='30'></input>
                         <div>{errors.eCountry}</div>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="dni"  placeholder={user.dni} size="34" maxlenght='9' ></input>
-                        <input className="inputBaseUser"  type="text" name="telephone" onChange={updateFormulario} onBlur={()=>checkError("telephone")}   placeholder={user.telephone}size="34" lenght='9'></input>
+                        <input className="inputBaseUser" value={datosMonitor.dni} readonly="readonly" type="text" name="dni"  size="34" maxlenght='9' ></input>
+                        <input className="inputBaseUser" placeholder={datosMonitor.telephone} type="text" name="telephone" onChange={updateFormulario} onBlur={()=>checkError("telephone")}  size="34" lenght='9'></input>
                         <div>{errors.eTelephone}</div>
-                        <input className="inputBaseUser" readonly="readonly" type="text" name="birthday" placeholder={moment(user.birthday).format('L')} ></input>
+                        <input className="inputBaseUser" value={moment(datosMonitor.birthday).format('LL')} readonly="readonly" type="text" name="birthday" ></input>
                     </div>
 
 
