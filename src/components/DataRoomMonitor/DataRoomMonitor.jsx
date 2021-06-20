@@ -42,7 +42,7 @@ const DataRoomMonitor = (props) => {
         isActive : false
       }
 
-      let res = await axios.put('http://localhost:3005/room/',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('http://localhost:3005/room/status',body,{headers:{'authorization':'Bearer ' + token}});
 
       
 
@@ -72,8 +72,6 @@ const DataRoomMonitor = (props) => {
       }
 
       let res = await axios.post('http://localhost:3005/room/leave/coach',body,{headers:{'authorization':'Bearer ' + token}});
-
-     
 
       findAllRoomsActive();
      }catch (err){

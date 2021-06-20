@@ -60,14 +60,10 @@ const Login = (props) => {
 
             } catch (err) {
                 
-                if (err.response?.data?.message == "Cannot read property 'password' of null"){
-                    notification.warning({message:'Atencion.',description: "Usuario o password incorrecto. Revise el perfil de acceso."});
-                }else {
-                    notification.warning({message:'Atencion.',description: JSON.stringify(err.response?.data?.message)});
-
-                }
+                    notification.warning({message:'Atencion.',description: "Usuario o password incorrecto. Revise el perfil de acceso."});              
                 
             }
+
         }else if (document.getElementById("opciones").value === "monitor") {
 
             try {var resMonitor = await axios.post('http://localhost:3005/login/monitor', body);
@@ -90,11 +86,10 @@ const Login = (props) => {
                 
             } catch (err) {
                 
-                if (err.response?.data?.message == "Cannot read property 'password' of null"){
-                    notification.warning({message:'Atencion.',description: "Usuario o password incorrecto. Revise el perfil de acceso."});
-                }else {
-                    setMensajeError(JSON.stringify(err.response?.data?.message));
-                }
+               
+                    notification.warning({message:'Atencion.',description: "Usuario o password incorrecto. Revise el perfil de acceso."});              
+                
+       
 
             }
         }

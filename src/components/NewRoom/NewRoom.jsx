@@ -4,7 +4,7 @@ import moment, { now } from 'moment';
 import { connect } from 'react-redux';
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import {LOGIN, UPDATE} from '../../redux/types'
+import {DELETE, UPDATE} from '../../redux/types'
 import PhotoRoom1 from '../../images/zumba.png';
 import PhotoRoom2 from '../../images/crossfit.png';
 import PhotoRoom3 from '../../images/salsa.png';
@@ -23,8 +23,8 @@ const NewRoom = (props) => {
             {
                 name : 'Zumba',
                 dateStart : Date.now(),
-                nameCoach : props.editroom.room.nameCoach,
-                coaches : props.editroom.room.coaches
+                nameCoach : props?.editroom?.room?.nameCoach,
+                coaches : props?.editroom?.room?.coaches
 
 
         });        
@@ -127,14 +127,23 @@ const NewRoom = (props) => {
             nameCoach : nameCoach
         }
 
-        console.log(body, "Datos de body que pasamos");
-        let res = await axios.post('http://localhost:3005/room/update',body,{headers:{'authorization':'Bearer ' + token}});
-    
-        let data = {
-            token: props.credentials.token,
-            user : res.data,
-            idUser: props.credentials.userId,
-            perfil: props.credentials.perfil
+        try {
+            console.log(body, "Datos de body que pasamos");
+            let res = await axios.post('http://localhost:3005/room/update',body,{headers:{'authorization':'Bearer ' + token}});
+        
+            let data = {
+                token: props.credentials.token,
+                user : res.data,
+                idUser: props.credentials.userId,
+                perfil: props.credentials.perfil
+            }
+
+            notification.success({message:'Confirmación.',description: "Clase modificada."});
+            props.dispatch({ type: DELETE });
+
+            
+        } catch (error) {
+            
         }
 
     }    
@@ -201,7 +210,7 @@ const NewRoom = (props) => {
                         <div className="titulosInfoRoom">Fecha y hora de inicio: </div>
                         <div className="titulosInfoRoom">Entrenador: </div>
                         <div className="titulosInfoRoom">Usuarios:  </div>
-                        <div className="titulosInfoRoom">Clase activa</div>
+                {/*         <div className="titulosInfoRoom">Clase activa</div> */}
                         <div className="empty"></div>                     
                     </div>
 

@@ -129,7 +129,7 @@ const Register = () => {
             case 'address':
                 if(datosUser.address.length < 1){
                     setErrors({...errors, eAddress: 'El campo direccion no puede estar vacío.'});
-                }else if  (! /^[a-z ,.'-]+$/i.test(datosUser.address)){
+                }else if  (! /^[a-z 1-9,.'-]+$/i.test(datosUser.address)){
                     setErrors({...errors, eAddress: 'La direccion debe ser alfanumerica'});
                 }else{
                     setErrors({...errors, eAddress: ''});

@@ -156,15 +156,27 @@ const NewCoach = (props) => {
             
         }
 
-        console.log(body, "Datos de body que pasamos");
-        let res = await axios.post('http://localhost:3005/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
-    
-        let data = {
-            token: props.credentials.token,
-            user : res.data,
-            idUser: props.credentials.userId,
-            perfil: props.credentials.perfil
+        try {
+             let res = await axios.post('http://localhost:3005/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
+
+  
+             let data = {
+                token: props.credentials.token,
+                user : res.data,
+                idUser: props.credentials.userId,
+                perfil: props.credentials.perfil
+            }
+
+            
+            notification.success({message:'Modificado con éxito.',description: "Datos Actualizados correctamente." });
+            setProfile(info);
+
+        } catch (error) {
+            
         }
+
+
+  
 
     }    
 
@@ -250,7 +262,7 @@ const NewCoach = (props) => {
             case 'address':
                 if(datosUser.address.length < 1){
                     setErrors({...errors, eAddress: 'El campo direccion no puede estar vacío.'});
-                }else if  (! /^[a-z ,.'-]+$/i.test(datosUser.address)){
+                }else if  (! /^[a-z 1-9,.'-]+$/i.test(datosUser.address)){
                     setErrors({...errors, eAddress: 'La direccion debe ser alfanumerica'});
                 }else{
                     setErrors({...errors, eAddress: ''});
@@ -271,7 +283,7 @@ const NewCoach = (props) => {
             case 'country':
                 if(datosUser.country.length < 1){
                     setErrors({...errors, eCountry: 'El campo país no puede estar vacío.'});
-                }else if  (! /^[a-z ,.'-]+$/i.test(datosUser.country) ) {
+                }else if  (!/^(?=.{3,40}$)[a-zA-ZñÑ]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.country) ) {
                     setErrors({...errors, eCountry: 'El campo pais solo puede contener letras.'});
                 }else{
                     setErrors({...errors, eCountry: ''});
@@ -384,7 +396,6 @@ const NewCoach = (props) => {
             }
         }
 
-        setProfile(info);
         
     }
 

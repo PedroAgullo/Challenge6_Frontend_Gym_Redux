@@ -16,5 +16,6 @@ export const CODEQR = 'codeqr';
 export const EDITROOM = 'editroom';
 export const NEWUSER = 'newuser';
 export const NEWCOACH = 'newcoach';
+export const DELETE = "delete";
 
 

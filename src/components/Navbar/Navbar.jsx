@@ -3,8 +3,9 @@ import "./Navbar.css";
 import { NavLink } from 'react-router-dom';
 import Logo from '../../images/logofinalnuevogrisSmall.png';
 import { connect } from 'react-redux';
-import { LOGOUT, LOGOUTROOM, LOGOUTTIPODATOS, PROFILE} from '../../redux/types';
+import { LOGOUT, LOGOUTROOM, LOGOUTTIPODATOS, PROFILE, DELETE} from '../../redux/types';
 import { useHistory } from 'react-router-dom';
+import {Input, notification} from 'antd';
 
 const Navbar = (props) => {
 
@@ -17,11 +18,15 @@ const Navbar = (props) => {
   }
 
   const logOut = () => {
+
+    let mensaje = "Hasta pronto " + props.credentials.user.name
+
+    notification.success({message:'Logout correcto.',description: mensaje});
+
     props.dispatch({ type: LOGOUT });
     props.dispatch({ type: LOGOUTROOM });
     props.dispatch({ type: LOGOUTTIPODATOS });
-    
-
+    props.dispatch({ type: DELETE });
     setTimeout(() => {
       history.push('/');
     }, 500)

@@ -135,15 +135,24 @@ const NewUser = (props) => {
             
         }
 
-        console.log(body, "Datos de body que pasamos");
-        let res = await axios.post('http://localhost:3005/user/update',body,{headers:{'authorization':'Bearer ' + token}});
-    
-        let data = {
-            token: props.credentials.token,
-            user : res.data,
-            idUser: props.credentials.userId,
-            perfil: props.credentials.perfil
-        }
+
+           try {
+            let res = await axios.post('http://localhost:3005/user/update',body,{headers:{'authorization':'Bearer ' + token}});
+
+            let data = {
+               token: props.credentials.token,
+               user : res.data,
+               idUser: props.credentials.userId,
+               perfil: props.credentials.perfil          
+            }
+
+           
+           notification.success({message:'Modificado con éxito.',description: "Datos Actualizados correctamente." });
+           setProfile(info);
+
+       } catch (error) {
+           
+       }
 
     }    
 
@@ -153,9 +162,7 @@ const NewUser = (props) => {
 
     const updateFormulario = (e) => {
         setDatosUser({...datosUser, [e.target.name]: e.target.value});
-    }
-
- 
+    } 
 
     const checkError = (arg) => {
         switch (arg){
@@ -190,7 +197,7 @@ const NewUser = (props) => {
                     setErrors({...errors, eLastName2: 'El campo Apellido no puede estar vacío.'});
                 }else if (datosUser.lastName2.length < 4){
                     setErrors({...errors, eLastName2: 'El campo Apellido debe de tener 4 caracteres'});
-                }else if (!/^(?=.{3,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test.test(datosUser.lastName2) ) {
+                }else if (!/^(?=.{3,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.lastName2) ) {
                     setErrors({...errors, eLastName2: 'Introduce el formato de apellido valido'}); 
                 }else{
                     setErrors({...errors, eLastName2: ''});
@@ -229,7 +236,7 @@ const NewUser = (props) => {
             case 'address':
                 if(datosUser.address.length < 1){
                     setErrors({...errors, eAddress: 'El campo direccion no puede estar vacío.'});
-                }else if  (!/^(?=.{3,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.address)){
+                }else if  (! /^[a-z 1-9,.'-]+$/i.test(datosUser.address)){
                     setErrors({...errors, eAddress: 'La direccion debe ser alfanumerica'});
                 }else{
                     setErrors({...errors, eAddress: ''});
@@ -239,7 +246,7 @@ const NewUser = (props) => {
             case 'city':
                 if(datosUser.city.length < 1){
                     setErrors({...errors, eCity: 'El campo ciudad no puede estar vacío.'});
-                }else if  (!/^[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test.test(datosUser.city) ) {
+                }else if  (!/^[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.city) ) {
                     setErrors({...errors, eCity: 'El campo ciudad solo puede contener letras'});
                 }else{
                     setErrors({...errors, eCity: ''});
