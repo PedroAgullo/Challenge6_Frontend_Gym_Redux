@@ -8,6 +8,7 @@ import Login from './containers/Login/Login';
 import Home from './containers/Home/Home';
 import Profile from './containers/Profile/Profile';
 import Register from './containers/Register/Register';
+import Form from './containers/Form/Form';
 
 
 
@@ -24,6 +25,7 @@ function App() {
               <Route path="/login" exact component={Login}/>
               <Route path="/profile" exact component={Profile}/>
               <Route path="/register" exact component={Register}/>
+              <Route path="/form" exact component={Form}/>
                     
             </Switch>
 
