@@ -86,7 +86,14 @@ const NewCoach = (props) => {
 
 
 
-    const findEmail = async (info) => {    
+    const findEmail = async (info) => {   
+        if (datosUser.email === '') 
+        {
+            notification.warning({message:'Atención.',description: "El campo email no puede estar vacio" });
+
+            return;
+        }
+
         let token = props.credentials.token;
 
         try {
@@ -95,6 +102,13 @@ const NewCoach = (props) => {
                 email : datosUser.email
             }
             let res = await axios.post('http://localhost:3005/monitor/email',body,{headers:{'authorization':'Bearer ' + token}});
+
+            if (res.data === null){
+                notification.warning({message:'Atención.',description: "El email no se ha encontrado" });
+
+                return;
+            }
+
             notification.success({message:'Busqueda con éxito.',description: "Usuario encontrado" });
             setDatosMonitor(res.data);
             setProfile(info);
@@ -370,7 +384,7 @@ const NewCoach = (props) => {
             }
         }
 
-  
+        setProfile(info);
         
     }
 
@@ -382,8 +396,8 @@ const NewCoach = (props) => {
 
                     <div className="infoUser1">
                         <div className="fotoUser"><img id="foto" src={PhotoProfile} alt="Profile photo" /></div>
-                        <div className="empty"><button onClick={(()=>saveData())}>Guardar</button></div>
-                        <div className="empty"><button onClick={(()=>findEmail(2))}>Buscar</button></div>
+                        <div className="empty"><button onClick={(()=>saveData())}>Nuevo Coach</button></div>
+                        <div className="empty"><button onClick={(()=>findEmail(2))}>Buscar por email</button></div>
                     </div>
 
                     <div className= "infoUser2Titulos">
@@ -430,7 +444,6 @@ const NewCoach = (props) => {
                         <div className="titulosInfoUser">DNI/NIE:</div>
                         <div className="titulosInfoUser">Telefono:</div>
                         <div className="titulosInfoUser">Fecha de nacimiento:</div>  
-                        <div className="titulosInfoUser">Especialidades</div>
                    
                     </div>
 
@@ -463,7 +476,7 @@ const NewCoach = (props) => {
 
                     <div className="infoUser1">
                     <div className="fotoUser"><img id="foto" src={PhotoProfile} alt="Profile photo" /></div>
-                        <div className="empty"><button onClick={(()=>updateMonitor(1))}>Guardar</button></div>
+                        <div className="empty"><button onClick={(()=>updateMonitor(1))}>Guardar cambios</button></div>
 
                     </div>
 
@@ -473,6 +486,8 @@ const NewCoach = (props) => {
                         <div className="titulosInfoUser">Segundo apellido:</div>
                         <div className="titulosInfoUser">Email:</div>
                         <div className="titulosInfoUser">Password:</div>
+                        <div className="titulosInfoUser">Especialidades</div>
+
                      
                     </div>
 

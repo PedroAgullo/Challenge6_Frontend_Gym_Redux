@@ -1,6 +1,8 @@
 import React from 'react';
 import QRCode from "react-qr-code";
 import { connect } from 'react-redux';
+import './QrCode.css';
+
 
 
 function Code() {

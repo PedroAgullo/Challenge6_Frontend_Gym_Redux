@@ -236,13 +236,18 @@ const DataProfile = (props) => {
         console.log(props.credentials.perfil)
         if (props.credentials.perfil === "user"){
             console.log(body, "Datos de body que pasamos");
-            let res = await axios.put('http://localhost:3005/user',body,{headers:{'authorization':'Bearer ' + token}});
+            let token = props.credentials.token;
+
+            var res = await axios.put('http://localhost:3005/user',body,{headers:{'authorization':'Bearer ' + token}});
             
+
+
+
             let data = {
-                token: props.credentials.token,
+                token: token,
                 user : res.data,
-                idUser: props.credentials.userId,
-                perfil: props.credentials.perfil
+                idUser: res.data._id,
+                perfil: "user"
             }
                 console.log("Datos qeu devuelve axios : ", data);
 
@@ -255,14 +260,15 @@ const DataProfile = (props) => {
             console.log("Estoy en monitor")
             console.log(body)
 
-            
+            let token2 = props.credentials.token;
+
             let res2 = await axios.post('http://localhost:3005/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
             console.log (res2);
             let data2 = {
-                token: props.credentials.token,
+                token: token2,
                 user : res2.data,
-                idUser: props.credentials.userId,
-                perfil: props.credentials.perfil
+                idUser: res2.data.user._id,
+                perfil: "monitor"
             }        
             console.log("Datos qeu devuelve axios : ", data2);
 

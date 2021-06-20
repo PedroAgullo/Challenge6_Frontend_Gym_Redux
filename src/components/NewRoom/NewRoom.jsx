@@ -11,6 +11,8 @@ import PhotoRoom3 from '../../images/salsa.png';
 import PhotoRoom4 from '../../images/spinning.png';
 import PhotoRoom5 from '../../images/pilates.png';
 import PhotoRoom6 from '../../images/boxeo.png';
+import {Input, notification} from 'antd';
+
 
 
 const NewRoom = (props) => {
@@ -21,6 +23,10 @@ const NewRoom = (props) => {
             {
                 name : 'Zumba',
                 dateStart : Date.now(),
+                nameCoach : props.editroom.room.nameCoach,
+                coaches : props.editroom.room.coaches
+
+
         });        
 
         const [photoRoom, setPhotoRoom] = useState(           
@@ -74,6 +80,8 @@ const NewRoom = (props) => {
 
     const saveData = async (info) => {
         
+        
+
         let token = props.credentials.token;
         let dateStart = moment(datosRoom.dateStart).format();
         let dateEnd = moment(dateStart).add(1, 'hours').format();
@@ -87,17 +95,51 @@ const NewRoom = (props) => {
             name: datosRoom.name,
             dateStart : dateStart,
             dateEnd : dateEnd,
+            
         }
 
         let res = await axios.post('http://localhost:3005/room',body,{headers:{'authorization':'Bearer ' + token}});
         
-
-
+        notification.success({message:'Confirmación.',description: "Clase creada"});
+        
         //Guardo en RDX
         // props.dispatch({type:UPDATE,payload:data});
         setProfile(info);
 
     }
+
+    const updateRoom = async (info) => {        
+
+        let token = props.credentials.token;
+        let dateStart = moment(datosRoom.dateStart).format();
+        let dateEnd = moment(dateStart).add(1, 'hours').format();
+        let nameCoach = [];
+        console.log ("array del id del coach: ", datosRoom.coaches);
+        nameCoach.push(datosRoom.nameCoach);
+        let coaches = datosRoom.coaches;
+
+        let body = {    
+            id : props.editroom.room._id,        
+            name: datosRoom.name,
+            dateStart : dateStart,
+            dateEnd : dateEnd,
+            coaches : coaches,
+            nameCoach : nameCoach
+        }
+
+        console.log(body, "Datos de body que pasamos");
+        let res = await axios.post('http://localhost:3005/room/update',body,{headers:{'authorization':'Bearer ' + token}});
+    
+        let data = {
+            token: props.credentials.token,
+            user : res.data,
+            idUser: props.credentials.userId,
+            perfil: props.credentials.perfil
+        }
+
+    }    
+
+
 
 
     if (props.editroom._id === "") {
@@ -135,7 +177,7 @@ const NewRoom = (props) => {
                         
                         
      
-                            <input className="inputBaseUser" type="datetime-local" name="dateStart" size="34" lenght='30' onChange={updateFormulario}></input>
+                            <input className="inputBaseUser" type="datetime-local" name="dateStart" placeholder={Date.now()} size="34" lenght='30' onChange={updateFormulario}></input>
 
                             <div className="empty"><button onClick={(()=>saveData(2))}>Guardar</button></div>
                     </div>
@@ -145,7 +187,7 @@ const NewRoom = (props) => {
     }else {
         return (
             <div>
-                <div className="tituloNewRoom"><h1>EDITAR DATOS SALA</h1></div>
+                <div className="tituloNewRoom"><h1>Editar datos sala</h1></div>
                 <div className="boxDataUser">
 
                     <div className="InfoNewRoom1">
@@ -177,21 +219,21 @@ const NewRoom = (props) => {
                         
                             <input className="inputBaseUser" type="datetime-local" name="dateStart" size="34" lenght='30' onChange={updateFormulario}></input>
 
-                            <select id = "opciones" name="name" className="inputBaseUser" onChange={updateFormulario}>
+                            <select id = "opciones" name="nameCoach" className="inputBaseUser" onChange={updateFormulario}>
                                 {props.editroom.monitors.map((act, index) => (
                                     <option>{act.name}{" "}{act.lastName1}</option>                                
                                 ))}
                             </select>   
 
-                                <select id = "opciones" name="name" className="inputBaseUser" onChange={updateFormulario}> 
+   {/*                              <select id = "opciones" name="name" className="inputBaseUser" onChange={updateFormulario}> 
                                 {props.editroom.users.map((act, index) => (
                                     <option value={act}>{act.name}{" "}{act.lastName1}{" "}{act.lastName2}{}</option>                                
                                 ))}
-                                </select>    
-                            <input className="inputBaseUser" type="checkbox" name="Activa" size="34" lenght='30' onChange={updateFormulario}></input>
+                                </select>    */} 
+                          {/*   <input className="inputBaseUser" type="checkbox" name="Activa" size="34" lenght='30' onChange={updateFormulario}></input> */}
                     
 
-                            <div className="empty"><button onClick={(()=>saveData(2))}>Guardar</button></div>
+                            <div className="empty"><button onClick={(()=>updateRoom(1))}>Guardar</button></div>
                     </div>
                 </div>
             </div>

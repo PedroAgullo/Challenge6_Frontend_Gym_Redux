@@ -85,7 +85,14 @@ const NewUser = (props) => {
 
 
 
-    const findEmail = async (info) => {    
+    const findEmail = async (info) => {   
+        if (datosUser.email === '') 
+        {
+            notification.warning({message:'Atención.',description: "El campo email no puede estar vacio" });
+
+            return;
+        }
+
         let token = props.credentials.token;
 
         try {
@@ -94,6 +101,13 @@ const NewUser = (props) => {
                 email : datosUser.email
             }
             let res = await axios.post('http://localhost:3005/user/email',body,{headers:{'authorization':'Bearer ' + token}});
+
+            if (res.data === null){
+                notification.warning({message:'Atención.',description: "El email no se ha encontrado" });
+
+                return;
+            }
+
             notification.success({message:'Busqueda con éxito.',description: "Usuario encontrado" });
             setDatosMonitor(res.data);
             setProfile(info);
