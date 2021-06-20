@@ -14,6 +14,7 @@ export const NEWROOM = "newroom";
 export const PAYMENT = "payment";
 export const CODEQR = 'codeqr';
 export const EDITROOM = 'editroom';
-
+export const NEWUSER = 'newuser';
+export const NEWCOACH = 'newcoach';
 
 

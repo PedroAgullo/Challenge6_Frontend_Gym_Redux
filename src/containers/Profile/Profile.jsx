@@ -1,7 +1,6 @@
 import React from 'react';
 import './Profile.css';
 
-
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import { connect } from 'react-redux';
 import DataProfile from '../../components/DataProfile/DataProfile';
@@ -12,6 +11,8 @@ import DataJoinMonitor from '../../components/DataJoinMonitor/DataJoinMonitor';
 import NewRoom from '../../components/NewRoom/NewRoom';
 import Payment from '../../components/Payment/Payment';
 import Code from '../../components/QrCode/QrCode';
+import NewCoach from '../../components/NewCoach/NewCoach';
+import NewUser from '../../components/NewUser/NewUser';
 
 
 const Profile = (props) => {
@@ -38,7 +39,10 @@ const Profile = (props) => {
             
             case 'newroom':
                 return <NewRoom/>
-
+            case 'newcoach':
+                return <NewCoach/>
+            case 'newuser':
+                return <NewUser/>
             case 'payment':
                     return <Payment/>
             case 'codeqr':

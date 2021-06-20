@@ -228,6 +228,9 @@ const Register = () => {
 
         }
 
+
+        
+
        
          axios.post(("http://localhost:3005/user"), user)        
         .then(res => {

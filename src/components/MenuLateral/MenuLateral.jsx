@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./MenuLateral.css";
 import { connect } from "react-redux";
 import axios from "axios";
-import { CLASES, PROFILE, JOIN, JOINMONITOR, GETROOMMONITOR, NEWROOM, PAYMENT, CODEQR} from "../../redux/types";
+import { CLASES, PROFILE, JOIN, JOINMONITOR, GETROOMMONITOR, NEWROOM, PAYMENT, CODEQR, NEWUSER, NEWCOACH} from "../../redux/types";
 import { NavLink } from "react-router-dom";
 
 const Menulateral = (props) => {
@@ -51,12 +51,12 @@ const Menulateral = (props) => {
         break;
 
       case "newcoach":
-        props.dispatch({ type: CODEQR, payload: info });
+        props.dispatch({ type: NEWCOACH, payload: info });
   
         break;
 
       case "newuser":
-          props.dispatch({ type: CODEQR, payload: info });
+          props.dispatch({ type: NEWUSER, payload: info });
     
           break;
     

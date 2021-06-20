@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+
+.boxDataProfileUser{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s;
+    box-shadow:  5px 5px 5px 2px grey;
+
+    /* height: auto; */
+    width: 65vw;
+    /* display: flex;
+    flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+/*     border: 0.2em solid grey;    
+    border-radius: 1em;
+    transition: 0.3s; */
+    font-size: 0.8em;
+  /*   box-shadow:  5px 5px 5px 2px grey; */
+    
+    background-color: #F0EC57;
+    margin-bottom: 8em;
+    padding: 1em;
+
+    /* margin-left: 15em; */
+
+}
+
+.infoUser1{
+    height: 50vh;
+    width: 25vw;  
+    display: flex;
+    align-items:center;
+    justify-content:space-evenly;
+    flex-direction: column;  
+    border-right: 0.2em solid grey;   
+    background-color: #b0b0b6; 
+    border-radius: 1em 0 0 1em;
+
+}
+
+.fotoUser{
+    height: 20vh;
+    width: 10vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.empty{
+    height: 7vh;
+    width: 7vw;
+    text-align: center;
+    
+}
+
+#foto{
+    height: 20vh;
+    width: 20vw;
+    border: 0.2em solid grey;   
+    border-radius: 1.5em; 
+
+}
+
+.infoUser2Titulos
+{
+    height: 50vh;
+    width: auto;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;  
+    background-color: #b0b0b6; 
+  
+}
+
+.infoUser2{
+    height: 50vh;
+    width: -webkit-fill-available;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;  
+    background-color: #b0b0b6; 
+  
+}
+.infoUser3{
+    height: 50vh;
+    width: -webkit-fill-available;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;  
+    background-color: #b0b0b6; 
+    border-radius: 0 1em 1em 0;
+}
+
+.inputBaseUser{
+/*     border-radius: 1em;
+    width: fit-content;
+    height: 5vh;
+    margin-bottom: 0.4em; */
+/* 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+    color: black;
+    font-size: 14px;
+    height: 5vh;
+    margin: 0.5em; */
+
+    width: 30vh;
+    height: 36px;
+    border-radius: 4px;
+    padding-left: 12px;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: Akzidenz, "‘Helvetica Neue’", Helvetica, Arial, sans-serif;
+    border: 1px solid rgb(184, 196, 194);
+    transition: border-color 150ms ease-in-out 1s;
+    z-index: 1;
+    outline: none;
+    color: rgb(33, 49, 60);
+    background-color: rgb(255, 255, 255);
+    padding-right: 12px;
+    margin-bottom: 0.4em;
+}
+
+.titulosInfoUser {
+    border-radius: 1em;
+    width: max-content;
+    height: 36px;
+    margin-bottom: 0.4em;
+    margin-left: 0.5em;
+    font-weight: bold;
+    padding-top: 0.2em;
+    font-size: 15px;
+
+}
+
+.tituloDataProfile{
+    margin-bottom: 0;
+    font-family: 'Antonio', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    /* margin-left: 7em; */
+}
