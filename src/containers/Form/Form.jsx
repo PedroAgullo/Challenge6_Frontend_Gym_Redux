@@ -92,7 +92,7 @@ const Form = () => {
         } */
 
 
-         axios.post(("http://localhost:3005/monitor/addmessage"), review)        
+         axios.post(("https://xsmilegymback.herokuapp.com/monitor/addmessage"), review)        
         .then(res => {
             setNewMessage("Gracias por participar.");
 

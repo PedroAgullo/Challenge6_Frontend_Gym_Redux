@@ -34,7 +34,7 @@ const DataRoomAdmin = (props) => {
       };
 
       let res = await axios.post(
-        "http://localhost:3005/room/leave/coach",
+        "https://xsmilegymback.herokuapp.com/room/leave/coach",
         body,
         { headers: { authorization: "Bearer " + token } }
       );
@@ -58,7 +58,7 @@ const DataRoomAdmin = (props) => {
       };
 
       //GET ALL USER ADMIN
-      let res = await axios.post("http://localhost:3005/room/monitorid", body, {
+      let res = await axios.post("https://xsmilegymback.herokuapp.com/room/monitorid", body, {
         headers: { authorization: "Bearer " + token },
       });
 

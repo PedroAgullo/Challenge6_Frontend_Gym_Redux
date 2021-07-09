@@ -38,7 +38,7 @@ const Login = (props) => {
         
         //Axios      
         if (document.getElementById("opciones").value === "user") {
-            try {var res = await axios.post('http://localhost:3005/login', body);
+            try {var res = await axios.post('https://xsmilegymback.herokuapp.com/login', body);
                 
                 let perfil = document.getElementById("opciones").value;
                 let data = {
@@ -66,7 +66,7 @@ const Login = (props) => {
 
         }else if (document.getElementById("opciones").value === "monitor") {
 
-            try {var resMonitor = await axios.post('http://localhost:3005/login/monitor', body);
+            try {var resMonitor = await axios.post('https://xsmilegymback.herokuapp.com/login/monitor', body);
          
                 let perfil = document.getElementById("opciones").value;
                 let data = {

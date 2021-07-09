@@ -44,7 +44,7 @@ const DataJoin = (props) => {
         name : props.credentials.name
       }
       
-      let res = await axios.post('http://localhost:3005/room/join',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('https://xsmilegymback.herokuapp.com/room/join',body,{headers:{'authorization':'Bearer ' + token}});
       message.info('Clase reservada.');
       findAllRoomsAllActive();
 
@@ -64,7 +64,7 @@ const DataJoin = (props) => {
         id : roomId     
       }
 
-      let resul = await axios.post('http://localhost:3005/room/delete', body,{headers:{'authorization':'Bearer ' + token}});
+      let resul = await axios.post('https://xsmilegymback.herokuapp.com/room/delete', body,{headers:{'authorization':'Bearer ' + token}});
 
       message.info('Clase cancelada.')
       findAllRoomsAllActive();
@@ -81,11 +81,11 @@ const DataJoin = (props) => {
     const updateClass = async (room) => {
       //Traemos todos los monitores
       let token = props.credentials?.token;
-      let monitors = await axios.get('http://localhost:3005/monitor', {headers:{'authorization':'Bearer ' + token}});
+      let monitors = await axios.get('https://xsmilegymback.herokuapp.com/monitor', {headers:{'authorization':'Bearer ' + token}});
 
       // Traemos los usuarios de la clase
       let arrayUser = room.members;
-      let users = await axios.post('http://localhost:3005/user/group',arrayUser, {headers:{'authorization':'Bearer ' + token}});
+      let users = await axios.post('https://xsmilegymback.herokuapp.com/user/group',arrayUser, {headers:{'authorization':'Bearer ' + token}});
 
 
 
@@ -108,7 +108,7 @@ const DataJoin = (props) => {
     const findAllRoomsAllActive = async () => {  
     try{
 
-      let res = await axios.get('http://localhost:3005/room/active');
+      let res = await axios.get('https://xsmilegymback.herokuapp.com/room/active');
       setUseroom(res.data);
  
 

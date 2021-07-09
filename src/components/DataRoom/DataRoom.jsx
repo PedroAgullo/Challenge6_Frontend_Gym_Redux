@@ -44,7 +44,7 @@ const DataRoom = (props) => {
         member : idUser
       }
 
-      let res = await axios.post('http://localhost:3005/room/leave',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('https://xsmilegymback.herokuapp.com/room/leave',body,{headers:{'authorization':'Bearer ' + token}});
 
     
 
@@ -70,7 +70,7 @@ const DataRoom = (props) => {
         member : idUser
       }
 
-      let res = await axios.post('http://localhost:3005/room/userid',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('https://xsmilegymback.herokuapp.com/room/userid',body,{headers:{'authorization':'Bearer ' + token}});
      
 
       props.dispatch({type:GETROOMUSER,payload: res.data});

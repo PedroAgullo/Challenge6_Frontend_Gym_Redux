@@ -233,7 +233,7 @@ const Register = () => {
         
 
        
-         axios.post(("http://localhost:3005/user"), user)        
+         axios.post(("https://xsmilegymback.herokuapp.com/user"), user)        
         .then(res => {
             notification.success({message:'Usuario registrado.',description: "Te hemos enviado un email para activar la cuenta." });
 

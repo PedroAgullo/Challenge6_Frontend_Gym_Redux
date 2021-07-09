@@ -24,7 +24,7 @@ const Payment =  (props) => {
         subscription: "Mensual"        
     }
 
-        let res = await axios.post('http://localhost:3005/user/payment',body,{headers:{'authorization':'Bearer ' + token}});
+        let res = await axios.post('https://xsmilegymback.herokuapp.com/user/payment',body,{headers:{'authorization':'Bearer ' + token}});
         notification.success({message:'Cambiado correctamente.',description: "Tu nueva susbcripción es Mensual."});
 
        
@@ -39,7 +39,7 @@ const Payment =  (props) => {
     }
   
 
-        let res2 = await axios.post('http://localhost:3005/user/payment',body2,{headers:{'authorization':'Bearer ' + token}});
+        let res2 = await axios.post('https://xsmilegymback.herokuapp.com/user/payment',body2,{headers:{'authorization':'Bearer ' + token}});
         notification.success({message:'Cambiado correctamente.',description: "Tu nueva susbcripción es Anual."});
 
       break;
@@ -52,7 +52,7 @@ const Payment =  (props) => {
         subscription: "Premium"        
        }
 
-        let res3 = await axios.post('http://localhost:3005/user/payment',body3,{headers:{'authorization':'Bearer ' + token}});
+        let res3 = await axios.post('https://xsmilegymback.herokuapp.com/user/payment',body3,{headers:{'authorization':'Bearer ' + token}});
         notification.success({message:'Cambiado correctamente.',description: "Tu nueva susbcripción es Premium."});
 
       break;

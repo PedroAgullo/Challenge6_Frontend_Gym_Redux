@@ -238,7 +238,7 @@ const DataProfile = (props) => {
             console.log(body, "Datos de body que pasamos");
             let token = props.credentials.token;
 
-            var res = await axios.put('http://localhost:3005/user',body,{headers:{'authorization':'Bearer ' + token}});
+            var res = await axios.put('https://xsmilegymback.herokuapp.com/user',body,{headers:{'authorization':'Bearer ' + token}});
             
 
 
@@ -262,7 +262,7 @@ const DataProfile = (props) => {
 
             let token2 = props.credentials.token;
 
-            let res2 = await axios.post('http://localhost:3005/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
+            let res2 = await axios.post('https://xsmilegymback.herokuapp.com/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
             console.log (res2);
             let data2 = {
                 token: token2,

@@ -98,7 +98,7 @@ const NewRoom = (props) => {
             
         }
 
-        let res = await axios.post('http://localhost:3005/room',body,{headers:{'authorization':'Bearer ' + token}});
+        let res = await axios.post('https://xsmilegymback.herokuapp.com/room',body,{headers:{'authorization':'Bearer ' + token}});
         
         notification.success({message:'Confirmación.',description: "Clase creada"});
         
@@ -129,7 +129,7 @@ const NewRoom = (props) => {
 
         try {
             console.log(body, "Datos de body que pasamos");
-            let res = await axios.post('http://localhost:3005/room/update',body,{headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.post('https://xsmilegymback.herokuapp.com/room/update',body,{headers:{'authorization':'Bearer ' + token}});
         
             let data = {
                 token: props.credentials.token,

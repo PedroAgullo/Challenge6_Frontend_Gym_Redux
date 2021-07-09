@@ -39,7 +39,7 @@ const DataJoinMonitor = (props) => {
       }
 
 
-      let res = await axios.post('http://localhost:3005/room/join/coach',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('https://xsmilegymback.herokuapp.com/room/join/coach',body,{headers:{'authorization':'Bearer ' + token}});
       message.info('Clase reservada.');
 
       findAllRoomsAllActiveMonitor();
@@ -55,7 +55,7 @@ const DataJoinMonitor = (props) => {
     const findAllRoomsAllActiveMonitor = async () => {  
     try{
       //GET ALL USER ADMIN
-      let res = await axios.get('http://localhost:3005/room/active');
+      let res = await axios.get('https://xsmilegymback.herokuapp.com/room/active');
       
         let prueba = [];
         

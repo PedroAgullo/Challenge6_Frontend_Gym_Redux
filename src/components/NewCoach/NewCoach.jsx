@@ -101,7 +101,7 @@ const NewCoach = (props) => {
             let body = {
                 email : datosUser.email
             }
-            let res = await axios.post('http://localhost:3005/monitor/email',body,{headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.post('https://xsmilegymback.herokuapp.com/monitor/email',body,{headers:{'authorization':'Bearer ' + token}});
 
             if (res.data === null){
                 notification.warning({message:'Atención.',description: "El email no se ha encontrado" });
@@ -157,7 +157,7 @@ const NewCoach = (props) => {
         }
 
         try {
-             let res = await axios.post('http://localhost:3005/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
+             let res = await axios.post('https://xsmilegymback.herokuapp.com/monitor/update',body,{headers:{'authorization':'Bearer ' + token}});
 
   
              let data = {
@@ -379,7 +379,7 @@ const NewCoach = (props) => {
 
         console.log("Body que le pasamos a axios", body);
         try {
-            let res = await axios.post('http://localhost:3005/monitor',body,{headers:{'authorization':'Bearer ' + token}});
+            let res = await axios.post('https://xsmilegymback.herokuapp.com/monitor',body,{headers:{'authorization':'Bearer ' + token}});
             notification.success({message:'Atencion.',description: "Nuevo coach creado correctamente."});
 
 

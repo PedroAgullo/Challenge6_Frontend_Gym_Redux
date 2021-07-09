@@ -42,7 +42,7 @@ const DataRoomMonitor = (props) => {
         isActive : false
       }
 
-      let res = await axios.post('http://localhost:3005/room/status',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('https://xsmilegymback.herokuapp.com/room/status',body,{headers:{'authorization':'Bearer ' + token}});
 
       
 
@@ -71,7 +71,7 @@ const DataRoomMonitor = (props) => {
         coachName : roomId.nameCoach
       }
 
-      let res = await axios.post('http://localhost:3005/room/leave/coach',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('https://xsmilegymback.herokuapp.com/room/leave/coach',body,{headers:{'authorization':'Bearer ' + token}});
 
       findAllRoomsActive();
      }catch (err){
@@ -94,7 +94,7 @@ const DataRoomMonitor = (props) => {
       }
 
       //GET ALL USER ADMIN
-      let res = await axios.post('http://localhost:3005/room/monitorid',body,{headers:{'authorization':'Bearer ' + token}});
+      let res = await axios.post('https://xsmilegymback.herokuapp.com/room/monitorid',body,{headers:{'authorization':'Bearer ' + token}});
 
     
 
