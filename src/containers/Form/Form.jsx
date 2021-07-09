@@ -27,8 +27,7 @@ const Form = () => {
         eCountry: '',
         eCity: '',
         eDni: '',
-        eTelephone: '',
-        
+        eTelephone: '',        
     });
 
     const [newMessage, setNewMessage] = useState([]);
@@ -37,7 +36,6 @@ const Form = () => {
 
     const updateFormulario = (e) => {
         setDatosUser({...datosUser, [e.target.name]: e.target.value});
-
     }
 
 
@@ -66,8 +64,7 @@ const Form = () => {
                     setErrors({...errors, eEmail: 'Introduce el formato de email valido ejemplo@ejemplo.com'});                    
                 }else{
                     setErrors({...errors, eEmail: ''});
-                }
-                
+                }                
             break;
 
         }
