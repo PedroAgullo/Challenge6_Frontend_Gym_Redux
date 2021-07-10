@@ -176,7 +176,7 @@ email: david@gmail.com
 password: 123456
 
 User Login:
-email: pedro@gmail.com
+email: mariana@gmail.com
 password: 123456
 
 
