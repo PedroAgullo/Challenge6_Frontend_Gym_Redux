@@ -165,7 +165,7 @@ If you want to know about the Phase I, you can see the backend repository here.
 ***
 ## **Deploy**
 
-Frontend deployed AWS: 
+Frontend deployed AWS: https://master.d3s9s5rx5vhbgt.amplifyapp.com/
 
 Admin Login: 
 email: pedro@gmail.com
